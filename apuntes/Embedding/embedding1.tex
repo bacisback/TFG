@@ -1,0 +1,204 @@
+\documentclass[8pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\begin{document}
+\title{Reproducing Kernel Hilbert Spaces(RKHS)}
+\author{Roberto Alcover Couso}
+\date{29/9/2018}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+\section{Introduction}
+In this document we will study a special type of Hilbert spaces, RKHS, with a kernel which meets the reproducing property. Understanding this is key for our study due to it's relevance in statistical models and the ideas behind algorithims such as RDC,HSIC...
+Furthermore we will define a homogeneity test based on embeddings of probability distributions on RKHSs, where the distance between distributions corresponds to the distance between their embeddings. We will see that the unit ball of an RKHS is a rich enough space so that the expression for the discrepancy vanishes only if the two probability distributions are equal. At the same time it is restrictive enough for the empirical estimate at the discrepancy to converge quickly to its population counterpart as the sample size increases.
+\subsection{Preliminar knowledge}
+
+\begin{enumerate}
+\item \textsf{Feature map}: $\phi$ is known as a feature map if is a function which maps the data to a Hilbert space $\mathcal{H}$ (feature space).
+
+\begin{align*}
+\varphi : \mathcal{X} \rightarrow \mathcal{H} \\
+x \mapsto \varphi
+\end{align*}
+\item \textsf{Kernel function}:
+k is called a kernel function if it is the dot product defined on a feature space.
+
+Then, we can rewrite the dot product of the space in terms of this mapping:
+
+\begin{align*}
+k: \mathcal{X}\times\mathcal{X} \rightarrow \mathcal{H} \\
+(x,x') \mapsto k(x,x')=<\phi(x),\phi(x')>
+\end{align*}
+\item \textsf{Reproducing kernel}:
+a function k is a reproducing kernel of the Hilbert space $\mathcal{H}$ is and only if it satisfies:
+\begin{enumerate}
+\item k(x,.)$\in \mathcal{H}, \forall x \in \mathcal{X}$
+\item \textit{Reproducing property}: $<f,k(x,\cdot)> = f(x) \forall f \in \mathcal{H} , \forall x \in \mathcal{X}$
+\end{enumerate}
+\end{enumerate}
+\paragraph*{Proposition 1.}
+If k is a reproducting kernel then: k(x,x') = <k(x,.),k(x',.)>
+\section{Maximum mean discrepancy}
+In this section it'll be shown how RKHSs can be used to define a homogeneity test in terms of the embeddings of the probability measures.
+This test consist in maximizing the measure of discrepancy between functions that belong to a certain family $\mathcal{F}$ which must be rich enough to detect all the possible differences between the two probability measures.
+\subsection{Mean embedding}
+\textsf{Lemma 1.} Given two Borel probability measures $\mathbb{P}$ and $\mathbb{Q}$  are equal if and only if $\mathbb{E}f(X) = \mathbb{E}f(Y)$  $\forall f \in \mathcal{C(X)}$
+
+$$X \sim \mathbb{P} \text{ and } Y \sim \mathbb{Q}$$
+\begin{flushleft}
+This condition is pretty dificult to prove therefore we will keep our study in order to simplify this evaluation.
+\end{flushleft}
+
+\textsf{Definition 4. MMD}
+Let $\mathcal{F}$ be a class of functions f:$X \rightarrow \mathbb{R}$ the MMD based on $\mathcal{F}$ is
+
+\begin{center}
+$\gamma(\mathbb{P},\mathbb{Q}) = \sup\limits_{f\in\mathcal{F}}\{\mathbb{E}f(X) -\mathbb{E}f(Y)\}$
+\end{center}
+This $\mathcal{F}$ must be rich enough for it to ensure that $\mathbb{P} = \mathbb{Q} \leftrightarrow \gamma(\mathbb{P},\mathbb{Q}) = 0$. And restrictive enough for the empirical estimate to converge quickly as the sample size increases.
+This will be done through RKHS with a characteristic kernel K
+
+
+\textsf{Definition 5. Characteristic kernel}
+A reproducing kernel k is a characterisctic kernel if the induced $\gamma_{k}$ is a metric.
+
+\textsf{Riesz representation theorem}
+If T is a bounded linear operator on a Hilbert space $\mathcal{H}$, then there exist some $g \in \mathcal{H}$ such that $\forall f \in \mathcal{H}$:
+\begin{center}
+$T(f) = <f,g>_{\mathcal{H}}$
+\end{center}
+
+\textsf{Lemma 2.} Given a K(s,) semi positive definite, measurable and $\mathbb{E}\sqrt{k(X,X)}<\infty$, where X$\sim \mathbb{P}$ then $\mu_{p} \in \mathcal{H}$ exist and fulfulls the next condition
+$\mathbb{E}f(X) = <f,\mu_{p}>$ for all f$\in \mathcal{H}$
+
+
+\textit{Proof} Lets define the linear operator $T_{\mathbb{P}}f\equiv\mathbb{E}(\sqrt{k(X,X)}) < \infty \forall f\in \mathcal{H}$ 
+
+\begin{center}
+
+$|T_{\mathbb{P}}f| =^{1} |\mathbb{E}(f(X))| \leq^{2} \mathbb{E}(|f(X)|) =^{3} \mathbb{E}\abs{<f,k(\cdot,X)>_{\mathcal{H}}} \leq^{4} \norm{f} _{\mathcal{H}}\cdot\sqrt{K(X,X)} <^{5} \infty $
+
+\end{center}
+Then using the Riesz representation theorem applied to $T_{p}$, there exist a $\mu_{p}\in \mathcal{H}$ such that $T_{p}f = <f,\mu_{p}>_{\mathcal{H}}$
+
+
+\textsf{Definition 6. Mean embedding}
+Given a probability distribution $\mathbb{P}$ we will define the mean embedding of $\mathbb{P}$ as an element $\mu_{p} \in \mathcal{H}$ such that
+
+$$\mathbb{E}(f(X))=<f,\mu_{\mathbb{P}}>_{\mathcal{H}}, \forall f \in \mathcal{H}$$
+
+If $f\in \mathcal{H}$ and $\mu_{\mathbb{P}} \in \mathbb{R}$
+$\mathbb{E}(f(X)) = \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}f(x_{n})$
+
+Applying the Riesz representation theorem to represent $f(x_{n})$
+
+$\forall x_{n}$ then:
+
+$f(x_{n}) = <f,K(\cdot,x_{n})>_{\mathcal{H}}$
+
+
+then
+
+$$\lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}f(x_{n}) = \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N} <f,K(\cdot,x_{n}>_{\mathcal{H}} = <f, \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}K(\cdot,x_{n})>_{\mathcal{H}}$$
+
+which leads to the final conclussion:
+
+$\mu_{\mathbb{P}} \equiv \mathbb{E}_{X\sim \mathbb{P}}(K(t,X))$  $t \in [0,T]$
+
+\textsc{Second interpretation of the mean embedding}
+
+$$\mu_{\mathbb{P}} = \mathbb{E}(K(\cdot,X))$$
+
+\subsection{Introduction to MMD}
+\textsf{Lemma 3.} Given the conditions of Lemma 2 ($\mu_{\mathbb{P}} \text{and} \mu_{\mathbb{Q}}$ exist) then:
+
+$X \sim \mathbb{P} \mu_{\mathbb{P}} \equiv \mathbb{E}_{X\sim \mathbb{P}}(K(\cdot,X))$ $Y \sim \mathbb{Q} \mu_{\mathbb{Q}} \equiv \mathbb{E}_{Y\sim \mathbb{Q}}(K(\cdot,Y))$ 
+and:
+
+$MMD(\mathcal{F},\mathbb{P}, \mathbb{Q}) = \norm{\mu_{\mathbb{P}} - \mu_{\mathbb{Q}}}_{\mathcal{H}}$
+
+\textit{Proof}
+
+$$MMD \equiv \sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1}\{\mathbb{E}(f(x)) - \mathbb{E}(f(y))\}$$
+$$=\sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1}\{<f,\mu_\mathbb{P}> - <f, \mu_\mathbb{Q}> \} $$
+$$=\sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1} <f,(\mu_{\mathbb{P}} - \mu_{\mathbb{Q}})> $$
+$$\leq^{1} \sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1}\{\norm{f}_{\mathcal{H}},\norm{\mu_\mathbb{P} - \mu_{\mathbb{Q}}}_{\mathcal{H}}\}$$
+$$\leq \norm{\mu_{\mathbb{P}} - \mu_{\mathbb{Q}}}_{\mathcal{H}}$$
+
+But on the other side, if we choose f as:
+
+$$f=\frac{1}{\norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}} (\mu_{\mathbb{P}}- \mu_{\mathbb{Q}})$$
+
+then we have:
+
+$$\sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1}\{\norm{f}_{\mathcal{H}},\norm{\mu_\mathbb{P} - \mu_{\mathbb{Q}}}_{\mathcal{H}}\} \geq \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}} $$
+
+therefore
+
+$$MMD = \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}}$$
+
+\textsf{Proposition 1}
+
+Given:
+$$X,X' \sim \mathbb{P} \text{ and } Y,Y' \sim \mathbb{Q}$$
+then:
+$$MMD^{2}(\mathcal{F},\mathbb{P},\mathbb{Q}) = \mathbb{E}(K(X,X')) + \mathbb{E}(K(Y,Y')) - 2\mathbb{E}K(X,Y).$$
+
+\textit{proof}
+\begin{center}
+
+
+$$MMD^{2}(\mathcal{F},\mathbb{P},\mathbb{Q}) = \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}}^{2}$$
+$$=<\mu_{\mathbb{P}}- \mu_{\mathbb{Q}},\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}>_{\mathcal{H}}$$
+$$=<\mathbb{E}(K(\cdot,X))-K(\cdot,Y)),\mathbb{E}(K(\cdot,X'))-K(\cdot,Y'))>$$
+$$=\mathbb{E}(<K(\cdot,X),K(\cdot,X')> + <K(\cdot,Y),K(\cdot,Y')> - 2<K(\cdot,X)K(\cdot,Y)>)$$
+$$=^{1} \mathbb{E}(K(X,X') + K(Y,Y') -2K(X,Y))
+$$
+$$= \mathbb{E}(K(X,X')) + \mathbb{E}(K(Y,Y')) -2\mathbb{E}(K(X,Y))
+$$
+$$= \int\int K(s,t) \underbrace{d(\mathbb{P}-\mathbb{Q})(s)}_{Signed measure} d(\mathbb{P}-\mathbb{Q})(t)
+$$
+1) is due to the reproductive property of the kernel.
+\end{center}
+\subsection*{Prooving that MMD defines an homogeneity test}
+
+\textsc{Definition 7.} A reproducing kernel k is a characteristic kernel if and only if the induced $\gamma_{k}$ is a metric.
+
+
+\textsc{Theorem 2.}
+If X is a compact metric space, k is continuous and $\mathcal{H}$ is dense in $\mathcal{C}$(X) with respect to the supremum norm, then $\mathcal{H}$ is characteristic.
+
+\textit{Proof.}
+Being characteristic means that 
+$MMD(\mathcal{F},\mathbb{P},\mathbb{Q}) = 0 \leftrightarrow \mathbb{P} = \mathbb{Q}$
+\begin{flushleft}
+$\rightarrow$
+\end{flushleft}
+
+By lemma 1 we know that $\mathbb{P}$ and $\mathbb{Q}$  are equal if and only if $\mathbb{E}f(X) = \mathbb{E}f(Y)$  $\forall f \in \mathcal{C(X)}$
+
+Given that $\mathcal{H}$ is dense in $\mathcal{C}$(X) then:
+$$\forall \epsilon >0, f\in\mathcal{C}(X), \exists g\in \mathcal{H} : \norm{f-g}_{\infty} < \epsilon$$
+
+\begin{align*}
+\abs{\mathbb{E}(f(X)) - \mathbb{E}(f(Y))}  = \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X)) + \mathbb{E}(g(X)) - \mathbb{E}(g(Y)) +\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))} \\
+\leq \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X))} + \abs{\mathbb{E}(g(X)) - \mathbb{E}(g(Y))} +\abs{\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))}\\
+= \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X))} + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } +\abs{\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))} \\
+\leq \mathbb{E}\abs{f(X) - g(X)} + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } +\mathbb{E}\abs{g(Y) - f(Y)} \\ \leq^{1} \norm{f-g}_{\infty}  + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } + \norm{f-g}_{\infty} 
+\\
+\leq \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } + 2\epsilon
+\end{align*}
+
+By lemma 3 we know that if MMD = 0 then $\mu_{\mathbb{P}} = \mu_{\mathbb{Q}}$. Hence:
+$$\abs{\mathbb{E}(f(X)) - \mathbb{E}(f(Y))} \leq 2\epsilon$$
+
+Then by lemma 1 $\mathbb{P}$ and $\mathbb{Q}$  are equal.
+
+\begin{flushleft}
+$\leftarrow$
+\end{flushleft}
+By definition of MMD.
+\end{document}

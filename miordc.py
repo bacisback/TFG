@@ -7,7 +7,7 @@ from scipy import stats
 from sklearn.cross_decomposition import CCA
 from scipy.stats import rankdata
 from pyHSICLasso import HSICLasso
-
+from miohsic import HSIC_U_statistic_test
 def ecdf(x):
     xs = np.sort(x)
     ys = np.arange(1,len(x)+1)/float(len(x))
@@ -134,10 +134,10 @@ def rdc2(x,y,k=10,s=0.2,n=5):
     wy = norm(ny*k,s).reshape(ny,k)
     wxs = np.matmul(x,wx)
     wys = np.matmul(y,wy)
-    #fX = np.sin(wxs)
-    #fY = np.sin(wys)
-    #res = cancorCopy(fX,fY,k)
-    #return res
+    fX = np.sin(wxs)
+    fY = np.sin(wys)
+    res = cancorCopy(fX,fY,k)
+    return res
     wxs = np.concatenate((np.cos(wxs),np.sin(wxs)),axis=1)
     wys = np.concatenate((np.cos(wys),np.sin(wys)),axis=1)
     """d = rcancor(wxs,wys)
@@ -274,25 +274,6 @@ def rcancor(x,y, xcenter = True, ycenter = True):
     l = K.shape
     t,d,delta = np.linalg.svd(K[:dx,:])
     return d[0]
-def Ahsic (x,y,reg = 5):
-    if type(x) is not np.ndarray:
-        print ("error x")
-        return 
-    if type(y) is not np.ndarray:
-        print ("error y")
-        return
-    hsic_lasso = HSICLasso()
-    x = x.reshape(-1,1)
-    y = y.reshape(-1,1)
-    z = np.column_stack([x, y]).reshape(2,500)
-    #print(z)
-    hsic_lasso.input(z,np.array([0,1]))
-    hsic_lasso.regression(reg)
-    #print(hsic_lasso.get_index())
-    hsic_lasso.classification(10)
-    #hsic_lasso.plot()
-    print  (hsic_lasso.get_index_score())
-
 
 def Linear(x):
     return np.copy(x)
@@ -336,11 +317,12 @@ x = np.random.rand(n)
 
 funciones = [Linear,Parabolic,Cubic,Sin1,Sin2,root4,circle,step,xsin,logarithm,gausian]
 titulos = ["lineal","Parabolic","Quadratic","Sin(4pix)","Sin(16pix)","fourth root","circle","step","xsin(x)","logarithm","gausian","2D gausian"]
-
+shape = [10,50]
 l = len(funciones)
 y = np.zeros((l+1,n))
 a = [1,1,10,2,1,1,0.25,5]
 solutions = np.zeros((l+1,30))
+solutionsHsic = np.zeros((l+1,30))
 corrs = np.zeros((l+1,30))
 for i in range(l):
     z = funciones[i](x)
@@ -353,7 +335,7 @@ for i in range(l):
     ax.set_title(str(titulos[i]))
     aux = (y[i] - np.mean(y[i]))/np.std(y[i])
     plt.plot(auxX,aux,'o',markersize=0.5)
-    Ahsic(auxX,aux)
+
 x = auxX
 auxX  = np.random.normal(0,1, n)
 y[l] = np.random.normal(0,1, n)
@@ -369,16 +351,23 @@ for i in range(0,30):
         aux = (aux -np.mean(aux))/np.std(aux)
         #path, beta, A, lam = hsiclasso(x, aux, numFeat=5,ykernel='Delta')
         if j == l:
-            solutions[j,i] = rdc(auxX,aux)
-            corrs[j,i] = np.corrcoef(auxX,aux)[0,1]
+            solutions[j,i] = rdc2(auxX,aux)
+            solutionsHsic[j,i] = HSIC_U_statistic_test(auxX,aux)
+            #print(solutionsHsic[j,i])
+            corrs[j,i] = np.abs(np.corrcoef(auxX,aux)[0,1])
         else:
             solutions[j,i] = rdc2(x,aux)
+            solutionsHsic[j,i] = HSIC_U_statistic_test(x,aux)
+
             corrs[j,i] = np.abs(np.corrcoef(x,aux)[0,1])
 for i in range(len(y)):
     ax = plt.subplot(4,3,i+1)
+    plt.ylim((0,1.1))
     ax.set_title(str(titulos[i]))
-    plt.plot(range(0,30),solutions[i,:])
-    plt.plot(range(0,30),corrs[i,:])
+    plt.plot(range(0,30),solutions[i,:],label="RDC")
+    plt.plot(range(0,30),corrs[i,:],label="corr")
+    plt.plot(range(0,30),solutionsHsic[i,:],label="HSIC")
+plt.legend(loc='best')
 plt.show()
 #x=np.matrix([[1.41,-1.11],[-1.11,1.19]])
 #y=np.matrix([[0.78,-0.71,-0.9,-1.04,-0.95,0.18],[-0.42,0.82,0.77,0.9,1.12,0.11]])

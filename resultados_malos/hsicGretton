@@ -1,0 +1,2 @@
+def hsicTestGamma(x,y,alpha,params = [-1,-1]):
+	

@@ -4,12 +4,30 @@ import matplotlib.pyplot as plt
 import time
 import statsmodels.api as sm 
 from scipy.optimize import curve_fit
+from Test import *
+from numpy.random import permutation
 """
 Funcion de HSIC implementada en python siguiendo el cofigo de Gretton
 Suponemos que los arrays siempre van a ser unidimensionales.
 
 De lo contrario R = np.repeat(G.T,size1).reshape(size1,size1)
 """
+class HSIC_Gretton(Test):
+	def __init__(self):
+		super().__init__("hsicGretton")
+	def test(x,y):
+		[testStat,p_value,thresh] = hsicTestGamma(x,y)
+		if p_value < 0.05:
+			return 1
+		else:
+			return 0
+	def generar_distribucion_empirica(x,y):
+		self.distribucion = np.empty(100)
+		for i in range(100):
+			aux = permutation(y)
+			[testStat,p_value,thresh] = hsicTestGamma(x,y)
+			self.distribucion[i] = testStat
+		return
 def hsicTestGamma(x,y,alpha,params = [-1,-1]):
 	m = len(x)
 	x = x.reshape((-1,1))
@@ -137,6 +155,15 @@ def circle(x):
 
 def func(x,a,b,c):
 	return a*x**2+b*x+c
+
+n = 500
+x = np.random.rand(n)
+
+y = np.sin(x) + np.random.normal(0,1,n)
+x = (x-np.mean(x))*1./np.std(x)
+y = (y-np.mean(y))*1./np.std(y)
+
+print("Res0\n",hsicTestGamma(x,y,0.05))
 """
 n = 100
 t = np.linspace(50,1000,n).astype(int)

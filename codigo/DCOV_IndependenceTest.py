@@ -1,9 +1,22 @@
 import numpy as np
-from scipy.stats import gamma
-import matplotlib.pyplot as plt
-import time
+from IndependenceTest import *
 from scipy.stats import norm
 from numpy.random import permutation
+
+class DCOV_IndependenceTest(IndependenceTest):
+	def __init__(sef,filas,columnas,titulos):
+		super().__init__("DCOV",filas,columnas,titulos)
+	def test(self,x,y,alpha):
+		[DCOV,DCOR,statistic,thresh] = dcov(x,y)
+		if statistic > thresh:
+			return 1
+		else:
+			return 0
+	def test_tiempos(self,n):
+		mean = [0, 0]
+		cov = [[1, 0], [0, 1]]
+		x, y = np.random.multivariate_normal(mean, cov, n).T
+
 def dcov(X,Y,R = None):
 	n = len(X)
 	n2 = n*n
@@ -62,7 +75,7 @@ def dcov(X,Y,R = None):
 	method for calculating the pvalue
 	"""
 	if R is None:
-		return [dcov,dcov*dcov*n/S2,dcor,norm.ppf(1-0.05/2)**2]
+		return [dcov,dcor,n*dcov*dcov/S2,norm.ppf(1-0.05/2)**2]
 	else:
 		pvalue = 0.0
 		for i in range(R):
@@ -79,16 +92,3 @@ def dcov(X,Y,R = None):
 				pvalue += 1
 		pvalue = pvalue*1./R
 		return [dcov,dcor,pvalue]
-
-n = 500
-mean = [0, 0]
-cov = [[1, 0], [0, 1]]  # diagonal covariance
-x, y = np.random.multivariate_normal(mean, cov, n).T
-print(dcov(x,y))
-cov = [[1, 1], [1, 1]]
-x, y = np.random.multivariate_normal(mean, cov, n).T
-print(dcov(x,y))
-#print(dcovS1_S2_S3(x,y))
-
-
-

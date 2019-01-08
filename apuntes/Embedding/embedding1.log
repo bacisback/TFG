@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.20)  2 OCT 2018 23:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  5 JAN 2019 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -112,6 +112,9 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 
 LaTeX Warning: Unused global option(s):
     [8pt].
@@ -119,18 +122,18 @@ LaTeX Warning: Unused global option(s):
 (./embedding1.aux)
 \openout1 = `embedding1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -201,25 +204,32 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 12.
+LaTeX Font Info:    Try loading font information for U+msa on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 12.
+LaTeX Font Info:    Try loading font information for U+msb on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1]
-Overfull \hbox (1.55368pt too wide) in paragraph at lines 74--76
-[]\OT1/cmss/m/n/10 Lemma 2. \OT1/cmr/m/n/10 Given a K(s,) semi pos-i-tive def-i
--nite, mea-sur-able and $\U/msb/m/n/10 E[] \OML/cmm/m/it/10 <
+Overfull \hbox (35.17653pt too wide) detected at line 87
+\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 T[]f\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = \OM
+S/cmsy/m/n/10 j\U/msb/m/n/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f\OT1/cmr/m/n/1
+0 (\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 ))\OMS/cmsy/m/n/10 j ^^T \U/msb/m/n/10 E\O
+T1/cmr/m/n/10 (\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/
+it/10 X\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 ) = []\U/msb/m/n/10 E
+\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 < f; k\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\
+OML/cmm/m/it/10 ; X\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >[]\OMS/cmsy/m/n/10 j ^^T
+ []k\OML/cmm/m/it/10 f\OMS/cmsy/m/n/10 k[] ^^A \U/msb/m/n/10 E\OT1/cmr/m/n/10 (
+[])[] \OML/cmm/m/it/10 < []\OMS/cmsy/m/n/10 1
  []
 
-
-Overfull \hbox (9.48833pt too wide) detected at line 105
+[2]
+Overfull \hbox (9.48833pt too wide) detected at line 112
 [] [] [] \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10
  ) = [] [] [] \OML/cmm/m/it/10 < f; K\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/
 cmm/m/it/10 ; x[] >[]\OT1/cmr/m/n/10 =\OML/cmm/m/it/10 < f; [] [] [] K\OT1/cmr/
@@ -227,40 +237,68 @@ m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 ; x[]\OT1/cmr/m/n/10 ) \OML/cmm/m/
 it/10 >[]
  []
 
-[2] [3]
-Overfull \hbox (43.34726pt too wide) detected at line 193
+[3] [4]
+Overfull \hbox (43.34726pt too wide) detected at line 202
 []
  []
 
-[4] (./embedding1.aux) ) 
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+[5]
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no · in font cmr10!
+ [6] (./embedding1.aux) )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 6 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 2140 strings out of 492982
- 28800 string characters out of 6134896
- 92463 words of memory out of 5000000
- 5679 multiletter control sequences out of 15000+600000
- 12455 words of font info for 48 fonts, out of 8000000 for 9000
+ 2176 strings out of 492982
+ 29422 string characters out of 6134895
+ 92751 words of memory out of 5000000
+ 5710 multiletter control sequences out of 15000+600000
+ 12749 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,25p,554b,205s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
-/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msbm7.pfb>
-Output written on embedding1.pdf (5 pages, 179306 bytes).
+ 41i,9n,25p,642b,1031s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on embedding1.pdf (7 pages, 233930 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

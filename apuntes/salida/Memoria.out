@@ -1,0 +1,11 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{MMD}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Mean embedding}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Introduction to MMD}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Prooving that MMD defines an homogeneity test}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Application to independence test}{section.1.1}% 6
+\BOOKMARK [1][-]{section.1.2}{HSIC}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.2.1}{Cross Covariance operator}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.2}{Statistics}{section.1.2}% 9
+\BOOKMARK [1][-]{section.1.3}{HSIC}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.3.1}{Definitions}{section.1.3}% 11

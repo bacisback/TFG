@@ -34,3 +34,22 @@ def gausian(x):
 	c = np.std(x)
 	b = np.mean(x)
 	return 1./(c*np.sqrt(2*np.pi))*np.exp(-np.power(x-b,2)/(2*np.power(c,2)))
+def bivariate_gaussian(n,cov = [[1,0.5],[0.5,1]]):
+	return np.random.multivariate_normal([0, 0], cov, n).T
+def gaussian_multiply_uniform(n):
+	x,y = np.random.multivariate_normal([0, 0], np.eye(2), n).T
+	z = np.random.rand(n)
+	return [np.dot(x,z), np.dot(y,z)]
+def mixture_3_gaussians(n):
+	z1 = np.random.multivariate_normal([0, 0], np.eye(2), n).T
+	z2 = np.random.multivariate_normal([0, 0], [[1,0.8],[0.8,1]], n).T
+	z3 = np.random.multivariate_normal([0, 0], [[1,-0.8],[-0.8,1]], n).T
+	p = np.random.rand(n)
+
+	z = (p<0.6).astype(float)*(z1-z2) + (p<0.8).astype(float)*z2 + (p>0.8).astype(float)*z3
+	return z
+def gaussian_multiplicative_noise(n):
+	z = np.random.multivariate_normal([0, 0], np.eye(2), n).T
+	e = np.random.multivariate_normal([0, 0], [[1,0.8],[0.8,1]], n).T
+	return z*e
+

@@ -5,6 +5,7 @@ from DCOV_IndependenceTest import *
 import numpy as np
 import matplotlib.pyplot as plt
 import threading
+import concurrent.futures
 from funciones import *
 class Tester:
 	def __init__(self,funciones,titulos,steps,n):
@@ -23,9 +24,9 @@ class Tester:
 			test.plot()
 			plt.legend(loc='best')
 		plt.show()
-	def print(self):
+	def print(self,title=None):
 		for test in self.tests:
-			test.print()
+			test.print(title)
 	def simulate(self):
 		threads = []
 		for test in self.tests:
@@ -49,6 +50,16 @@ class Tester:
 			#threads.append(test_thread_list)
 		#for list_of_threads in threads:
 			
+	def compute_times(self,n,begin,end):
+		for test in self.tests:
+			test.test_tiempos(n,begin,end)
+
+	def generate_histograms(self,n,size=500):
+		
+		with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+			futures = {executor.submit(test.generate_histogram,n) for test in self.tests}
+			concurrent.futures.wait(futures)
+		
 
 	def simulate_dependant(self,n,noise,row,column,test):
 		power = 0
@@ -80,17 +91,26 @@ class Tester:
 		print(noise,end='\r')
 		test.add_solution(row,column,power)
 
-n = 500
-functions = [Linear,Parabolic,Cubic,Sin1,Sin2,root4,circle,step,xsin,logarithm,gausian]
-titles = ["lineal","Parabolic","Quadratic","Sin(4pix)","Sin(16pix)","fourth root","circle","step","xsin(x)","logarithm","gausian","2D gausian"]
-steps = 30
+	def sample_size_test(self,ninit,nend,steps,generate_func):
+		for i in range(len(generate_func)):
+			with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+				futures = {executor.submit(test.test_varing_size,generate_func[i],ninit,nend,steps, i) for test in self.tests}
+				concurrent.futures.wait(futures)
+		
+
+functions = [bivariate_gaussian,gaussian_multiply_uniform,mixture_3_gaussians,gaussian_multiplicative_noise]
+titles = ["bivariate gaussian","Gaussian multiply uniform", "Mixture of 3 gaussians","Gaussian multiplicative noise"]
+steps = 5
+ninit = 10
+nend = 500
+n = 5
 tester = Tester(functions,titles,steps,n)
 dcov = DCOV_IndependenceTest(len(titles),steps,titles)
+dcov.test_varing_size(bivariate_gaussian,ninit,nend,steps,1)
 rdc = RDC_IndependenceTest(len(titles),steps,titles)
 hsic = HSIC_IndependenceTest(len(titles),steps,titles)
 tester.add_test(dcov)
 tester.add_test(rdc)
 tester.add_test(hsic)
-tester.simulate()
-tester.plot()
-tester.print()
+tester.sample_size_test(ninit,nend,steps,functions)
+tester.print("Varing_Size10-500")

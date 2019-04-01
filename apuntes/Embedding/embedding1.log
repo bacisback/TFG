@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  5 JAN 2019 12:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  27 MAR 2019 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -115,40 +115,30 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks20
+\thm@bodyfont=\toks21
+\thm@headfont=\toks22
+\thm@notefont=\toks23
+\thm@headpunct=\toks24
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks25
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+\epsfxsize=\dimen114
+\epsfysize=\dimen115
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
 
-LaTeX Warning: Unused global option(s):
-    [8pt].
-
-(./embedding1.aux)
-\openout1 = `embedding1.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count99
-\scratchdimen=\dimen114
-\scratchbox=\box28
-\nofMPsegments=\count100
-\nofMParguments=\count101
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count102
-\MPscratchDim=\dimen115
-\MPnumerator=\count103
-\makeMPintoPDFobject=\count104
-\everyMPtoPDFconversion=\toks21
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -203,20 +193,91 @@ G,.JBIG2,.JB2,.eps]
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-))
-LaTeX Font Info:    Try loading font information for U+msa on input line 14.
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/titling/titling.sty
+Package: titling 2009/09/04 v2.1d maketitle typesetting
+\thanksmarkwidth=\skip49
+\thanksmargin=\skip50
+\droptitle=\skip51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen116
+\extrarowheight=\dimen117
+\NC@list=\toks26
+\extratabsurround=\skip52
+\backup@length=\skip53
+)
+\c@thm=\count99
+\c@defn=\count100
+\c@conj=\count101
+\c@exmp=\count102
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+LaTeX Warning: Unused global option(s):
+    [8pt].
+
+(./embedding1.aux)
+\openout1 = `embedding1.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count103
+\scratchdimen=\dimen118
+\scratchbox=\box28
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen119
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
+\everyMPtoPDFconversion=\toks28
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 14.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1]
-Overfull \hbox (35.17653pt too wide) detected at line 87
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (5.69144pt too wide) in paragraph at lines 59--60
+\OT1/cmr/bx/n/10 Proposition 1.1. \OT1/cmr/m/it/10 If k is a re-pro-duct-ing ke
+r-nel then: $\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr
+/m/n/10 ) =\OML/cmm/m/it/10 < k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; \OMS/cmsy/m
+/n/10 ^^A\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
+ x[]; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >$ 
+ []
+
+[1]
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 98--100
+\OT1/cmr/bx/n/10 Lemma 2.2. \OT1/cmr/m/it/10 Given a K(s,) semi pos-i-tive def-
+i-nite, mea-sur-able and $\U/msb/m/n/10 E[] \OML/cmm/m/it/10 <
+ []
+
+
+Overfull \hbox (35.17653pt too wide) detected at line 105
 \OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 T[]f\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = \OM
 S/cmsy/m/n/10 j\U/msb/m/n/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 ))\OMS/cmsy/m/n/10 j ^^T \U/msb/m/n/10 E\O
@@ -229,7 +290,7 @@ OML/cmm/m/it/10 ; X\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 >[]\OMS/cmsy/m/n/10 j ^^T
  []
 
 [2]
-Overfull \hbox (9.48833pt too wide) detected at line 112
+Overfull \hbox (9.48833pt too wide) detected at line 131
 [] [] [] \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10
  ) = [] [] [] \OML/cmm/m/it/10 < f; K\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/
 cmm/m/it/10 ; x[] >[]\OT1/cmr/m/n/10 =\OML/cmm/m/it/10 < f; [] [] [] K\OT1/cmr/
@@ -237,15 +298,19 @@ m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 ; x[]\OT1/cmr/m/n/10 ) \OML/cmm/m/
 it/10 >[]
  []
 
-[3] [4]
-Overfull \hbox (43.34726pt too wide) detected at line 202
+[3]
+Overfull \hbox (62.18124pt too wide) detected at line 193
+[]
+ []
+
+[4]
+Overfull \hbox (54.4584pt too wide) detected at line 230
 []
  []
 
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-[5]
 Missing character: There is no Â in font cmr10!
 Missing character: There is no · in font cmr10!
 Missing character: There is no Â in font cmr10!
@@ -262,19 +327,126 @@ Missing character: There is no Â in font cmr10!
 Missing character: There is no · in font cmr10!
 Missing character: There is no Â in font cmr10!
 Missing character: There is no · in font cmr10!
- [6] (./embedding1.aux) )
+[5] [6]
+Overfull \hbox (96.5636pt too wide) detected at line 308
+\OML/cmm/m/it/10 HSIC\OT1/cmr/m/n/10 (\U/msb/m/n/10 P[]\OML/cmm/m/it/10 ; \OMS/
+cmsy/m/n/10 H\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 G\OT1/cmr/m/n/10 ) = \U/msb/m/
+n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x;
+ x[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y; y[]
+\OT1/cmr/m/n/10 )] + \U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/n/10 )]\U/msb/m/n/10 E[]\OT1/cmr/m
+/n/10 [\OML/cmm/m/it/10 l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y; y[]\OT1/cmr/m/n/1
+0 )] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\U
+/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/i
+t/10 x; x[]\OT1/cmr/m/n/10 )]\U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10
+ l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y; y[]\OT1/cmr/m/n/10 )]]
+ []
+
+[7]
+Overfull \hbox (2.58855pt too wide) detected at line 349
+[]
+ []
+
+
+Overfull \hbox (3.49484pt too wide) detected at line 360
+[]
+ []
+
+
+Overfull \hbox (96.5636pt too wide) detected at line 365
+\OML/cmm/m/it/10 HSIC\OT1/cmr/m/n/10 (\U/msb/m/n/10 P[]\OML/cmm/m/it/10 ; \OMS/
+cmsy/m/n/10 H\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 G\OT1/cmr/m/n/10 ) = \U/msb/m/
+n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x;
+ x[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y; y[]
+\OT1/cmr/m/n/10 )] + \U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/n/10 )]\U/msb/m/n/10 E[]\OT1/cmr/m
+/n/10 [\OML/cmm/m/it/10 l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y; y[]\OT1/cmr/m/n/1
+0 )] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\U
+/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 (\OML/cmm/m/i
+t/10 x; x[]\OT1/cmr/m/n/10 )]\U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10
+ l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y; y[]\OT1/cmr/m/n/10 )]]
+ []
+
+[8]
+Overfull \hbox (14.22455pt too wide) in paragraph at lines 377--378
+\OT1/cmr/bx/n/10 Theorem 3.2. \OT1/cmr/m/it/10 let $\U/msb/m/n/10 E[]$ \OT1/cmr
+/m/it/10 de-note the ex-pec-ta-tion taken over m in-de-pen-dent copies($\OML/cm
+m/m/it/10 x[]; y[]$
+ []
+
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+Missing character: There is no â in font cmr10!
+Missing character: There is no ˆ in font cmr10!
+Missing character: There is no ’ in font cmr10!
+
+Overfull \hbox (4.78473pt too wide) detected at line 418
+\OML/cmm/m/it/10 O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m[]\OT1/cmr/m/n/10 ) + \U/m
+sb/m/n/10 E[]\OT1/cmr/m/n/10 [[] \OML/cmm/m/it/10 K[]L[]\OT1/cmr/m/n/10 ] = \OM
+L/cmm/m/it/10 O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m[]\OT1/cmr/m/n/10 ) + (\OML/c
+mm/m/it/10 m\OT1/cmr/m/n/10 )[]\U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/
+10 k\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x[]\OT1/cmr/m/n/10 )]\U/msb/m/n/10 E[]
+\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y; Y[]\OT1
+/cmr/m/n/10 )]
+ []
+
+Missing character: There is no â in font cmr7!
+Missing character: There is no ˆ in font cmr7!
+Missing character: There is no ’ in font cmr7!
+[9]
+Missing character: There is no â in font cmr10!
+Missing character: There is no ˆ in font cmr10!
+Missing character: There is no ’ in font cmr10!
+<HSIC_DistributionGamma.png, id=56, 1339.1631pt x 690.1785pt>
+File: HSIC_DistributionGamma.png Graphic file (type png)
+<use HSIC_DistributionGamma.png>
+Package pdftex.def Info: HSIC_DistributionGamma.png  used on input line 448.
+(pdftex.def)             Requested size: 374.96312pt x 193.24866pt.
+
+Overfull \hbox (44.96312pt too wide) in paragraph at lines 448--449
+[][] 
+ []
+
+[10 <./HSIC_DistributionGamma.png>]
+Overfull \hbox (77.65459pt too wide) detected at line 481
+[]
+ []
+
+[11]
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¶ in font cmr10!
+ [12] (./embedding1.aux) )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 6 (\begingroup)
+### semi simple group (level 1) entered at line 21 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 2176 strings out of 492982
- 29422 string characters out of 6134895
- 92751 words of memory out of 5000000
- 5710 multiletter control sequences out of 15000+600000
- 12749 words of font info for 49 fonts, out of 8000000 for 9000
+ 2724 strings out of 492982
+ 35685 string characters out of 6134895
+ 99830 words of memory out of 5000000
+ 6228 multiletter control sequences out of 15000+600000
+ 14687 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,25p,642b,1031s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,22n,24p,642b,743s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
@@ -285,20 +457,21 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on embedding1.pdf (7 pages, 233930 bytes).
+c/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/symbols/msbm7.pfb>
+Output written on embedding1.pdf (13 pages, 313429 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 138 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

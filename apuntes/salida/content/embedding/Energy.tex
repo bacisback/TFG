@@ -1,0 +1,72 @@
+
+In this section we will define energy distance and we will use it to define a homogeneity test.
+This knowledge will be used in order to formulate another independence test based on energy distance, distance covariance and distance correlation. This test is one of the most popular nowadays because of its power and the fact that it does not depend on any parameter.
+
+\subsection{Definitions}
+
+\begin{prop}
+Let $\mathcal{F}$ and $\mathcal{G}$ be two CDFs of the independent random variables X,Y respectively and  X',Y' two iid copies of them, then:
+$$
+2\int_{-\infty}^{\infty}(\mathcal{F}(x) - \mathcal{G}(x))^{2} dx = 2\mathbb{E}\abs{X-Y} - \mathbb{E}\abs{X-X'} -\mathbb{E}\abs{Y-Y'}  
+$$
+\end{prop}
+\begin{proof}
+We will start analysing the expectations of the right hand side. We will use that for any positive random variable $ Z>0$,
+$\mathbb{E}Z = \int_{0}^{\infty} \mathbb{P}(Z>z)dz$
+\begin{equation}{}
+\begin{split}
+\mathbb{E}\abs{X-Y}
+& = \int_{0}^{\infty} \mathbb{P}(\abs{X-Y} > u) du \\
+&= \int_{0}^{\infty} \mathbb{P}(X - Y > u) du + \int_{0}^{\infty} \mathbb{P}(X - Y < u) du \\
+&= \int_{0}^{\infty}\int_{-\infty}^{\infty} \mathbb{P}(X - Y > u|Y = y)d\mathcal{G}(y)du + \int_{0}^{\infty}\int_{-\infty}^{\infty} \mathbb{P}(X - Y < u|X = x)d\mathcal{F}(x)(y)du \\
+&=\footnote{due to both having finite expectation we can apply fubini}  
+\int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(X - Y > u|Y = y)du\mathcal{G}(y) + \int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(X - Y < u|X = x)du\mathcal{F}(x) \\
+&= \int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(X > u + y)du\mathcal{G}(y) + \int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(Y > u + x)du\mathcal{F}(x)\\
+\end{split}
+\end{equation}
+
+Now we use the change of variables z = u + y for the first integral, and w = u + x for the second one. Applying Fubini again:
+
+\begin{equation}{}
+\begin{split}
+\mathbb{E}\abs{X-Y}
+&= \int_{-\infty}^{\infty}\int_{y}^{\infty} \mathbb{P}(X > z)dz\mathcal{G}(y) + \int_{-\infty}^{\infty}\int_{x}^{\infty} \mathbb{P}(Y > w)dw\mathcal{F}(x)\\
+&= \int_{-\infty}^{\infty} \mathbb{P}(X > z)dz\int_{y}^{\infty}\mathcal{G}(y) + \int_{-\infty}^{\infty}\mathbb{P}(Y > w)dw\int_{x}^{\infty} \mathcal{F}(x)\\
+&= \int_{-\infty}^{\infty} \mathbb{P}(X > z)\mathbb{P}(Y < z)dz + \int_{-\infty}^{\infty}\mathbb{P}(Y > w)\mathbb{P}(X < w)dw\\
+&= \int_{-\infty}^{\infty} [(1 - \mathcal{F}(z))\mathcal{G}(z) + (1 - \mathcal{G}(z))\mathcal{F}(z)]dz\\
+&= -2\int_{-\infty}^{\infty}\mathcal{F}(z)\mathcal{G}(z)dz + \mathbb{E}\abs{X} + \mathbb{E}\abs{Y}\\
+\end{split}
+\end{equation}
+Taking $\mathcal{F} = \mathcal{G}$ in the previous development:
+
+$$
+\mathbb{E}\abs{X-X'} =  -2\int_{-\infty}^{\infty}\mathcal{F}^{2}(z)dz + 2\mathbb{E}\abs{X}
+$$
+
+Equivalently for Y. Combining these partial results concludes the proof.
+
+\end{proof}
+
+\begin{defn}
+Let X and Y be random variables in $\mathbb{R}^{d}$ of $\mathbb{E}\norm{X}_{d} + \mathbb{E}\norm{Y}_{d} < \infty$ the energy distance between X and Y is defined as:
+\vspace{5mm}
+$$\Epsilon(X,Y) = 2\mathbb{E}\norm{X-Y}_{d} - \mathbb{E}\norm{X-X'}_{d} - \mathbb{E}\norm{Y-Y'}_{d}$$
+where X' and Y' are i.i.d copies of X and Y respectively.
+The energy distance can also be defined in terms of the characteristic functions. In fact, it can be seen as a weighted $\mathcal{L}_{2}$ distance between characteristic functions.
+\end{defn}
+\begin{prop}
+Given two independent d-dimensional random variables X and Y, with distributions $\mathbb{P}$ and $\mathbb{Q}$ respectively such that $\mathbb{E}\norm{X}_{d} + \mathbb{E}\norm{Y}_{d} < \infty$ he energy distance between X and Y can be written as:
+\vspace{5mm}
+$$\Epsilon(X,Y) = \frac{1}{c_{d}}\int_{\mathbb{R}^{d}}\frac{\norm{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d+1}_{d}}$$
+where
+$$c_{d} = \frac{\pi^{\frac{d+1}{2}}}{\Gamma(\frac{d+1}{2})}$$
+being $\Gamma(\cdot)$ the gamma funcion
+\end{prop}
+\begin{lem}
+For all$x \in \mathbb{R}^{d}$ then:
+\vspace{5mm}
+$$\int_{\mathbb{R}^{d}}\frac{1-cos(tx)}{\norm{t}^{d+1}_{d}} dt = c_{d}\norm{x}_{d}$$
+where tx is the inner product of t and x.
+\end{lem}
+
+ 

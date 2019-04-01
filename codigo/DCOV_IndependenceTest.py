@@ -7,17 +7,16 @@ class DCOV_IndependenceTest(IndependenceTest):
 	def __init__(sef,filas,columnas,titulos):
 		super().__init__("DCOV",filas,columnas,titulos)
 	def test(self,x,y,alpha):
-		[DCOV,DCOR,statistic,thresh] = dcov(x,y)
+		[DCOV,DCOR,statistic,thresh] = dcov(x,y,alpha)
 		if statistic > thresh:
 			return 1
 		else:
 			return 0
-	def test_tiempos(self,n):
-		mean = [0, 0]
-		cov = [[1, 0], [0, 1]]
-		x, y = np.random.multivariate_normal(mean, cov, n).T
+	def generate_statistic(self,x,y):
+		[DCOV,DCOR,statistic,thresh] = dcov(x,y,0.05)
+		return DCOV
 
-def dcov(X,Y,R = None):
+def dcov(X,Y,alpha,R = None):
 	n = len(X)
 	n2 = n*n
 	A = np.zeros((n,n))
@@ -34,8 +33,8 @@ def dcov(X,Y,R = None):
 			if i != j:
 				A[i,j] = np.sqrt(np.power(X[i]-X[j],2))
 				B[i,j] = np.sqrt(np.power(Y[i]-Y[j],2))
-				A[j,i] = np.sqrt(np.power(X[i]-X[j],2))
-				B[j,i] = np.sqrt(np.power(Y[i]-Y[j],2))
+				A[j,i] = A[i,j]
+				B[j,i] = B[i,j]
 	
 	
 	a_columnas = np.zeros(n)
@@ -75,7 +74,7 @@ def dcov(X,Y,R = None):
 	method for calculating the pvalue
 	"""
 	if R is None:
-		return [dcov,dcor,n*dcov*dcov/S2,norm.ppf(1-0.05/2)**2]
+		return [dcov,dcor,n*dcov*dcov/S2,norm.ppf(1-alpha/2)**2]
 	else:
 		pvalue = 0.0
 		for i in range(R):

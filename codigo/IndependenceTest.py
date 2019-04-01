@@ -1,6 +1,7 @@
 from abc import abstractmethod, ABCMeta
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 class IndependenceTest:
 	__metaclass__ = ABCMeta
@@ -11,8 +12,12 @@ class IndependenceTest:
 		self.titles = titles
 	def add_titles(self,titles):
 		self.titles = titles
-	def print(self):
-		text = './datos/'+self.__name+'.txt'
+	def print(self,title = None):
+		if title is None:
+			title = self.__name
+		else:
+			title = title + self.__name
+		text = './datos/'+title+'.txt'
 		np.savetxt(text,self.solutions,delimiter="\t")
 	def plot(self,ax=None,fila= None):
 		if ax is None:
@@ -41,7 +46,47 @@ class IndependenceTest:
 
 		pass
 	@abstractmethod
-	def test_tiempos(self,n):
+	def generate_statistic(self,x,y):
 		pass
+	def test_tiempos(self,n,begin,end):
+		self.times = np.empty(n)
+		division = np.linspace(begin,end,n)
+		mean = [0, 0]
+		cov = [[1, 0], [0, 1]]  # diagonal covariance
+		for i,d in enumerate(division):
+			x,y = np.random.multivariate_normal(mean, cov, n).T
+			start_time = time.time()
+			self.test(x,y,0.05)
+			self.times[i] = time.time() - start_time
+		text = './datos/'+self.__name+'tiempos.txt'
+		np.savetxt(text,self.times,delimiter="\t")
+
+	def generate_histogram(self,n,size=500):
+		self.dependant = np.empty(n)
+		self.independant = np.empty(n)
+		mean = [0, 0]
+		cov = [[1, 0], [0, 1]]  # diagonal covariance
+		for i in range(n):
+			xd,yd = np.random.multivariate_normal(mean, cov, size).T
+			xi,yi = np.random.multivariate_normal(mean, np.ones((2,2)), size).T
+			self.dependant[i] = self.generate_statistic(xd,yd)
+			self.independant[i] = self.generate_statistic(xi,yi)
+		text = './datos/'+self.__name+'histograma.txt'
+		DATA = np.stack((self.dependant,self.independant))
+		np.savetxt(text,DATA,delimiter="\t")
+		print(self.__name)
+		
 	def add_solution(self,row,column,solution):
 		self.solutions[row,column] = solution
+
+	def test_varing_size(self,generate_func,nin,nend,steps,row,perms=100):
+		space = np.linspace(nin,nend,steps).astype(int) 
+		for i in range(steps):
+			
+			sol = 0
+			for _ in range(perms):
+				[x,y] = generate_func(space[i])
+				sol += self.test(x,y,0.05)
+			sol = sol*1./perms
+			self.solutions[row,i] = sol
+

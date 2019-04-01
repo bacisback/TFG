@@ -11,17 +11,21 @@ class HSIC_IndependenceTest(IndependenceTest):
 			return 1
 		else:
 			return 0
-	def test_tiempos(self,n):
-		mean = [0, 0]
-		cov = [[1, 0], [0, 1]]
-		x, y = np.random.multivariate_normal(mean, cov, n).T
+	def generate_statistic(self,x,y):
+		[testStat,thresh] = HSIC_test_gamma(x,y,0.05)
+		return testStat
 
 
 def HSIC_test_gamma(x,y,alpha):
 	params = [-1,-1]
-	m = len(x)
-	x = x.reshape((-1,1))
-	y = y.reshape((-1,1))
+	m = x.size
+	if x.ndim == 1:
+		x = x.reshape((-1,1))
+	if y.ndim == 1:
+		y = y.reshape((-1,1))
+	"""
+	Sacamos los kernels de X e Y
+	"""
 	if params[0] == -1:
 		size1 = len(x)
 		if size1 > 100:
@@ -29,10 +33,10 @@ def HSIC_test_gamma(x,y,alpha):
 			size1 = 100
 		else:
 			xmed = x
-		G = xmed*xmed
+		G = np.sum(xmed*xmed,1)
 		Q = np.repeat(G,size1).reshape(size1,size1)
 		R = Q.T
-		dists = Q + R -2*xmed*xmed.T
+		dists = Q + R -2*np.dot(xmed,xmed.T)
 		dists = dists - np.tril(dists)
 		dists = dists.reshape(size1*size1,1)
 		params[0] = np.sqrt(0.5*np.median(dists[dists>0]))
@@ -43,10 +47,10 @@ def HSIC_test_gamma(x,y,alpha):
 			size1 = 100
 		else:
 			ymed = y
-		G = ymed*ymed
+		G = np.sum(ymed*ymed,1)
 		Q = np.repeat(G,size1).reshape(size1,size1)
 		R = Q.T
-		dists = Q + R -2*ymed*ymed.T
+		dists = Q + R -2*np.dot(ymed,ymed.T)
 		dists = dists - np.tril(dists)
 		dists = dists.reshape(size1*size1,1)
 		params[1] = np.sqrt(0.5*np.median(dists[dists>0]))
@@ -85,7 +89,6 @@ def HSIC_test_gamma(x,y,alpha):
 	bet = varHsic*m*1./mHsic
 
 	thresh = 1- gamma.cdf(1-alpha,al,bet)
-
 	return [testStat,thresh]
 
 """
@@ -95,11 +98,11 @@ def rbf_dot(patterns1,patterns2,deg,Flag = True):
 	size1 = len(patterns1)
 	size2 = len(patterns2)
 
-	G = patterns1*patterns1
+	G = np.sum(patterns1*patterns1,1)
 	Q = np.repeat(G,size1).reshape(size1,size1)
 	if Flag:
 		R = Q.T
-		H = Q+R-2*patterns1*patterns2.T
+		H = Q+R-2*np.dot(patterns1,patterns2.T)
 		H = np.exp(-H/2./(deg**2))
 		return H
 
@@ -108,3 +111,4 @@ def rbf_dot(patterns1,patterns2,deg,Flag = True):
 	H = Q+R-2*patterns1*patterns2.T
 	H = np.exp(-H/2./(deg**2))
 	return H
+

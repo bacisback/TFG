@@ -1,0 +1,199 @@
+
+In this section we will give a short overview of the cross-covariance operators between RKHSs and their Hilbert-Schmidt norms which later will be used to define the Hilbert Schmidt Independence Criterion (HSIC).
+After we will determine whether the dependence returned via HSIC is statistically significant by studying an hypothesis test with HSIC as its statistic and testing it empirically.
+Finally we will prove the ewuivalence of the HSIC test in terms of the Hilbert-Schmidt norm of the cross covariance operator in terms of the MMD between $\mathbb{P}_{\mathcal{X}\mathcal{Y}}$ and $\mathbb{P}\mathbb{Q}$
+
+\subsection{Cross Covariance operator}
+
+\begin{defn}
+\textsf{\textbf{Tensor product operator}}
+
+Let $h \in \mathcal{H},g \in \mathcal{G}$. The tensor product operator $h \otimes g: \mathcal{G}\rightarrow\mathcal{H}$ is defined as:
+\vspace{5mm}
+$$(h \otimes g)(f) = <g,f>_{\mathcal{G}}h, \forall f \in \mathcal{G}$$
+\end{defn}
+\begin{defn}
+\textsf{\textbf{Hilbert-Schmidt norm of a linear operator}}
+
+Let $C:\mathcal{G}\rightarrow\mathcal{H}$ be a linear operator between RKHS $\mathbb{G} $ and $\mathcal{H}$ the Hilbert-Schmidt norm of C is defined as:
+
+\vspace{5mm}
+$$\norm{C} = \sqrt{\sum{<Cv_{j},u_{i}>^{2}_{\mathcal{H}}}}$$
+\end{defn}
+\begin{defn}
+\textsf{\textbf{Cross-Covariance operator}}
+
+The cross-covariance operator associated with $\mathbb{P}_{XY}$ is the linear operator $C_{XY}:\mathcal{G}\rightarrow\mathcal{H}$ defined as:
+
+\vspace{5mm}
+$$C_{XY} = \mathbb{E}_{XY}[(\phi(X)-\mu_{\mathbb{P}}) \otimes (\psi(Y) -\mu_{\mathbb{Q}})] = \mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)] - \mu_{\mathbb{P}} \otimes \mu_{\mathbb{Q}} $$
+by applying the distributive property of the tensor product
+
+Which is a generalisation of the cross-covariance matrix between random vectors.
+\end{defn}
+\begin{defn}
+\textsf{\textbf{HSIC}}
+We define the Hilbert-Schmidt Independence Criterion for $\mathbb{P}_{\mathcal{X}\mathcal{Y}}$ as the squared HS norm of the associated cross-covariance operator:
+
+\vspace{5mm}
+$$HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = \norm{C_{XY}}^{2}_{\mathcal{HS}}$$
+\end{defn}
+\begin{lem}
+
+If we denote $X,X'\sim \mathbb{P}$ and $Y,Y'\sim \mathbb{Q}$ then:
+
+$$HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = \mathbb{E}_{xx'yy'}[k(x,x')l(y,y')] + \mathbb{E}_{xx'}[k(x,x')]\mathbb{E}_{yy'}[l(y,y')] -2\mathbb{E}_{xy}[\mathbb{E}_{x'}[k(x,x')]\mathbb{E}_{y'}[l(y,y')]]$$
+
+\end{lem}
+
+\begin{proof}
+
+
+First we will simplify the notation of $C_{XY}$
+
+\vspace{5mm}
+$$ C_{XY} = \mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)] - \mu_{\mathbb{P}} \otimes \mu_{\mathbb{Q}} = \bar{C_{XY}} - M_{XY}$$
+
+Using this notation:
+
+\begin{equation}{}
+\begin{split}
+\norm{C_{XY}}^{2}_{\mathcal{HS}}
+& = <\bar{C}_{XY} - M_{XY},\bar{C}_{X'Y'} - M_{X'Y'}>_{\mathcal{HS}} \\
+& = <\bar{C}_{XY},\bar{C}_{X'Y'}>_{\mathcal{HS}}+< M_{XY}, M_{X'Y'}>-2<\bar{C}_{XY}, M_{X'Y'}>_{\mathcal{HS}}
+\end{split}
+\end{equation}
+Now calculating each of this products individually:
+
+\begin{equation}{}
+\begin{split}
+<\bar{C}_{XY},\bar{C}_{X'Y'}>_{\mathcal{HS}} 
+& = <\mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)],\mathbb{E}_{X'Y'}[\phi(X) \otimes \psi(Y)] >\\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'}\norm{\phi(X) \otimes \psi(Y)}^{2} \\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'}\norm{\phi(X)}^{2}\norm{\psi(Y)}^{2}\\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'}<\phi(X),\phi(X')><\psi(Y),\psi(Y)> \\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'} k(X,X')l(Y,Y') \\
+\end{split}
+\end{equation}
+\begin{equation}{}
+\begin{split}
+<M_{XY},M_{X'Y'}>_{\mathcal{HS}}
+& = <\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}},\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}}>_{\mathcal{HS}} \\
+& = \norm{\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}}}^{2}_{\mathcal{HS}} \\
+& = \norm{\mu_{\mathbb{P}}}^{2}_{\mathcal{H}}\norm{\mu_{\mathbb{Q}}}^{2}_{\mathcal{G}} \\
+& = <\mu_{\mathbb{P}},\mu_{\mathbb{P}}>_{\mathcal{H}}<\mu_{\mathbb{Q}},\mu_{\mathbb{Q}}>_{\mathcal{G}} \\
+& = <\mathbb{E}_{X}k(X,\cdot),\mathbb{E}_{X'}k(X',\cdot)>_{\mathcal{H}}<\mathbb{E}_{Y}l(Y,\cdot),\mathbb{E}_{Y'}k(Y',\cdot)>_{\mathcal{G}} \\
+& = \mathbb{E}_{X}\mathbb{E}_{X'}\mathbb{E}_{Y}\mathbb{E}_{Y'}<k(X,\cdot),k(X',\cdot)>_{\mathcal{H}}<l(Y,\cdot),l(Y',\cdot)>_{\mathcal{G}} \\
+& = \mathbb{E}_{X}\mathbb{E}_{X'}\mathbb{E}_{Y}\mathbb{E}_{Y'}k(X,X')l(Y,Y') \\
+\end{split}
+\end{equation}
+
+\begin{equation}{}
+\begin{split}
+<\bar{C}_{XY},M_{XY}>_{\mathcal{HS}} 
+& = <\mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)],\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}}>_{\mathcal{HS}} \\
+& = <\mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)],\mathbb{E}_{X'}\phi(X')\otimes\mathbb{E}_{Y'}\psi(Y')>_{\mathcal{HS}} \\
+& = <\mathbb{E}_{XY}<\mathbb{E}_{X'}<\mathbb{E}_{Y'}<\phi(X) \otimes \psi(Y),\phi(X') \otimes \psi(Y')>_{\mathcal{HS}} \\
+& = <\mathbb{E}_{XY}<\mathbb{E}_{X'}<\mathbb{E}_{Y'}<\phi(X),\phi(X')>_{\mathcal{H}}<\psi(Y),\psi(Y')>_{\mathcal{G}} \\
+& = <\mathbb{E}_{XY}<\mathbb{E}_{X'}<\mathbb{E}_{Y'}k(X,X')l(Y,Y').
+\end{split}
+\end{equation}
+\end{proof}
+\subsection{Statistics}
+
+In the previous subsection we defined the HSIC statistic.
+\vspace{5mm}
+$$HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = \mathbb{E}_{xx'yy'}[k(x,x')l(y,y')] + \mathbb{E}_{xx'}[k(x,x')]\mathbb{E}_{yy'}[l(y,y')] -2\mathbb{E}_{xy}[\mathbb{E}_{x'}[k(x,x')]\mathbb{E}_{y'}[l(y,y')]]$$
+In this section we will define the Empirical HSIC.
+
+\begin{defn}
+\textsf{\textbf{Empirical HSIC}}
+\vspace{5mm}
+$$HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = (m-1)^{-2}\textbf{tr}KHLH$$
+
+where: $H,K,L \in \mathbb{R}^{m \times m}$, $K_{i,j} = k(x_{i},y_{j})$ , $L_{i,j} = l(x_{i},y_{j})$ and $H_{i,j} = \delta_{i,j} - m^{-1}$
+\end{defn}
+\begin{thm}
+let $\mathbb{E}_{Z}$ denote the expectation taken over m independent copies($x_{i},y_{i}$ drawn from ${P}_{\mathcal{X}\mathcal{Y}}$. Then:
+
+\vspace{5mm}
+$$HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = \mathbb{E}_{Z}[HSIC(Z,\mathcal{H},\mathcal{G})] + O(m^{-1})$$.
+\end{thm}
+
+\begin{proof}
+
+By definition of H we can write:
+\vspace{5mm}
+$$
+\textbf{tr}KHLH = \textbf{tr}KL - 2m^{-1}\mathbf{1}^{T}KL\mathbf{1} + m^{-2}\textbf{tr}K\textbf{tr}L
+$$
+
+where $\mathbf{1}$ is the vector of all ones.
+
+Now we will expand each of the terms separately and take expectations with respect to Z.
+
+\begin{itemize}
+
+
+\item $\mathbb{E}_{Z}[\textbf{tr}KL]$:
+\vspace{5mm}
+
+$$
+\mathbb{E}_{Z}[\sum_{i}K_{ii}L_{ii} + \sum_{(i,j)\in i_{2}^{m}}K_{ij}L{ji}] = O(m) +(m)_{2}\mathbb{E}_{XYX'Y'}[k(X,X')l(Y,Y')]
+$$
+
+Normalising terms by $\frac{1}{(m−1)^{2}}$ yields the first term, since $\frac{m(m−1)}{(m−1)^{2}}=1+O(m^{−1})$.
+
+\item $\mathbb{E}_{Z}[\mathbf{1}^{T}KL\mathbf{1}]$:
+\vspace{5mm}
+
+$$
+\mathbb{E}_{Z}[\sum_{i}K_{ii}L_{ii} + \sum_{(i,j)\in i_{2}^{m}}(K_{ii}L{ij} + K_{ij}L{jj})]  + \mathbb{E}_{Z}[\sum_{(i,j,r)\in i_{3}^{m}} K_{ij}L{jr}] $$
+
+$$= O(m^{2}) +(m)_{3}\mathbb{E}_{XY}[\mathbb{E}_{X'}[k(x,x')]\mathbb{E}_{Y'}[l(Y,Y')]]
+$$
+
+Again, normalising terms by $\frac{2}{(m−1)^{2}}$ yields the second term. As before we used that  $\frac{m(m−1)}{(m−1)^{2}}=1+O(m−1)$.
+
+\item $\mathbb{E}_{Z}[\textbf{tr}K\textbf{tr}L]$:
+\vspace{5mm}
+
+$$
+O(m^{3}) + \mathbb{E}_{Z}[\sum_{(i,j,q,r)\in i_{4}^{m}} K_{ij}L{qr}] = O(m^{3}) + 
+(m)_{4}\mathbb{E}_{XX'}[k(x,x')]\mathbb{E}_{YY'}[l(Y,Y')]
+$$
+
+Normalisation by $\frac{1}{(m−1)^{2}}$ takes care of the last term, which completes the proof.
+\end{itemize}
+
+\end{proof}
+
+\begin{thm}
+Under the $\mathcal{H}_{0}$ the U-statistic HSIC cirresponding to the V-statistic 
+\vspace{5mm}
+
+$$ HSIC(Z) = \frac{1}{m^{4}}\sum_{i,j,q,r \in_{4}^{m}} h_{ijqr}$$ 
+is degenerate, meaning $\mathbb{E}h=0$. In this case, HSIC(Z) converges in distribution according to \cite{HSICDegenerate}, section 5.5.2
+\vspace{5mm}
+
+$$mHSIC(Z)\rightarrow \sum_{l=1} \lambda_{l}z_{l}^{2}$$
+where $z_{l}\sim \mathcal{N}(0,1)$ i.i.d and $\lambda_{l}$ are the solutions to the eigenvalue problem
+
+$$
+\lambda_{l}\psi_{l}(z_{j}) = \int h_{ijqr}\psi_{l}(z_{i})dF_{iqr}
+$$
+
+where the integral is over the distribution of variables $z_{i},z_{q}$ and $z_{r}$\cite{HSICdistribution}
+\end{thm}
+
+
+\paragraph{Approximating the $1-\alpha$ quantile of the null distribution}
+
+A hypothesis test using HSIC(Z)
+could be derived from Theorem 3.3 above by computing the $(1 − \alpha)$th quantile of the distribution  $\sum_{l=1} \lambda_{l}z_{l}^{2}$,
+where consistency of the test (that is, the convergence to zero of the Type II error for $m \rightarrow \infty$) is
+guaranteed by the decay as $m^{-1}$ of the variance of HSIC(Z) under $H_{1}$ . The distribution under $H_{0}$
+is complex, however: the question then becomes how to accurately approximate its quantiles.
+
+One approach taken by \cite{HSICdistribution} is by using a Gamma distribution, which as we can see in the figure underneath is quite accurate.
+

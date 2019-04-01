@@ -1,0 +1,45 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+titles = ["lineal","Parabolic","Cubic","Sin(4pix)","Sin(16pix)","fourth root","circle","step","xsin(x)","logarithm","gausian","2D gausian"]
+figure,ax = plt.subplots(4,3, sharey=True)
+figure.suptitle("Power")
+solutions = np.loadtxt("./datos/DCOV.txt",delimiter="\t")
+x = range(len(solutions[0,:]))
+for i in range(len(titles)):
+	print(int(i/4),len(titles),i)
+	ax[int(i/3),int(np.mod(i,3))].set_ylim((-0.1,1.1))
+	ax[int(i/3),int(np.mod(i,3))].set_title(titles[i])
+	ax[int(i/3),int(np.mod(i,3))].plot(x,solutions[i,:],label="DCOV")
+solutions = np.loadtxt("./datos/HSIC.txt",delimiter="\t")
+for i in range(len(titles)):
+	ax[int(i/3),int(np.mod(i,3))].set_title(titles[i])
+	ax[int(i/3),int(np.mod(i,3))].plot(x,solutions[i,:],label="HSIC")
+solutions = np.loadtxt("./datos/RDC.txt",delimiter="\t")
+for i in range(len(titles)):
+	ax[int(i/3),int(np.mod(i,3))].set_title(titles[i])
+	ax[int(i/3),int(np.mod(i,3))].plot(x,solutions[i,:],label="RDC")
+	ax[int(i/3),int(np.mod(i,3))].legend(loc='best')
+
+solutions = np.loadtxt("./datos/DCOVhistograma.txt",delimiter="\t")
+figure,[ax1,ax2] = plt.subplots(1,2, sharey=True)
+figure.suptitle("DCOV")
+ax1.hist(solutions[0,:])
+ax1.set_title("dependant")
+ax2.hist(solutions[1,:])
+ax2.set_title("independant")
+solutions = np.loadtxt("./datos/HSIChistograma.txt",delimiter="\t")
+figure,[ax1,ax2] = plt.subplots(1,2, sharey=True)
+figure.suptitle("HSIC")
+ax1.hist(solutions[0,:])
+ax1.set_title("dependant")
+ax2.hist(solutions[1,:])
+ax2.set_title("independant")
+solutions = np.loadtxt("./datos/RDChistograma.txt",delimiter="\t")
+figure,[ax1,ax2] = plt.subplots(1,2, sharey=True)
+figure.suptitle("RDC")
+ax1.hist(solutions[0,:])
+ax1.set_title("dependant")
+ax2.hist(solutions[1,:])
+ax2.set_title("independant")
+plt.show()

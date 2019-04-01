@@ -6,20 +6,20 @@ class RDC_IndependenceTest(IndependenceTest):
 	def __init__(sef,filas,columnas,titulos):
 		super().__init__("RDC",filas,columnas,titulos)
 	def test(self,x,y,alpha):
-		ros,ks = rdc(x,y)
-		lx = len(x)
-		count = 0.0
-		aux = 1-ros**2
-		statistic = ((2*ks+3)/2-lx)*np.log(np.prod(aux))
+		statistic = self.generate_statistic(x,y)
 		pvalue = (1- chi2.cdf(statistic,df=ks**2))
 		if pvalue < alpha:
 			return 1
 		else: 
 			return 0 
-	def test_tiempos(self,n):
-		mean = [0, 0]
-		cov = [[1, 0], [0, 1]]
-		x, y = np.random.multivariate_normal(mean, cov, n).T
+
+	def generate_statistic(self,x,y):
+		ros,ks = rdc(x,y,n=5)
+		lx = len(x)
+		count = 0.0
+		aux = 1-ros**2
+		statistic = ((2*ks+3)/2-lx)*np.log(np.prod(aux))
+		return statistic
 
 
 def ecdf(x):

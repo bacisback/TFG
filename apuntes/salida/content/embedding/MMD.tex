@@ -1,0 +1,228 @@
+In this section it'll be shown how RKHSs can be used to define a homogeneity test in terms of the embeddings of the probability measures.
+This test consist in maximizing the measure of discrepancy between functions that belong to a certain family $\mathcal{F}$ which must be rich enough to detect all the possible differences between the two probability measures.
+\subsection{Mean embedding}
+
+
+Given two Borel probability measures $\mathbb{P}$ and $\mathbb{Q}$  are equal if and only if $\mathbb{E}f(X) = \mathbb{E}f(Y)$  $\forall f \in \mathcal{C(X)}$
+
+$$X \sim \mathbb{P} \text{ and } Y \sim \mathbb{Q}$$
+
+\begin{flushleft}
+This condition is pretty dificult to prove therefore we will keep our study in order to simplify this evaluation.
+\end{flushleft}
+
+\begin{defn}\textsf{\textbf{MMD}}
+
+Let $\mathcal{F}$ be a class of functions f: $X \rightarrow \mathbb{R}$ the MMD based on $\mathcal{F}$ is
+
+\end{defn}
+\begin{center}
+$\gamma(\mathbb{P},\mathbb{Q}) = MMD(\mathcal{F},\mathbb{P},\mathbb{Q}) =  \sup\limits_{f\in\mathcal{F}}\{\mathbb{E}f(X) -\mathbb{E}f(Y)\}$
+\end{center}
+\begin{flushleft}
+This $\mathcal{F}$ must be rich enough for it to ensure that $\mathbb{P} = \mathbb{Q} \leftrightarrow \gamma(\mathbb{P},\mathbb{Q}) = 0$. And restrictive enough for the empirical estimate to converge quickly as the sample size increases.
+This will be done through RKHS with a characteristic kernel K
+\end{flushleft}
+\begin{defn}
+\textsf{\textbf{Riesz representation}}
+\begin{flushleft}
+If T is a bounded linear operator on a Hilbert space $\mathcal{H}$, then there exist some $g \in \mathcal{H}$ such that $\forall f \in \mathcal{H}$:
+\end{flushleft}
+\begin{center}
+$T(f) = <f,g>_{\mathcal{H}}$
+\end{center}
+\end{defn}
+
+\begin{lem}
+Given a K(s,) semi positive definite, measurable and $\mathbb{E}\sqrt{k(X,X)}<\infty$, where X$\sim \mathbb{P}$ then $\mu_{p} \in \mathcal{H}$ exist and fulfulls the next condition
+$\mathbb{E}f(X) = <f,\mu_{p}>$ for all f $\in \mathcal{H}$
+\end{lem}
+\textbf{proof}
+
+Lets define the linear operator $T_{\mathbb{P}}f\equiv\mathbb{E}(\sqrt{k(X,X)}) < \infty \forall f\in \mathcal{H}$ 
+\begin{flushleft}
+
+\begin{equation}{}
+\begin{split}
+|T_{\mathbb{P}}f| 
+&= |\mathbb{E}(f(X))| \\
+&\leq \mathbb{E}(|f(X)|)\\
+&\text{Reproducing property of the kernel} \\
+&=\mathbb{E}\abs{<f,k(\cdot,X)>_{\mathcal{H}}}\\
+&\text{Chauchy Schwarz inequality} \\
+&\leq \norm{f} _{\mathcal{H}}\cdot\mathbb{E}(\sqrt{K(X,X)})^{1/2}\\
+&\text{The expectation under $\mathbb{P}$ of the kernel is bounded} \\
+&<\infty 
+\end{split}
+\end{equation}
+
+\end{flushleft}
+
+
+Then using the Riesz representation theorem applied to $T_{p}$, there exist a $\mu_{p}\in \mathcal{H}$ such that $T_{p}f = <f,\mu_{p}>_{\mathcal{H}}$
+
+
+\begin{defn}
+\textsf{\textbf{Mean embedding}}
+
+Given a probability distribution $\mathbb{P}$ we will define the mean embedding of $\mathbb{P}$ as an element $\mu_{p} \in \mathcal{H}$ such that
+
+$$\mathbb{E}(f(X))=<f,\mu_{\mathbb{P}}>_{\mathcal{H}}, \forall f \in \mathcal{H}$$
+
+If $f\in \mathcal{H}$ and $\mu_{\mathbb{P}} \in \mathbb{R}$
+$\mathbb{E}(f(X)) = \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}f(x_{n})$
+
+Applying the Riesz representation theorem to represent $f(x_{n})$
+
+$\forall x_{n}$ then:
+
+$$f(x_{n}) = <f,K(\cdot,x_{n})>_{\mathcal{H}}$$
+
+
+then
+
+$$\lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}f(x_{n}) = \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N} <f,K(\cdot,x_{n}>_{\mathcal{H}} = <f, \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}K(\cdot,x_{n})>_{\mathcal{H}}$$
+
+which leads to the final conclussion:
+
+$\mu_{\mathbb{P}} \equiv \mathbb{E}_{X\sim \mathbb{P}}(K(t,X))$  $t \in [0,T]$
+\end{defn}
+\textsc{Second interpretation of the mean embedding}
+
+$$\mu_{\mathbb{P}} = \mathbb{E}(K(\cdot,X))$$
+
+
+\subsection{Introduction to MMD}
+\begin{lem}
+Given the conditions of Lemma 2.2 ($\mu_{\mathbb{P}} \text{and} \mu_{\mathbb{Q}}$ exist) then:
+
+$X \sim \mathbb{P} \mu_{\mathbb{P}} \equiv \mathbb{E}_{X\sim \mathbb{P}}(K(\cdot,X))$ $Y \sim \mathbb{Q} \mu_{\mathbb{Q}} \equiv \mathbb{E}_{Y\sim \mathbb{Q}}(K(\cdot,Y))$
+
+and:
+
+$$MMD(\mathcal{F},\mathbb{P}, \mathbb{Q}) = \norm{\mu_{\mathbb{P}} - \mu_{\mathbb{Q}}}_{\mathcal{H}}$$
+\end{lem}
+\textbf{proof}
+\begin{equation}{}
+\begin{split}
+MMD 
+& \equiv \sup\limits_{f\in \mathcal{H} \norm{f} \leq 1}\{\mathbb{E}(f(x)) - \mathbb{E}(f(y))\} \\
+& =\sup\limits_{f\in \mathcal{H}  \norm{f} \leq 1}\{<f,\mu_\mathbb{P}> - <f, \mu_\mathbb{Q}> \} \\
+& =\sup\limits_{f\in \mathcal{H} \norm{f} \leq 1} <f,(\mu_{\mathbb{P}} - \mu_{\mathbb{Q}})> \\
+& \leq\footnote{ Cauchy Schwarz inequality} \sup\limits_{f\in \mathcal{H} \norm{f}  \leq 1} \{\norm{f}_{\mathcal{H}},\norm{\mu_\mathbb{P} - \mu_{\mathbb{Q}}}_{\mathcal{H}}\} \\
+& \leq \norm{\mu_{\mathbb{P}} - \mu_{\mathbb{Q}}}_{\mathcal{H}}.
+\end{split}
+\end{equation}
+
+But on the other side, if we choose f as:
+
+$$f=\frac{1}{\norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}} (\mu_{\mathbb{P}}- \mu_{\mathbb{Q}})$$
+
+then we have:
+
+$$\sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1}\{\norm{f}_{\mathcal{H}},\norm{\mu_\mathbb{P} - \mu_{\mathbb{Q}}}_{\mathcal{H}}\} \geq \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}} $$
+
+therefore
+
+$$MMD = \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}}$$
+
+\begin{prop}
+Given:
+$X,X' \sim \mathbb{P} \text{ and } Y,Y' \sim \mathbb{Q}$ and X and Y are independent then:
+
+$$MMD^{2}(\mathcal{F},\mathbb{P},\mathbb{Q}) = \mathbb{E}(K(X,X')) + \mathbb{E}(K(Y,Y')) - 2\mathbb{E}K(X,Y).$$
+
+\end{prop}
+
+\textbf{proof}
+\begin{equation}{}
+\begin{split}
+	MMD^{2}(\mathcal{F},\mathbb{P},\mathbb{Q}) 
+& = \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}}^{2} \\
+& =<\mu_{\mathbb{P}}- \mu_{\mathbb{Q}},\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}>_{\mathcal{H}}\\
+&=<\mathbb{E}(K(\cdot,X))-K(\cdot,Y)),\mathbb{E}(K(\cdot,X'))-K(\cdot,Y'))>\\
+&=\mathbb{E}(<K(\cdot,X),K(\cdot,X')> + <K(\cdot,Y),K(\cdot,Y')> - 2<K(\cdot,X)K(\cdot,Y)>)\\
+&=\footnote{is due to the reproductive property of the kernel.} \mathbb{E}(K(X,X') + K(Y,Y') -2K(X,Y)) \\
+&= \mathbb{E}(K(X,X')) + \mathbb{E}(K(Y,Y')) -2\mathbb{E}(K(X,Y))\\
+&= \int\int K(s,t) \underbrace{d(\mathbb{P}-\mathbb{Q})(s)}_{\text{Signed Measure}} d(\mathbb{P}-\mathbb{Q})(t)
+\end{split}
+\end{equation}
+
+\subsection{Prooving that MMD defines an homogeneity test}
+
+\begin{defn}
+\textsf{\textbf{Characteristic kernel}}
+
+A reproducing kernel k is a characterisctic kernel if the induced $\gamma_{k}$ is a metric.
+\end{defn}
+\begin{thm}
+
+If X is a compact metric space, k is continuous and $\mathcal{H}$ is dense in $\mathcal{C}$(X) with respect to the supremum norm, then $\mathcal{H}$ is characteristic.
+\end{thm}
+\textbf{proof}
+
+
+Being characteristic means that 
+$MMD(\mathcal{F},\mathbb{P},\mathbb{Q}) = 0 \leftrightarrow \mathbb{P} = \mathbb{Q}$
+\begin{flushleft}
+$\rightarrow$
+\end{flushleft}
+
+By lemma 1 we know that $\mathbb{P}$ and $\mathbb{Q}$  are equal if and only if $\mathbb{E}f(X) = \mathbb{E}f(Y)$  $\forall f \in \mathcal{C(X)}$
+
+Given that $\mathcal{H}$ is dense in $\mathcal{C}$(X) then:
+$$\forall \epsilon >0, f\in\mathcal{C}(X), \exists g\in \mathcal{H} : \norm{f-g}_{\infty} < \epsilon$$
+
+\begin{equation}{}
+\begin{split}
+\abs{\mathbb{E}(f(X)) - \mathbb{E}(f(Y))}  
+& = \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X)) + \mathbb{E}(g(X)) - \mathbb{E}(g(Y)) +\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))} \\
+&\leq \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X))} + \abs{\mathbb{E}(g(X)) - \mathbb{E}(g(Y))} +\abs{\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))}\\
+&= \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X))} + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } +\abs{\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))} \\
+&\leq \mathbb{E}\abs{f(X) - g(X)} + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } +\mathbb{E}\abs{g(Y) - f(Y)} \\ 
+&\leq^{1} \norm{f-g}_{\infty}  + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } + \norm{f-g}_{\infty}\\
+&\leq \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } + 2\epsilon
+\end{split}
+\end{equation}
+By lemma 3 we know that if MMD = 0 then $\mu_{\mathbb{P}} = \mu_{\mathbb{Q}}$. Hence:
+
+$$\abs{\mathbb{E}(f(X)) - \mathbb{E}(f(Y))} \leq 2\epsilon$$
+
+Then by lemma 1 $\mathbb{P}$ and $\mathbb{Q}$  are equal.
+
+\begin{flushleft}
+$\leftarrow$
+\end{flushleft}
+By definition of MMD.
+
+\subsection{Application to independence test}
+
+From the MMD criterion we will develop an independence criterion which will be conduced by the following idea:
+Given $\mathcal{X} \sim \mathbb{P}$ and $\mathcal{Y} \sim \mathbb{Q}$ whose joint distribution is $\mathbb{P}_{\mathcal{XY}}$ then the test of independence between these variables will be determining if $\mathbb{P}_{\mathcal{XY}}$ is equal to the product of the marginals $\mathbb{P}\mathbb{Q}$. Therefore:
+
+$\mathcal{MMD}(\mathcal{F}, \mathbb{P}_{\mathcal{XY}},\mathbb{P}\mathbb{Q}) = 0$ if and only if $\mathcal{X}$ and $\mathcal{Y}$ are independent.
+To characterize this independence test we need to introduce a new RKHS, which is a tensor product of the RKHS’s in which the marginal distributions of the random variables are embedded. Let $\mathcal{X}$ and $\mathcal{Y}$ be two topological spaces and let k and l be kernels on these spaces, with respective RKHS $\mathcal{H}$ and $\mathcal{G}$. Let us denote as $\upsilon((x, y), (x' , y ' ))$ a kernel on the product space $\mathcal{X}\times\mathcal{Y}$ with RKHS $\mathcal{H}_{\upsilon}$. This space is known as the tensor product space $\mathcal{H}\times\mathcal{G}$. Tensor product spaces are defined as follows:
+\begin{defn}
+\textbf{Tensor product}
+The tensor product of Hilbert spaces$\mathcal{H}_{1}$ and $\mathcal{H}_{2}$  with inner products $<·, ·>_{1}$ and
+$<·, ·>_{2}$ is defined as the completion of the space $\mathcal{H}_{1}\times\mathcal{H}_{2}$  with inner product  $<·, ·>_{1}$ $<·, ·>_{2}$extended
+by linearity. The resulting space is also a Hilbert space.
+\end{defn}
+\begin{lem}
+A kernel $\upsilon$ in the tensor product space  $\mathcal{H}\times\mathcal{G}$ can be defined as:
+
+$$\upsilon((x,y),(x',y')) = k(x,x')l(y,y')$$
+\end{lem}
+
+\paragraph{Useful definitions for the following content}
+$$\mathbb{E}_{\mathcal{X}}f(\mathcal{X}) = \int f(x)d\mathbb{P}(x)$$
+$$\mathbb{E}_{\mathcal{Y}}f(\mathcal{Y}) = \int f(y)d\mathbb{Q}(y)$$
+$$\mathbb{E}_{\mathcal{X}\mathcal{Y}}f(\mathcal{X}\mathcal{Y}) = \int f(x,y)d\mathbb{P}_{\mathcal{X}\mathcal{Y}}(x,y)$$
+
+Using this notation, the mean embedding of $\mathbb{P}_{\mathcal{X}\mathcal{Y}}$ and $\mathbb{P}\mathbb{Q}$ are:
+
+$$\mu_{\mathbb{P}_{\mathcal{X}\mathcal{Y}}} = \mathbb{E}_{\mathcal{X}\mathcal{Y}}\upsilon((\mathcal{X},\mathcal{Y}),)$$
+$$\mu_{\mathbb{P}\mathbb{Q}} = \mathbb{E}_{\mathcal{X}\mathcal{Y}}\upsilon((\mathcal{X},\mathcal{Y}),)$$
+In terms of these embeddings:
+
+$$\mathcal{MMD}(\mathcal{F}, \mathbb{P}_{\mathcal{XY}},\mathbb{P}\mathbb{Q}) = \norm{\mathbb{P}_{\mathcal{X}\mathcal{Y}}-\mu_{\mathbb{P}\mathbb{Q}} }_{\mathbb{H}_{\upsilon}}$$

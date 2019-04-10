@@ -6,7 +6,7 @@ class RDC_IndependenceTest(IndependenceTest):
 	def __init__(sef,filas,columnas,titulos):
 		super().__init__("RDC",filas,columnas,titulos)
 	def test(self,x,y,alpha):
-		statistic = self.generate_statistic(x,y)
+		statistic,ks = self.generate_statistic(x,y)
 		pvalue = (1- chi2.cdf(statistic,df=ks**2))
 		if pvalue < alpha:
 			return 1
@@ -14,10 +14,10 @@ class RDC_IndependenceTest(IndependenceTest):
 			return 0 
 
 	def generate_statistic(self,x,y):
-		ros,ks = rdc(x,y,n=5)
+		ros,ks = rdc(x,y)
 		lx = len(x)
 		count = 0.0
-		aux = 1-ros**2
+		aux = 1-np.power(ros,2)
 		statistic = ((2*ks+3)/2-lx)*np.log(np.prod(aux))
 		return statistic
 
@@ -42,7 +42,7 @@ def rdc(x,y,k=10,s=0.2,n=1):
 				ks.append(ko)
 				#print(ro, end ="\r")
 			except np.linalg.linalg.LinAlgError: pass
-		return values,ks
+		return values,np.median(ks)
 	#print(x)
 	lx = len(x)
 	ly = len(y)

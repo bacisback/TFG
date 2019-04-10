@@ -10,5 +10,5 @@
 \contentsline {subsection}{\numberline {1.2.1}Cross Covariance operator}{7}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Statistics}{9}{subsection.1.2.2}
 \contentsline {paragraph}{Approximating the $1-\alpha $ quantile of the null distribution}{10}{section*.14}
-\contentsline {section}{\numberline {1.3}HSIC}{10}{section.1.3}
+\contentsline {section}{\numberline {1.3}Energy}{11}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Definitions}{11}{subsection.1.3.1}

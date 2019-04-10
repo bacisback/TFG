@@ -23,10 +23,8 @@ class BasedOnGauss_IndependenceTest:
     Emean2 = np.zeros(reps)
     hsic2 = np.zeros(reps)
     rdc2 = np.zeros(reps)
-    dcov2 = np.zeros(reps)
     self.HSICt = HSIC_IndependenceTest(1,1,[])
     self.RDCt = RDC_IndependenceTest(1,1,[])
-    self.DCOVt = DCOV_IndependenceTest(1,1,[])
     self.nsims=nsims
     for i in range(reps):
       x = np.random.rand(size)
@@ -41,7 +39,7 @@ class BasedOnGauss_IndependenceTest:
       Emax2[i] = np.max(np.abs(alphaE*dataG["diffE"])) + dataG["LD"] 
       Emean2[i] = np.mean(np.abs(alphaE*dataG["diffE"])) + dataG["LD"]
       rdc2[i] = self.RDCt.generate_statistic(x,y)
-      dcov2[i] = self.DCOVt.generate_statistic(x,y)
+      
 
     self.qGaus = np.percentile(gaussmean2,95) 
     self.qmax = np.percentile(MMDmax2,95)
@@ -50,8 +48,7 @@ class BasedOnGauss_IndependenceTest:
     self.qEmean = np.percentile(Emean2,95)
     self.qhsic = np.percentile(hsic2,95)
     self.qrdc = np.percentile(rdc2,95)
-    self.qdcov = np.percentile(dcov2,95)
-    print(self.qGaus,self.qmax,self.qmean,self.qEmax,self.qEmean,self.qhsic,self.qrdc,self.qdcov)
+    print(self.qGaus,self.qmax,self.qmean,self.qEmax,self.qEmean,self.qhsic,self.qrdc)
     self.funciones = funciones
     self.size = size
     self.steps = steps
@@ -82,7 +79,9 @@ class BasedOnGauss_IndependenceTest:
       Emean = np.mean(np.abs(alphaE*dataG["diffE"])) + dataG["LD"] 
       hsic = self.HSICt.generate_statistic(x,y)
       rdc_statistic = self.RDCt.generate_statistic(x,y)
-      dcov_statistic = self.DCOVt.generate_statistic(x,y)
+      [Sdcov,Sdcor,pvalue] = dcov(x,y,0.05,R = self.nsims)
+      if pvalue < 0.05:
+        power[7] +=0.01
       power[0] += int(gaussmean > self.qGaus)
       power[1] += int(MMDmax > self.qmax)
       power[2] += int(MMDmean > self.qmean)
@@ -90,7 +89,6 @@ class BasedOnGauss_IndependenceTest:
       power[4] += int(Emean > self.qEmean)
       power[5] += int(hsic > self.qhsic)
       power[6] += int(rdc_statistic > self.qrdc)
-      power[7] += int(dcov_statistic > self.qdcov)
     power *= 1./self.nsims
     self.solutions[:,row,column] = power
 
@@ -112,4 +110,4 @@ class BasedOnGauss_IndependenceTest:
 
 t = BasedOnGauss_IndependenceTest(200,100,[Linear,Parabolic,Cubic,Sin1,Sin2,root4,circle,step,xsin,logarithm,gausian],np.linspace(0,3,10),100)
 t.test()
-t.print("datos/permutaciones200_1")
+t.print("datos/permutaciones200_2")

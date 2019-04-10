@@ -14,7 +14,7 @@ class DCOV_IndependenceTest(IndependenceTest):
 			return 0
 	def generate_statistic(self,x,y):
 		[DCOV,DCOR,statistic,thresh] = dcov(x,y,0.05)
-		return DCOV
+		return statistic
 
 def dcov(X,Y,alpha,R = None):
 	n = len(X)

@@ -6,6 +6,7 @@ This knowledge will be used in order to formulate another independence test base
 
 \begin{prop}
 Let $\mathcal{F}$ and $\mathcal{G}$ be two CDFs of the independent random variables X,Y respectively and  X',Y' two iid copies of them, then:
+\vspace{5mm}
 $$
 2\int_{-\infty}^{\infty}(\mathcal{F}(x) - \mathcal{G}(x))^{2} dx = 2\mathbb{E}\abs{X-Y} - \mathbb{E}\abs{X-X'} -\mathbb{E}\abs{Y-Y'}  
 $$
@@ -50,23 +51,86 @@ Equivalently for Y. Combining these partial results concludes the proof.
 \begin{defn}
 Let X and Y be random variables in $\mathbb{R}^{d}$ of $\mathbb{E}\norm{X}_{d} + \mathbb{E}\norm{Y}_{d} < \infty$ the energy distance between X and Y is defined as:
 \vspace{5mm}
-$$\Epsilon(X,Y) = 2\mathbb{E}\norm{X-Y}_{d} - \mathbb{E}\norm{X-X'}_{d} - \mathbb{E}\norm{Y-Y'}_{d}$$
+$$\varepsilon (X,Y) = 2\mathbb{E}\norm{X-Y}_{d} - \mathbb{E}\norm{X-X'}_{d} - \mathbb{E}\norm{Y-Y'}_{d}$$
 where X' and Y' are i.i.d copies of X and Y respectively.
 The energy distance can also be defined in terms of the characteristic functions. In fact, it can be seen as a weighted $\mathcal{L}_{2}$ distance between characteristic functions.
 \end{defn}
 \begin{prop}
 Given two independent d-dimensional random variables X and Y, with distributions $\mathbb{P}$ and $\mathbb{Q}$ respectively such that $\mathbb{E}\norm{X}_{d} + \mathbb{E}\norm{Y}_{d} < \infty$ he energy distance between X and Y can be written as:
 \vspace{5mm}
-$$\Epsilon(X,Y) = \frac{1}{c_{d}}\int_{\mathbb{R}^{d}}\frac{\norm{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d+1}_{d}}$$
+$$\varepsilon(X,Y) = \frac{1}{c_{d}}\int_{\mathbb{R}^{d}}\frac{\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d+1}_{d}}$$
 where
 $$c_{d} = \frac{\pi^{\frac{d+1}{2}}}{\Gamma(\frac{d+1}{2})}$$
 being $\Gamma(\cdot)$ the gamma funcion
 \end{prop}
+To prove this proposition we need the following lemma.
 \begin{lem}
 For all$x \in \mathbb{R}^{d}$ then:
 \vspace{5mm}
 $$\int_{\mathbb{R}^{d}}\frac{1-cos(tx)}{\norm{t}^{d+1}_{d}} dt = c_{d}\norm{x}_{d}$$
 where tx is the inner product of t and x.
 \end{lem}
+\begin{proof}
+We will beguin by applying the following transformation: $z_{1} = \frac{tx}{\norm{x}_{d}}$
+followed by the following change of variables:
+$s = z\norm{x}_{d}$
+\begin{equation}{}
+\begin{split}
+\int_{\mathbb{R}^{d}}\frac{1-cos(tx)}{\norm{t}^{d+1}_{d}} dt 
+&= \int_{\mathbb{R}^{d}}\frac{1-cos(z\norm{x}_{d})}{\norm{z}^{d+1}_{d}} dt \\
+&= \int_{\mathbb{R}^{d}}\frac{1-cos(s)}{\frac{\norm{s}_{d}}{\norm{x}_{d}}^{d+1} \norm{x}^{d}_{d}} dt \\
+&=\norm{x}_{d}\int_{\mathbb{R}^{d}}\frac{1-cos(s)}{\norm{s}^{d+1}_{d}}ds \\
+&=\norm{x}_{d}\frac{\pi^{\frac{d+1}{2}}}{\Gamma(\frac{d+1}{2})}
+\end{split}
+\end{equation}
+\end{proof}
+\begin{proof}
+(Proposition 1.3.2) Let $\overline{\phi_{\mathbb{P}}(t)}$ denote the complex conjugate of the characteristic function.
+\begin{equation}{}
+\begin{split}
+\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2} = 
+& = (\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t))\overline{(\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t))} \\
+& = (\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t))(\overline{\phi_{\mathbb{P}}(t)}-\overline{\phi_{\mathbb{Q}}(t)})\\
+&= \phi_{\mathbb{P}}(t)\overline{\phi_{\mathbb{P}}(t)} - \phi_{\mathbb{P}}(t)\overline{\phi_{\mathbb{Q}}(t)} - \phi_{\mathbb{Q}}(t)\overline{\phi_{\mathbb{P}}(t)} + 
+\phi_{\mathbb{Q}}(t)\overline{\phi_{\mathbb{Q}}(t)} \\
+&=\mathbb{E}[e^{itX}e^{-itX'}]-\mathbb{E}[e^{itX}e^{-itY}]
+-\mathbb{E}[e^{itY}e^{-itX}] + \mathbb{E}[e^{itY}e^{-itY'}]\\
+&=\mathbb{E}[e^{it(X-X')}-e^{it(Y-X)}-e^{it(X-Y)}+e^{it(Y-Y')} \\
+&=\mathbb{E}[cos(t(X-X')) + \mathcal(i)sin(t(X-X'))-cos(t(Y-X))-\mathcal(i)sin(t(Y-X)) -cos(t(X-Y))-\mathcal(i)sin(t(X-Y)) + cos(t(Y-Y'))+\mathcal(i)sin(t(Y-Y')) \\
+&\text{sin(X) = -sin(-X), cos(X) = cos(-X), sin (x- y)=sin(x)cos(y)- cos(x)sin(y)}\\
+&=\mathbb{E}[cos(t(X-X')) - 2cos(t(Y-X)) + cos(t(Y-Y')) + \mathcal(i)sin(t(X-X')) + \mathcal(i)sin(t(Y-Y'))\\
+&= 
+\end{split}
+\end{equation}
+Applying Fubini and the previous lemma:
+\begin{equation}{}
+\begin{split}
+\int_{\mathbb{R}^{d}}\frac{\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d+1}_{d}}
+&=\int_{\mathbb{R}^{d}}\frac{\mathbb{E}[2(1-cos(t(Y-X)))-(1-cos(t(X-X')))]}{\norm{t}^{d+1}_{d}} dt \\
+&=2\mathbb{E}[\int_{\mathbb{R}^{d}}\frac{1-cos(t(Y-X))}{\norm{t}^{d+1}_{d}}] - \mathbb{E}[\int_{\mathbb{R}^{d}}\frac{1-cos(t(X-X'))}{\norm{t}^{d+1}_{d}} - - \mathbb{E}[\int_{\mathbb{R}^{d}}\frac{1-cos(t(Y-Y'))}{\norm{t}^{d+1}_{d}} \\
+&=2\mathbb{E}[c_{d}\norm{Y-X}] - \mathbb{E}[c_{d}\norm{X-X'}] -\mathbb{E}[c_{d}\norm{Y-Y'}] \\
+&= c_{d}(2\mathbb{E}[\norm{Y-X}] - \mathbb{E}[\norm{X-X'}] -\mathbb{E}[\norm{Y-Y'}])\\
+&= c_{d}\varepsilon(X,Y)
+\end{split}
+\end{equation}
+\end{proof}
+It is easy to see that the energy distance only vanishes when the distributions are equal, since it is equivalent to having equal characteristic functions.
+\subsection{Application to an independence test}
+In this subsection we will use the knowledge aquired above to develop a new independence test. This new test is called distance covariance (DCOV), it's name comes from the fact that it is a generalization of the classical product-moment covariance.
 
- 
+We will start by defininf the independence test. Given the random vectors $X\in\mathbb{R}^{dx},Y\in\mathbb{R}^{dy}$, distributions $\mathbb{P}_{X} and \mathbb{P}_{Y}$ respectively.Let $\phi_{\mathbb{P}_{X}}, \phi_{\mathbb{P}_{Y}}$ denote their characteristic functions and $\phi_{\mathbb{P}_{XY}}$ the characteristic function of the joint distribution. X and Y are independent if and only if 
+$\phi_{\mathbb{P}_{X}}\phi_{\mathbb{P}_{Y}} = \phi_{\mathbb{P}_{XY}}$. The covariance energy test is based on measuring a distance between these functions.
+
+First we need to generalize the energy distance expression for random vectors of different dimensions. As defined earlier this expression is obtained from a weighted $mathcal{L}_{2}$-distance, imposing rotation invariance and scale equivariance, the energy distance is:
+
+$$\varepsilon(X,Y) = \frac{1}{c_{d_{x}}c_{d_{y}}}\int_{\mathbb{R}^{d_{x} + d_{y}}}\frac{\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d_{x}+1}_{d_{x}}\norm{s}^{d_{y}+1}_{d_{y}}}dtds$$
+
+Where $c_{d}$ is defined as before.
+The distance covariance is defined by replacing $\phi_{\mathbb{P}}$ and $\phi_{\mathbb{Q}}$ in the previous formula with characteristic functions of the joint distribution and the product of the marginals respectively.
+\begin{defn}
+The distance covatiance, DCOV, between random vectors X and Y, with $\mathbb{E}\norm{X}_{d_{x}} + \mathbb{E}\norm{Y}_{d_{y}} < \infty$, is the nonnegative number $\nu(X,Y)$ defined by:
+$$
+\nu(X,Y) = \norm{\phi_{\mathbb{P}_{X,Y}}(t,s)-\phi_{\mathbb{P}_{X}}(t)\phi_{\mathbb{P}_{Y}}(s)}^{2}_{w} = \frac{1}{c_{d_{x}}c_{d_{y}}}\int_{\mathbb{R}^{d_{x} + d_{y}}}\frac{\abs{\phi_{\mathbb{P}_{X,Y}}(t,s)-\phi_{\mathbb{P}_{X}}(t)\phi_{\mathbb{P}_{Y}}(s)}^{2}}{\norm{t}^{d_{x}+1}_{d_{x}}\norm{s}^{d_{y}+1}_{d_{y}}} dtds
+$$
+
+\end{defn}

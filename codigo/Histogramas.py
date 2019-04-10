@@ -15,9 +15,9 @@ steps = 30
 
 tester = Tester(functions,titles,steps,n)
 dcov = DCOV_IndependenceTest(len(titles),steps,titles)
-rdc = RDC_IndependenceTest(len(titles),steps,titles)
-hsic = HSIC_IndependenceTest(len(titles),steps,titles)
+#rdc = RDC_IndependenceTest(len(titles),steps,titles)
+#hsic = HSIC_IndependenceTest(len(titles),steps,titles)
 tester.add_test(dcov)
-tester.add_test(rdc)
-tester.add_test(hsic)
+#tester.add_test(rdc)
+#tester.add_test(hsic)
 tester.generate_histograms(500)

@@ -5,12 +5,20 @@ from IndependenceTest import *
 class RDC_IndependenceTest(IndependenceTest):
 	def __init__(sef,filas,columnas,titulos):
 		super().__init__("RDC",filas,columnas,titulos)
-	def test(self,x,y,alpha):
-		statistic,ks = self.generate_statistic(x,y)
-		pvalue = (1- chi2.cdf(statistic,df=ks**2))
+	def test(self,x,y,alpha,statistic = False):
+		ros,ks = rdc(x,y)
+		lx = len(x)
+		count = 0.0
+		aux = 1-np.power(ros,2)
+		statistic_1 = ((2*ks+3)/2-lx)*np.log(np.prod(aux))
+		pvalue = (1- chi2.cdf(statistic_1,df=ks**2))
 		if pvalue < alpha:
+			if(statistic):
+				return[1,statistic_1]
 			return 1
-		else: 
+		else:
+			if(statistic):
+				return[0,statistic_1]
 			return 0 
 
 	def generate_statistic(self,x,y):

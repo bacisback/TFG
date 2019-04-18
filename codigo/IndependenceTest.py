@@ -10,6 +10,8 @@ class IndependenceTest:
 		self.__name = name
 		self.solutions = np.ones((filas,columnas))
 		self.titles = titles
+	def __str__(self):
+		return self.__name
 	def add_titles(self,titles):
 		self.titles = titles
 	def print(self,title = None):
@@ -32,7 +34,7 @@ class IndependenceTest:
 		else:
 			ax.plot(range(0,len(self.solutions[fila,:])),self.solutions[fila,:])	
 	@abstractmethod
-	def test(self,x,y,alpha):
+	def test(self,x,y,alpha,statistic = False):
 		"""
 			Function which will perform the independence test.
 			Args:

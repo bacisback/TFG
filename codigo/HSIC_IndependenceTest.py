@@ -5,11 +5,15 @@ from IndependenceTest import *
 class HSIC_IndependenceTest(IndependenceTest):
 	def __init__(sef,filas,columnas,titulos):
 		super().__init__("HSIC",filas,columnas,titulos)
-	def test(self,x,y,alpha):
+	def test(self,x,y,alpha,statistic = False):
 		[testStat,thresh] = HSIC_test_gamma(x,y,alpha)
 		if testStat > thresh:
+			if(statistic):
+				return[1,testStat]
 			return 1
 		else:
+			if(statistic):
+				return[0,testStat]
 			return 0
 	def generate_statistic(self,x,y):
 		[testStat,thresh] = HSIC_test_gamma(x,y,0.05)

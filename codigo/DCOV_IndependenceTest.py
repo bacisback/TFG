@@ -6,11 +6,15 @@ from numpy.random import permutation
 class DCOV_IndependenceTest(IndependenceTest):
 	def __init__(sef,filas,columnas,titulos):
 		super().__init__("DCOV",filas,columnas,titulos)
-	def test(self,x,y,alpha):
-		[DCOV,DCOR,statistic,thresh] = dcov(x,y,alpha)
-		if statistic > thresh:
+	def test(self,x,y,alpha,statistic = False):
+		[DCOV,DCOR,statistic_1,thresh] = dcov(x,y,alpha)
+		if statistic_1 > thresh:
+			if(statistic):
+				return[1,statistic_1]
 			return 1
 		else:
+			if(statistic):
+				return[0,statistic_1]
 			return 0
 	def generate_statistic(self,x,y):
 		[DCOV,DCOR,statistic,thresh] = dcov(x,y,0.05)

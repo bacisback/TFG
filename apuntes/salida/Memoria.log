@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  1 APR 2019 16:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  10 APR 2019 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1149,15 +1149,15 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 ))
 \verbatim@out=\write5
-runsystem(touch w18-test-2019411019.tex)...disabled (restricted).
+runsystem(touch w18-test-20194101035.tex)...disabled (restricted).
 
-runsystem(rm -f w18-test-2019411019.tex)...disabled (restricted).
+runsystem(rm -f w18-test-20194101035.tex)...disabled (restricted).
 
 runsystem(rm -f "Memoria.gnuploterrors")...disabled (restricted).
 
 runsystem(mkdir -p "gnuplottex")...disabled (restricted).
 
-runsystem(touch "gnuplottex/w18-test-2019411019.tex")...disabled (restricted).
+runsystem(touch "gnuplottex/w18-test-20194101035.tex")...disabled (restricted).
 
 
 
@@ -4027,6 +4027,11 @@ Package babel Info: Redefining spanish shorthand "?
 
 Ending itemize
 Figure HSICgamma without any size data using 0.9*textwidth
+
+Overfull \hbox (84.96478pt too wide) in paragraph at lines 198--200
+\T1/txss/m/n/11 der-neath is qui-te ac-cu-ra-te.     [] 
+ []
+
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -4192,6 +4197,121 @@ Package babel Info: Redefining spanish shorthand "?
 [12] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
 
+
+Overfull \hbox (57.84898pt too wide) detected at line 106
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 106.
+LaTeX Info: Redefining \% on input line 106.
+Package cleveref Info: loaded `spanish' language definitions on input line 106.
+
+
+Overfull \hbox (2.21538pt too wide) has occurred while \output is active
+ []
+ []
+
+
+Overfull \hbox (2.21538pt too wide) has occurred while \output is active
+ []
+ []
+
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 106.
+\openout6 = `Memoria.mw'.
+
+[13] (./Memoria.mw)
+\openout6 = `Memoria.mw'.
+
+
+Overfull \hbox (40.78206pt too wide) detected at line 117
+[]
+ []
+
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 120.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 120.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 120.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 120.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 120.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 120.
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
+Package cleveref Info: loaded `spanish' language definitions on input line 128.
+
+
+Overfull \hbox (2.21538pt too wide) has occurred while \output is active
+ []
+ []
+
+
+Overfull \hbox (2.21538pt too wide) has occurred while \output is active
+ []
+ []
+
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 128.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 128.
+\openout6 = `Memoria.mw'.
+
+[14] (./Memoria.mw)
+\openout6 = `Memoria.mw'.
+
+\openout6 = `Memoria.mw'.
+
+\openout6 = `Memoria.mw'.
+
 )
 LaTeX Info: Redefining \. on input line 54.
 LaTeX Info: Redefining \% on input line 54.
@@ -4232,7 +4352,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 54.
 \openout6 = `Memoria.mw'.
 
-[13] (./Memoria.mw)
+[15] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
 
 Package babel Info: Redefining spanish shorthand <<
@@ -4261,7 +4381,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 54.
 \openout6 = `Memoria.mw'.
 
- [14
+ [16
 
 ] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
@@ -4300,7 +4420,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 63.
 \openout6 = `Memoria.mw'.
 
-[15] (./Memoria.mw)
+[17] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
 
 Package babel Info: Redefining spanish shorthand <<
@@ -4329,7 +4449,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 63.
 \openout6 = `Memoria.mw'.
 
- [16
+ [18
 
 ] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
@@ -4362,7 +4482,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 63.
 \openout6 = `Memoria.mw'.
 
-[17
+[19
 
 ] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
@@ -4417,7 +4537,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 63.
 \openout6 = `Memoria.mw'.
 
-[18 </usr/share/texmf/tex/latex/tfgtfmthesisuam/logoUAMw.png>] (./Memoria.mw)
+[20 </usr/share/texmf/tex/latex/tfgtfmthesisuam/logoUAMw.png>] (./Memoria.mw)
 \openout6 = `Memoria.mw'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
@@ -4599,13 +4719,17 @@ Package cleveref Info: loaded `spanish' language definitions on input line 31.
 
 \openout6 = `Memoria.mw'.
 
+\openout6 = `Memoria.mw'.
+
+\openout6 = `Memoria.mw'.
+
 )
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
 \openout6 = `Memoria.out'.
 
 Package rerunfilecheck Info: File `Memoria.out' has not changed.
-(rerunfilecheck)             Checksum: 9BED4B5BDC82794A1187B141A0B69220;727.
+(rerunfilecheck)             Checksum: 2600D773D5DE8964152A0AE56C6CEE08;816.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -4635,10 +4759,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 53498 strings out of 492982
- 1160586 string characters out of 6134895
- 1593086 words of memory out of 5000000
- 55967 multiletter control sequences out of 15000+600000
+ 53512 strings out of 492982
+ 1160764 string characters out of 6134895
+ 1593088 words of memory out of 5000000
+ 55969 multiletter control sequences out of 15000+600000
  633795 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,22n,105p,10430b,958s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -4683,10 +4807,10 @@ vetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
 share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/palatino/uplb8a.pfb>
-Output written on Memoria.pdf (32 pages, 3506819 bytes).
+Output written on Memoria.pdf (34 pages, 3517327 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 346 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
- 136 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 451 PDF objects out of 1000 (max. 8388607)
+ 363 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
+ 144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

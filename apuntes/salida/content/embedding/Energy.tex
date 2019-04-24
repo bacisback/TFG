@@ -125,15 +125,16 @@ $\phi_{\mathbb{P}_{X}}\phi_{\mathbb{P}_{Y}} = \phi_{\mathbb{P}_{XY}}$. The covar
 
 First we need to generalize the energy distance expression for random vectors of different dimensions. As defined earlier this expression is obtained from a weighted $mathcal{L}_{2}$-distance, imposing rotation invariance and scale equivariance, the energy distance is:
 \vspace{5mm}
+
 $$\varepsilon(X,Y) = \frac{1}{c_{d_{x}}c_{d_{y}}}\int_{\mathbb{R}^{d_{x} + d_{y}}}\frac{\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d_{x}+1}_{d_{x}}\norm{s}^{d_{y}+1}_{d_{y}}}dtds$$
 
 Where $c_{d}$ is defined as before.
 The distance covariance is defined by replacing $\phi_{\mathbb{P}}$ and $\phi_{\mathbb{Q}}$ in the previous formula with characteristic functions of the joint distribution and the product of the marginals respectively.
 \begin{defn}
-The distance covatiance, DCOV, between random vectors X and Y, with $\mathbb{E}\norm{X}_{d_{x}} + \mathbb{E}\norm{Y}_{d_{y}} < \infty$, is the nonnegative number $\nu(X,Y)$ defined by:
+The distance covatiance, DCOV, between random vectors X and Y, with $\mathbb{E}\norm{X}_{d_{x}} + \mathbb{E}\norm{Y}_{d_{y}} < \infty$, is the nonnegative number $\nu^{2}(X,Y)$ defined by:
 \vspace{5mm}
 $$
-\nu(X,Y) = \norm{\phi_{\mathbb{P}_{X,Y}}(t,s)-\phi_{\mathbb{P}_{X}}(t)\phi_{\mathbb{P}_{Y}}(s)}^{2}_{w} = \frac{1}{c_{d_{x}}c_{d_{y}}}\int_{\mathbb{R}^{d_{x} + d_{y}}}\frac{\abs{\phi_{\mathbb{P}_{X,Y}}(t,s)-\phi_{\mathbb{P}_{X}}(t)\phi_{\mathbb{P}_{Y}}(s)}^{2}}{\norm{t}^{d_{x}+1}_{d_{x}}\norm{s}^{d_{y}+1}_{d_{y}}} dtds
+\nu^{2}(X,Y) = \norm{\phi_{\mathbb{P}_{X,Y}}(t,s)-\phi_{\mathbb{P}_{X}}(t)\phi_{\mathbb{P}_{Y}}(s)}^{2}_{w} = \frac{1}{c_{d_{x}}c_{d_{y}}}\int_{\mathbb{R}^{d_{x} + d_{y}}}\frac{\abs{\phi_{\mathbb{P}_{X,Y}}(t,s)-\phi_{\mathbb{P}_{X}}(t)\phi_{\mathbb{P}_{Y}}(s)}^{2}}{\norm{t}^{d_{x}+1}_{d_{x}}\norm{s}^{d_{y}+1}_{d_{y}}} dtds
 $$
 \end{defn}
 \begin{defn}
@@ -151,5 +152,19 @@ $$
 \end{defn}
 The distance covariance, like the energy distance, can be expressed using expectations.
 \begin{lem}
-
+Let (X,Y),(X',Y'),(X'',Y'') $\sim \mathbb{P}_{XY}$ be iid copies of (X,Y), it holds that:
+\begin{equation}
+\begin{split}
+\nu^{2}(X,Y) = &
+\mathbb{E}_{XY}\mathbb{E}_{X'Y'}\norm{X-X'}_{d_{x}}\norm{Y-Y'}_{d_{y}} + \mathbb{E}_{X}\mathbb{E}_{X'}\norm{X-X'}_{d_{x}}\mathbb{E}_{Y}\mathbb{E}_{Y'}\norm{Y-Y'}_{d_{y}} \\
+& -2\mathbb{E}_{XY}[\mathbb{E}_{X'}\norm{X-X'}_{d_{x}}\mathbb{E}_{Y'}\norm{Y-Y'}_{d_{y}} \\
+\end{spliit}
+\end{equation} \label{DCOV}
+This proof is similar to the one of proposition 1.3.2. therefore we will leave it for the interested readers.
 \end{lem}
+
+\subsection{Statistics}
+Given the definition obtained in \ref{DCOV} now we will define it's statistics:
+\begin{theorem}
+
+\end{theorem}

@@ -7,7 +7,26 @@ $K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}}$
 where $\mu$ is the median of the euclidian distances between samples.
 This kernel will be used because of the following:
 
-As we have seen(NO LO HE PUESTO AUN BIEN EN INTRODUCCIÓN NO LO OLVIDES!!!!!!!!! A HACER) a positive definite kernel $k(x,y)$ defines an inner product $k(x,y) = <\phi(x),\phi(y)>_{\mathcal{H}}$ for feature vector $\phi$ constructed from the input x, and $\mathcal{H}$
+As we have seen(NO LO HE PUESTO AUN BIEN EN INTRODUCCIÓN NO LO OLVIDES!!!!!!!!! A HACER) a positive definite kernel $k(x,y)$ defines an inner product $k(x,y) = <\phi(x),\phi(y)>_{\mathcal{H}}$ for feature vector $\phi$ constructed from the input x, and $\mathcal{H}$ is a Hilbert space. The notation $<\phi(x),\phi(y)>$ means the inner product between $\phi(x)$ and $\phi(y)$. In order to make a simple explanation, you can imagine $\mathcal{H}$ to be the usual Euclidean space, but possibly with infinite number of dimensions. Imagine the usual vector that is infinitely long, like $\phi(x) = (\phi_{1}(x),\phi_{2}(x),...)$. In kernel methods, $\mathcal{H}$ is a RKHS (explained in the introduction). Since we only care about the iner product of the features, we will directly evaluate the kernel k.
+To explain smoothness of the functions given by the Gaussian Kernel, let us consider Fourier features. As it's easy to prove, $k(x,y)=k(x-y)$, the kernel only depends on the difference of the two arguments. Let $\hat{k}$ denote the Fourier transform of k.
+
+In this Fourier viewpoint, the features of f are given by $f = (...,frac{\hat{f_{l}}}{\sqrt{\hat{k_{l}}}},...)$, this is saying that the feature representation of your function f is given by its Fourier transform divided by the Fourier transform of the kernel k. The feature representation of x, which is $\phi(x)$ is:$(...,\sqrt{\hat{k_{l}}}exp(-ilx),...)$ where $i = \sqrt{-1}$. One can show that the reproducing property holds.
+
+Now thanks to Plancherel theorem:
+
+It states that the integral of a function's squared modulus is equal to the integral of the squared modulus of its frequency spectrum. That is, if $f(x)$ is a function on the real line, and ${\widehat {f}}(\xi )$ is its frequency spectrum, then ; 
+
+$$
+\int _{-\infty }^{\infty }|f(x)|^{2}\,dx=\int _{-\infty }^{\infty }|{\widehat {f}}(\xi )|^{2}\,d\xi
+$$
+
+Hence:
+
+$$
+\norm{f}^{2}_{H}= \sum_{l=-\infty}^{\infty}frac{\hat{f_{l}}^{2}}{\hat{k_{l}}}
+$$
+
+Which as $f\in\mathcal{L}^{2}$ the norm is finite, the sum converges. Now as the  \href{http://mathworld.wolfram.com/FourierTransformGaussian.html}{Fourier transform of a Gaussian kernel}  $K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}}$ is another Gaussian where $\hat{k_{l}}$ decreases exponentially fast with l. So if f is to be in this space, its Fourier transform must drop even faster than that of $k$. This means the function will have only a few low frequency components with high weights.(A function with only low frequency components is smooth). 
 
 First we will turn the issue of estimating the power of the RDC,HSIC and DCOV estimator. We define the power of a dependence measure as the percentage of times that it is able to discern between two samples with equal marginals, but one of them containing dependance.
 
@@ -79,12 +98,35 @@ The results of this experiment is presented in Figure \ref{FIG:PowerSize}.
 \end{figure}
 
 For this set of experiments in which we try to determine the power of the tests, we have performed a final experiment following \cite{Size} in which we studied the power of the tests and how they are affected by the rotation of the set.
-For this experiment we will use two independent random variables, X and Y, where X is a uniform random variable $(X\simU[-\sqrt{3},\sqrt{3}])$ whereas Y is a mixture of two uniform random variables, each having equal probability of ocurrence on disjoint supports. That is, Y has density: $0.5U[-1,0.5] + 0.5U[0.5,1]$.
+For this experiment we will use two independent random variables, X and Y, where X is a uniform random variable $(X\sim U[-\sqrt{3},\sqrt{3}])$ whereas Y is a mixture of two uniform random variables, each having equal probability of ocurrence on disjoint supports. That is, Y has density: $0.5U[-1,0.5] + 0.5U[0.5,1]$.
 
 We generate new pairs of random variables by rotating this random pair (X,Y). This will affect the dependence between them, this variables will be independent if and only if the angle of rotation is an integer multiple of pi, $n\cdot\pi : n\in\mathbb{Z}$. After this rotation we had scaled X,Y to have zero mean and unit variance.
 For this experiment we have generated 500 samples and tested the power for 100 rotation angles going from 0 to $2\pi$, with sample size 200. In Figure \ref{FIG:RotationSample} shows samples of the data with different rotations.
-
+As we can see in Figure \ref{FIG:RotationPower} the function power for all tests is a $\frac{\pi}{2}$ even periodic function, which confirms that the potency of our tests does not depend on the sign of the correlation.
 
 \begin{figure}[Experiment 3 rotation pattern sample]{FIG:RotationSample}{Samples from the data sets for the third experiment}
        \image{}{}{rotationPatterns}
 \end{figure}
+\begin{figure}[Experiment 3 results]{FIG:RotationPower}{Power of the tests rotating the dataset}
+       \image{}{}{rotation0-2-big}
+\end{figure}
+
+This concludes our first set of experiments, in the three experiments shown we can see that HSIC,DCOV and RDC are the sturdiest tests showing the best performance consistently. Among these threee tests RDC has proven to be the most consistent test, outperforming almost everytime the other tests. 
+
+Now for our second set of experiments we will study how the asymptotic version of the tests performs and how good the aproximations are.
+
+For our first experiment, we will study empirically the convergence of our tests to the asymptotic distribution, or it's aproximation. For this purpose we will take  bivariate gausians with correlation 0 with sample sizes  50, 100, 150 ,200, 500 and 1000, in order to decide how good or bad our aproximations are, we will perform a Kolmogorov-Smirnov homogeneity test.
+
+First of all we will start with RDC:
+
+For size 500, we've obtained a pvalue of 0.3564, therefore we accept the null hypothesis $H_{0}: RDC\sim \mathcal{X}^{2}_{9}$ for significance levels of 0.1,0.05 and 0.01. Figure \ref{FIG:RDC500} shows the pdf, qq plot, pp plot and cdf of our statistic with the one of the $\mathcal{X}^{2}_{9}$distribution
+
+\begin{figure}[RDC Asymptotic distribution]{FIG:RDC500}{RDC statistic with a chi-squared distribution with 9 degrees of freedom}
+       \image{}{}{RDC500_pval=0.03564}
+\end{figure}
+
+
+
+
+
+

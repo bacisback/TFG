@@ -4,12 +4,12 @@
 % arara: makeindex: {style: tfgtfmthesisuam.ist }
 % !arara: bibtex
 % arara: pdflatex: {shell: yes}
-% arara: pdflatex: {shell: yes}
 % arara: clean: {files: [tfgtfmthesisuam.aux, tfgtfmthesisuam.idx, tfgtfmthesisuam.ilg, tfgtfmthesisuam.ind, tfgtfmthesisuam.bbl, tfgtfmthesisuam.bcf, tfgtfmthesisuam.blg, tfgtfmthesisuam.run.xml, tfgtfmthesisuam.fdb_latexmk, tfgtfmthesisuam.fls, tfgtfmthesisuam.loe, tfgtfmthesisuam.lof, tfgtfmthesisuam.lol, tfgtfmthesisuam.lot, tfgtfmthesisuam.ltb, tfgtfmthesisuam.out, tfgtfmthesisuam.toc, tfgtfmthesisuam.upa, tfgtfmthesisuam.upb, tfgtfmthesisuam.acn, tfgtfmthesisuam.acr, tfgtfmthesisuam.alg, tfgtfmthesisuam.glg, tfgtfmthesisuam.glo, tfgtfmthesisuam.gls, tfgtfmthesisuam.glsdefs, tfgtfmthesisuam.idx,  tfgtfmthesisuam.ilg, tfgtfmthesisuam.xdy, tfgtfmthesisuam.loa, tfgtfmthesisuam.gnuploterrors , tfgtfmthesisuam.mw, tfgtfmthesisuam.fdb_latexmk ]}
 
 
-\documentclass[epsbased,copyright,final,printable,covers,extendedindex,firstnumbered,tfg,gnuplot]{tfgtfmthesisuam}
+\documentclass[epsbased,copyright,final,english,printable,covers,extendedindex,firstnumbered,tfg,gnuplot]{tfgtfmthesisuam}
 \usepackage{amsfonts}
+\usepackage[english]{babel}
 \usepackage{amssymb,amsthm}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -51,6 +51,7 @@
 	\section{MMD\label{SEC:MMD}}{content/embedding/MMD}
 	\section{HSIC\label{SEC:HSIC}}{content/embedding/HSIC}
 	\section{Energy\label{SEC:Energy}}{content/embedding/Energy}
+\chapter{Experiments\label{Cap:Experiments}}{content/experiments/experiments}
 \begin{thebibliography}{9}
 \bibitem{HSICdistribution} Gretton A,Fukumizu K, Teo H.C., Song L, Schölkopf B, Smola J.A.
 (2007)
@@ -58,7 +59,18 @@
 \bibitem{HSICDegenerate} Serfling R.
 (Wiley, New York, 1980)
 \textit{Approximation Theorems of Mathematical Statistics}
-
+\bibitem{RDC1} David Lopez-Paz and Bernhard Schölkopf.
+(2013)
+\textit{The Randomized Dependence Coefficient}
+\bibitem{Size} Rao M., Seth S., Xu J., Chen Y., Tagare H., and Príncipe J.C
+\textit{A test of independence based on a generalized correlation function}
+(2011)
+\bibitem{C-S-B_inequality1} Strang, Gilbert 
+\textit{Linear Algebra and its Applications}
+(2005)
+\bibitem{C-S-B_inequality2} Hunter, John K.; Nachtergaele, Bruno 
+\textit{ Applied Analysis}
+(2001)
 \end{thebibliography}
 \end{document}
 

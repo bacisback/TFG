@@ -1,0 +1,90 @@
+In this chapter we will present the results of various experiments in which we will compare the power of the explained tests between them and with other state-of-the-art independence tests, as well as comparing the power of these tests based on their asimptotic distribution and their empirical distribution. and \cite{HSICdistribution}.
+
+In all our experiments, we set the number of random features for RDC to k = 3, and the random sampling width to s = $10^{-2}$. All kernel methods make use of a Gaussian kernel with width hyper-parameter set to the median of the euclidean distances between samples of each of the input random variables.
+
+$K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}}$
+
+where $\mu$ is the median of the euclidian distances between samples.
+This kernel will be used because of the following:
+
+As we have seen(NO LO HE PUESTO AUN BIEN EN INTRODUCCIÓN NO LO OLVIDES!!!!!!!!! A HACER) a positive definite kernel $k(x,y)$ defines an inner product $k(x,y) = <\phi(x),\phi(y)>_{\mathcal{H}}$ for feature vector $\phi$ constructed from the input x, and $\mathcal{H}$
+
+First we will turn the issue of estimating the power of the RDC,HSIC and DCOV estimator. We define the power of a dependence measure as the percentage of times that it is able to discern between two samples with equal marginals, but one of them containing dependance.
+
+In order to simulate the null hypothesis of our tests($\mathcal{H}_{0}$, the variables are independent) we will generate 500 samples under $\mathcal{H}_{0}$ to compute the threshold of the statistics with a signification level $\alpha = 0.05$. This will stand for our first group of experiments.
+
+First we generated 500 pairs  of 200 i.i.d. samples, in which the input variable was uniformly distributed on the unit interval, for each pair we generated each statistic, afterwards we calculated the 95 percentile, this will be the threshold for our test in this experiments.
+
+To do so, we created three different experiments:
+
+In the first one, adapted from \cite{RDC1}, we studied 12 association patterns: linear, parabolic, quadratic, sin(4$\pi$x), sin(16$\pi$x), fourth root, circle, step, xsin(x),logarithm, gaussian and a 2D multivariate normal distribution.Figure \ref{FIG:Patterns1} shows grafically each association pattern.
+
+Secondly for each of the 12 association patterns, we studied how gaussian noise may affect the power of our test, with a noise increasing from 0 to 3 in 10 steps we generated 200 repetitions of 200 samples uniformly distributed on the unit interval and generated the pair with each association pattern, then we added gaussian noise to the pair and normaliced both marginals.
+Figure \ref{FIG:Power1} shows for each subplot the power obtained with each association pattern. The x axis represents how the noise increases, and the y axis the power of the tests.
+
+\begin{figure}[Non linear dependance patterns example 1]{FIG:Patterns1}{Representation of non linear dependance patterns}
+       \image{}{}{Patterns1}
+\end{figure}
+
+\begin{figure}[Power of tests uniform marginals same size adding noise]{FIG:Power1}{Power of tests adding gaussian noise to marginals}
+       \image{}{}{Power_Real_1}
+\end{figure}
+
+In our second experiment we studied different sets of data and studied how the sample size affected the power of our tests. This test is taken from \cite{Size}, the data sets are also taken from \cite{Size}.
+The first data set is a bivariate Gaussian with a correlation of 0.5, $(X,Y)\sim \mathcal{N}(0,\Sigma)$, where:
+
+$$\Sigma =
+\begin{vmatrix}
+1&0.5\\
+0.5&1\\
+\end{vmatrix}
+$$
+
+For the second set we generated a uniform random variable $Z\sim U[0,2]$. The marginals for this set will be constructed by:
+
+$$X=ZX' \text{and} Y = ZY'$$
+
+where $X',Y' \sim \mathcal{N}(0,1)$, X' and Y' are independent, still X and Y are dependent due to both sharing the variable Z.
+
+The variables X and Y in the third example are the marginals of a mixture of three bivariate Gaussians with correlations 0,0.8 and -0.8, with respective probabilities of 0.6, 0.2 and 0.2. 
+The vector (X,Y) has density:
+
+$0.6\mathcal{N}(0,\Sigma_{1}) + 0.2\mathcal{N}(0,\Sigma_{2}) + 0.2\mathcal{N}(0,\Sigma_{3})$
+
+Where 
+
+$$\Sigma_{1} =\begin{vmatrix}1&0\\0&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix}1&0.8\\0.8&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix}1&-0.8\\-0.8&1\\ \end{vmatrix}$$
+
+The variables of the last example are generated as bivariate gaussian random variable with correlation of 0.8 and then multiply each marginal with white Gaussian noise:
+
+$$(X,Y) = (Z_{1}\epsilon_{1},Z_{2}\epsilon_{2}) \text{where } Z\sim\mathcal{N}(0,\Sigma_{2}) and \epsilon_{1},\epsilon_{2}\sim\mathcal{N}(0,\Sigma_{1})$$
+
+Below samples from this data sets are displayed in \ref{FIG:Patterns2}. The power is measured for sample sizes 10,  91, 173, 255, 336, 418 and 500. For this experiment and the next one, we also compared the performance of RDC,HSIC and DCOV with other state of the art independence measures, being : 
+
+\begin{enumerate}
+\item Energy distance to compute the non-Gaussianity of the projections, ”Emean” and ”Emax” denote taking the mean and the maximum of the differences respectively.
+\item MMD, where ”MMDmean” and ”MMDmax” denote the methods where
+MMD are used instead of negentropy
+\item the non-Gaussianity test when we are taking the mean of the differences of the negentropy over $\rho$, denoted by "gaussmean".
+\end{enumerate}
+
+The results of this experiment is presented in Figure \ref{FIG:PowerSize}. 
+
+\begin{figure}[Non linear dependance patterns example 2]{FIG:Patterns2}{Samples from the data sets for the second experiment}
+       \image{}{}{Patterns2}
+\end{figure}
+
+\begin{figure}[Power of tests increasing sample size]{FIG:PowerSize}{Power of tests adding gaussian noise to marginals}
+       \image{}{}{power_varing_size_1}
+\end{figure}
+
+For this set of experiments in which we try to determine the power of the tests, we have performed a final experiment following \cite{Size} in which we studied the power of the tests and how they are affected by the rotation of the set.
+For this experiment we will use two independent random variables, X and Y, where X is a uniform random variable $(X\simU[-\sqrt{3},\sqrt{3}])$ whereas Y is a mixture of two uniform random variables, each having equal probability of ocurrence on disjoint supports. That is, Y has density: $0.5U[-1,0.5] + 0.5U[0.5,1]$.
+
+We generate new pairs of random variables by rotating this random pair (X,Y). This will affect the dependence between them, this variables will be independent if and only if the angle of rotation is an integer multiple of pi, $n\cdot\pi : n\in\mathbb{Z}$. After this rotation we had scaled X,Y to have zero mean and unit variance.
+For this experiment we have generated 500 samples and tested the power for 100 rotation angles going from 0 to $2\pi$, with sample size 200. In Figure \ref{FIG:RotationSample} shows samples of the data with different rotations.
+
+
+\begin{figure}[Experiment 3 rotation pattern sample]{FIG:RotationSample}{Samples from the data sets for the third experiment}
+       \image{}{}{rotationPatterns}
+\end{figure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.20)  2 OCT 2018 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  17 MAY 2019 12:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -153,7 +153,7 @@ n/10 U\OT1/cmr/m/n/10 =(U1,...,Ud):=(P1(X1),...,Pd(Xd))
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 ! Undefined control sequence.
-l.61 $F_{Y}(y)=P(Y\leqy
+l.60 $F_{Y}(y)=P(Y\leqy
                        )=P(F_{X}(x)\leq y) = P(X\leqF^{-1}_{X}(y)) = F_{X}(F...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -162,7 +162,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.61 ...(y)=P(Y\leqy)=P(F_{X}(x)\leq y) = P(X\leqF
+l.60 ...(y)=P(Y\leqy)=P(F_{X}(x)\leq y) = P(X\leqF
                                                   ^{-1}_{X}(y)) = F_{X}(F^{-...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -173,7 +173,7 @@ and I'll forget about whatever was undefined.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.76 \left
+l.73 \left
           (\begin{array}{cc} X \\ Y \end{array}\right) $\sim$
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -181,7 +181,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.76 ...array}{cc} X \\ Y \end{array}\right) $\sim
+l.73 ...array}{cc} X \\ Y \end{array}\right) $\sim
                                                   $
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -189,7 +189,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 \left
+l.74 \left
           (\begin{array}{cc} \left(\begin{array}{cc} $\mu$ \\ $\nu$\end{arra...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -197,7 +197,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ...in{array}{cc} \left(\begin{array}{cc} $\mu
+l.74 ...in{array}{cc} \left(\begin{array}{cc} $\mu
                                                   $ \\ $\nu$\end{array}\righ...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -205,7 +205,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ...ay}{cc} \left(\begin{array}{cc} $\mu$ \\ $
+l.74 ...ay}{cc} \left(\begin{array}{cc} $\mu$ \\ $
                                                   \nu$\end{array}\right) & \...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -213,7 +213,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ...{cc} \left(\begin{array}{cc} $\mu$ \\ $\nu
+l.74 ...{cc} \left(\begin{array}{cc} $\mu$ \\ $\nu
                                                   $\end{array}\right) & \lef...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -221,7 +221,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ...begin{array}{cc} $\mu$ \\ $\nu$\end{array}
+l.74 ...begin{array}{cc} $\mu$ \\ $\nu$\end{array}
                                                   \right) & \left(\begin{arr...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -229,7 +229,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ...}\right) & \left(\begin{array}{cc} $\Sigma
+l.74 ...}\right) & \left(\begin{array}{cc} $\Sigma
                                                   _{XX}$ & $\Sigma_{XY}$ \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -237,7 +237,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ... & \left(\begin{array}{cc} $\Sigma_{XX}$ &
+l.74 ... & \left(\begin{array}{cc} $\Sigma_{XX}$ &
                                                    $\Sigma_{XY}$ \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -245,7 +245,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.77 ...(\begin{array}{cc} $\Sigma_{XX}$ & $\Sigma
+l.74 ...(\begin{array}{cc} $\Sigma_{XX}$ & $\Sigma
                                                   _{XY}$ \\
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -253,7 +253,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78 $
+l.75 $
       \Sigma_{YX}$ & $\Sigma_{YY}$\end{array}\right)\end{array}\right)
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -261,7 +261,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78 $\Sigma
+l.75 $\Sigma
             _{YX}$ & $\Sigma_{YY}$\end{array}\right)\end{array}\right)
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -269,7 +269,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78 $\Sigma_{YX}$ &
+l.75 $\Sigma_{YX}$ &
                      $\Sigma_{YY}$\end{array}\right)\end{array}\right)
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -277,7 +277,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78 $\Sigma_{YX}$ & $\Sigma
+l.75 $\Sigma_{YX}$ & $\Sigma
                             _{YY}$\end{array}\right)\end{array}\right)
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -285,7 +285,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.78 $\Sigma_{YX}$ & $\Sigma_{YY}$\end{array}
+l.75 $\Sigma_{YX}$ & $\Sigma_{YY}$\end{array}
                                              \right)\end{array}\right)
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -293,7 +293,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.79 
+l.76 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -301,7 +301,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.79 
+l.76 
      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -312,7 +312,7 @@ my insertion and my current dilemma will both disappear.
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.79 
+l.76 
      
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -323,7 +323,7 @@ deleted material, e.g., by typing `I$}'.
 ! Undefined control sequence.
 <recently read> \mathbb 
                         
-l.92 $\mathbb
+l.89 $\mathbb
              {K} = \Sigma_{XX}^{-1/2}\Sigma_{XY}\Sigma_{YY}^{-1/2}$
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -334,7 +334,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \mathbb 
                         
-l.95 ...{k = rank($\mathbb{K}) = rank(\Sigma_{XY}}
+l.92 ...{k = rank($\mathbb{K}) = rank(\Sigma_{XY}}
                                                   $), we will use this in th...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -345,7 +345,7 @@ and I'll forget about whatever was undefined.
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.95 ...{k = rank($\mathbb{K}) = rank(\Sigma_{XY}}
+l.92 ...{k = rank($\mathbb{K}) = rank(\Sigma_{XY}}
                                                   $), we will use this in th...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -356,10 +356,10 @@ deleted material, e.g., by typing `I$}'.
 <Figure_1.png, id=18, 462.528pt x 346.896pt>
 File: Figure_1.png Graphic file (type png)
 <use Figure_1.png>
-Package pdftex.def Info: Figure_1.png  used on input line 101.
+Package pdftex.def Info: Figure_1.png  used on input line 98.
 (pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
 
-Overfull \hbox (102.52686pt too wide) in paragraph at lines 98--102
+Overfull \hbox (102.52686pt too wide) in paragraph at lines 95--99
 []  
  []
 
@@ -370,7 +370,7 @@ Missing character: There is no ¶ in font cmr10!
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.165 \hspace*{50}
+l.162 \hspace*{50}
                   		k = int(k)
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -382,7 +382,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.169 \hspace*{50}
+l.166 \hspace*{50}
                   		Cxx = C[:k,:k]
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -394,7 +394,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.171 \hspace*{50}
+l.168 \hspace*{50}
                   		Cyy = C[k0:k0+k, k0:k0+k]
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -406,7 +406,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.173 \hspace*{50}
+l.170 \hspace*{50}
                   		Cxy = C[:k, k0:k0+k]
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -418,7 +418,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.175 \hspace*{50}
+l.172 \hspace*{50}
                   		Cyx = C[k0:k0+k, :k]
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -430,7 +430,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.177 \hspace*{50}
+l.174 \hspace*{50}
                   		eigs = np.linalg.eigvals(np.dot(np.dot(np.linalg.inv(Cxx...
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -442,7 +442,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.179 	\hspace*{50}
+l.176 	\hspace*{50}
                    	                                np.dot(np.linalg.inv(Cyy...
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -454,7 +454,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.183 \hspace*{50}
+l.180 \hspace*{50}
                   		if not (np.all(np.isreal(eigs)) and
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -466,7 +466,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.185 \hspace*{50}
+l.182 \hspace*{50}
                   \hspace*{25}				0 <= np.min(eigs) and
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -478,7 +478,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.185 \hspace*{50}\hspace*{25}
+l.182 \hspace*{50}\hspace*{25}
                               				0 <= np.min(eigs) and
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -490,7 +490,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.187 \hspace*{50}
+l.184 \hspace*{50}
                   \hspace*{25}				np.max(eigs) <= 1):
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -502,7 +502,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.187 \hspace*{50}\hspace*{25}
+l.184 \hspace*{50}\hspace*{25}
                               				np.max(eigs) <= 1):
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -514,7 +514,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.189 \hspace*{50}
+l.186 \hspace*{50}
                   \hspace*{50}			ub -= 1
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -526,7 +526,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.189 \hspace*{50}\hspace*{50}
+l.186 \hspace*{50}\hspace*{50}
                               			ub -= 1
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -538,7 +538,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.191 \hspace*{50}
+l.188 \hspace*{50}
                   \hspace*{50}			k = (ub + lb) / 2
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -550,7 +550,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.191 \hspace*{50}\hspace*{50}
+l.188 \hspace*{50}\hspace*{50}
                               			k = (ub + lb) / 2
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -562,7 +562,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.193 \hspace*{50}
+l.190 \hspace*{50}
                   \hspace*{50}			continue
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -574,7 +574,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.193 \hspace*{50}\hspace*{50}
+l.190 \hspace*{50}\hspace*{50}
                               			continue
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -586,7 +586,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.195 \hspace*{50}
+l.192 \hspace*{50}
                   		if lb == ub: break
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -598,7 +598,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.197 \hspace*{50}
+l.194 \hspace*{50}
                   		lb = k
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -610,7 +610,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.199 \hspace*{50}
+l.196 \hspace*{50}
                   		if ub == lb + 1:
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -622,7 +622,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.201 \hspace*{50}
+l.198 \hspace*{50}
                   \hspace*{50}			k = ub
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -634,7 +634,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.201 \hspace*{50}\hspace*{50}
+l.198 \hspace*{50}\hspace*{50}
                               			k = ub
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -646,7 +646,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.203 \hspace*{50}
+l.200 \hspace*{50}
                   		else:
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -659,7 +659,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.205 \hspace*{50}
+l.202 \hspace*{50}
                   \hspace*{50}			k = (ub + lb) / 2
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -671,7 +671,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hskip 
-l.205 \hspace*{50}\hspace*{50}
+l.202 \hspace*{50}\hspace*{50}
                               			k = (ub + lb) / 2
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -680,11 +680,38 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.207 \left
+           (\begin{array}{cc} 1 & 0.5 \\ 0.5 & 1\end{array} )
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.208 \end{document}
+                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.208 \end{document}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 [5] (./Anotaciones.aux) ) 
 Here is how much of TeX's memory you used:
  1449 strings out of 492982
- 20755 string characters out of 6134896
- 82450 words of memory out of 5000000
+ 20755 string characters out of 6134895
+ 82453 words of memory out of 5000000
  5022 multiletter control sequences out of 15000+600000
  8849 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -703,7 +730,7 @@ ts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb>
-Output written on Anotaciones.pdf (5 pages, 195998 bytes).
+Output written on Anotaciones.pdf (5 pages, 195583 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream

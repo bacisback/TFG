@@ -1,15 +1,18 @@
 \babel@toc {spanish}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {subsection}{\numberline {1.0.1}Reproducing Kernel Hilbert Spaces (RKHS)}{2}{subsection.1.0.1}
 \contentsline {section}{\numberline {1.1}MMD}{2}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Mean embedding}{2}{subsection.1.1.1}
 \contentsline {subsection}{\numberline {1.1.2}Introduction to MMD}{4}{subsection.1.1.2}
 \contentsline {subsection}{\numberline {1.1.3}Prooving that MMD defines an homogeneity test}{5}{subsection.1.1.3}
 \contentsline {subsection}{\numberline {1.1.4}Application to independence test}{6}{subsection.1.1.4}
-\contentsline {paragraph}{Useful definitions for the following content}{6}{section*.13}
+\contentsline {paragraph}{Useful definitions for the following content}{6}{section*.11}
 \contentsline {section}{\numberline {1.2}HSIC}{7}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Cross Covariance operator}{7}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Statistics}{9}{subsection.1.2.2}
-\contentsline {paragraph}{Approximating the $1-\alpha $ quantile of the null distribution}{10}{section*.14}
+\contentsline {paragraph}{Approximating the $1-\alpha $ quantile of the null distribution}{10}{section*.12}
 \contentsline {section}{\numberline {1.3}Energy}{11}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Definitions}{11}{subsection.1.3.1}
 \contentsline {subsection}{\numberline {1.3.2}Application to an independence test}{14}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Statistics}{15}{subsection.1.3.3}
+\contentsline {chapter}{\numberline {2}Experiments}{21}{chapter.2}

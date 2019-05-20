@@ -34,12 +34,14 @@ def gausian(x):
 	c = np.std(x)
 	b = np.mean(x)
 	return 1./(c*np.sqrt(2*np.pi))*np.exp(-np.power(x-b,2)/(2*np.power(c,2)))
+def twod_gaussian(x,ro=0):
+	return ro*x + np.sqrt(1-ro*ro)*np.random.rand(len(x))
 def bivariate_gaussian(n,cov = [[1,0.5],[0.5,1]]):
 	return np.random.multivariate_normal([0, 0], cov, n).T
 def gaussian_multiply_uniform(n):
 	x,y = np.random.multivariate_normal([0, 0], np.eye(2), n).T
-	z = np.random.rand(n)
-	return [np.dot(x,z), np.dot(y,z)]
+	z = np.random.rand(n)*2
+	return [x*z, y*z]
 def mixture_3_gaussians(n):
 	z1 = np.random.multivariate_normal([0, 0], np.eye(2), n).T
 	z2 = np.random.multivariate_normal([0, 0], [[1,0.8],[0.8,1]], n).T
@@ -52,4 +54,17 @@ def gaussian_multiplicative_noise(n):
 	z = np.random.multivariate_normal([0, 0], np.eye(2), n).T
 	e = np.random.multivariate_normal([0, 0], [[1,0.8],[0.8,1]], n).T
 	return z*e
+
+def rotation(n,angle):
+	x = np.random.rand(n)*2*np.sqrt(3)-np.sqrt(3)
+	p = np.random.rand(n)
+	z1 = np.random.rand(n)*0.5-1
+	z2 = np.random.rand(n)*0.5+0.5
+	y = (p<0.5).astype(float)*z1 + (p >=0.5).astype(float)*z2
+	m = [[np.cos(angle),-np.sin(angle)],[np.sin(angle),np.cos(angle)]]
+	z = np.hstack((x.reshape((-1,1)),y.reshape((-1,1))))
+	giro = np.dot(z,m)
+	return [giro[:,0],giro[:,1]]
+	 
+
 

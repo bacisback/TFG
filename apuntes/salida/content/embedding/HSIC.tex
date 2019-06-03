@@ -1,7 +1,8 @@
 
 In this section we will give a short overview of the cross-covariance operators between RKHSs and their Hilbert-Schmidt norms which later will be used to define the Hilbert Schmidt Independence Criterion (HSIC).
 After we will determine whether the dependence returned via HSIC is statistically significant by studying an hypothesis test with HSIC as its statistic and testing it empirically.
-Finally we will prove the ewuivalence of the HSIC test in terms of the Hilbert-Schmidt norm of the cross covariance operator in terms of the MMD between $\mathbb{P}_{\mathcal{X}\mathcal{Y}}$ and $\mathbb{P}\mathbb{Q}$
+Finally we will prove the ewuivalence of the HSIC test in terms of the Hilbert-Schmidt norm of the cross covariance operator in terms of the MMD between $\mathbb{P}_{\mathcal{X}\mathcal{Y}}$ and $\mathbb{P}\mathbb{Q}$.
+Most information for this chapter is taken from \cite{HSICdistribution} \cite{HSIC_1} and \cite{HSICDegenerate}
 
 \subsection{Cross Covariance operator}
 
@@ -196,5 +197,4 @@ guaranteed by the decay as $m^{-1}$ of the variance of HSIC(Z) under $H_{1}$ . T
 is complex, however: the question then becomes how to accurately approximate its quantiles.
 
 One approach taken by \cite{HSICdistribution} is by using a Gamma distribution, which as we can see in the figure underneath is quite accurate.
-\image{}{}{HSICgamma}
 

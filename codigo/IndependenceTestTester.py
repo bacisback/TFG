@@ -15,7 +15,7 @@ class Tester:
 		self.n = n
 		self.steps = steps
 		self.tests = []
-		self.potencias= np.array((1,1,10,2,1,1,0.25,5,1,5,1,1))*0.5
+		#self.potencias= np.array((1,1,10,2,1,1,0.25,5,1,5,1,1))*0.5
 	def add_test(self,test):
 		self.tests.append(test)
 	def plot(self):
@@ -36,12 +36,12 @@ class Tester:
 				for j in range(self.l):
 					thread = threading.Thread(
 						target = self.simulate_dependant,
-						args =(self.n,i*3./self.steps*self.potencias[j],j,i,test))
+						args =(self.n,i*3./self.steps,j,i,test))
 					thread.start()
 					test_thread_list.append(thread)
 				thread = threading.Thread(
 						target = self.simulate_independant,
-						args =(self.n,i*3./self.steps*self.potencias[j],self.l,i,test))
+						args =(self.n,i*3./self.steps,self.l,i,test))
 				thread.start()
 				test_thread_list.append(thread)
 				for thread in test_thread_list:
@@ -61,10 +61,10 @@ class Tester:
 			concurrent.futures.wait(futures)
 		
 
-	def simulate_dependant(self,n,noise,row,column,test):
+	def simulate_dependant(self,n,noise,row,column,test,perms =500):
 		power = 0
-		n = 100
-		for _ in range(n):
+		
+		for _ in range(perms):
 			
 			x = np.random.rand(n)
 			z = self.funciones[row](x)
@@ -73,21 +73,20 @@ class Tester:
 			y = (y - np.mean(y))*1./np.std(y)
 			power += test.test(x,y,0.05)
 			
-		power = power * 1./n
+		power = power * 1./perms
 		
 		test.add_solution(row,column,power)
-	def simulate_independant(self,n,noise,row,column,test):
+	def simulate_independant(self,n,noise,row,column,test,perms =50):
 		power = 0
 		mean = [0, 0]
 		cov = [[1, 0], [0, 1]]  # diagonal covariance
-		n = 100
-		for _ in range(n):
+		for _ in range(perms):
 			x, y = np.random.multivariate_normal(mean, cov, n).T
 			y = y + np.random.normal(0,noise,n)
 			x = (x - np.mean(x))*1./np.std(x)
 			y = (y - np.mean(y))*1./np.std(y)
 			power += test.test(x,y,0.05)
-		power = power *  1./n
+		power = power *  1./perms
 		print(noise,end='\r')
 		test.add_solution(row,column,power)
 
@@ -97,20 +96,35 @@ class Tester:
 				futures = {executor.submit(test.test_varing_size,generate_func[i],ninit,nend,steps, i) for test in self.tests}
 				concurrent.futures.wait(futures)
 		
-
+"""
 functions = [bivariate_gaussian,gaussian_multiply_uniform,mixture_3_gaussians,gaussian_multiplicative_noise]
 titles = ["bivariate gaussian","Gaussian multiply uniform", "Mixture of 3 gaussians","Gaussian multiplicative noise"]
-steps = 5
+steps = 7
 ninit = 10
 nend = 500
 n = 5
 tester = Tester(functions,titles,steps,n)
 dcov = DCOV_IndependenceTest(len(titles),steps,titles)
-dcov.test_varing_size(bivariate_gaussian,ninit,nend,steps,1)
 rdc = RDC_IndependenceTest(len(titles),steps,titles)
 hsic = HSIC_IndependenceTest(len(titles),steps,titles)
 tester.add_test(dcov)
 tester.add_test(rdc)
 tester.add_test(hsic)
 tester.sample_size_test(ninit,nend,steps,functions)
-tester.print("Varing_Size10-500")
+tester.plot()
+tester.print("testPerms/Asymptotic/")
+"""
+titles = ["Linear","Parabolic","Cubic","Sin1","Sin2","root4","circle","step","xsin","logarithm","gausian","2D Gaussian"]
+steps = 10
+n = 200
+tester = Tester([Linear,Parabolic,Cubic,Sin1,Sin2,root4,circle,step,xsin,logarithm,gausian],titles,steps,n)
+dcov = DCOV_IndependenceTest(len(titles),steps,titles)
+#dcov.test_varing_size(bivariate_gaussian,ninit,nend,steps,1)
+rdc = RDC_IndependenceTest(len(titles),steps,titles)
+hsic = HSIC_IndependenceTest(len(titles),steps,titles)
+tester.add_test(dcov)
+tester.add_test(rdc)
+tester.add_test(hsic)
+tester.simulate()
+tester.plot()
+tester.print("exp1Asint/2")

@@ -2,32 +2,6 @@ In this chapter we will present the results of various experiments in which we w
 
 In all our experiments, we set the number of random features for RDC to k = 3, and the random sampling width to s = $10^{-2}$. All kernel methods make use of a Gaussian kernel with width hyper-parameter set to the median of the euclidean distances between samples of each of the input random variables.
 
-$K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}}$
-
-where $\mu$ is the median of the euclidian distances between samples.
-This kernel will be used because of the following:
-
-As we have seen(NO LO HE PUESTO AUN BIEN EN INTRODUCCIÓN NO LO OLVIDES!!!!!!!!! A HACER) a positive definite kernel $k(x,y)$ defines an inner product $k(x,y) = <\phi(x),\phi(y)>_{\mathcal{H}}$ for feature vector $\phi$ constructed from the input x, and $\mathcal{H}$ is a Hilbert space. The notation $<\phi(x),\phi(y)>$ means the inner product between $\phi(x)$ and $\phi(y)$. In order to make a simple explanation, you can imagine $\mathcal{H}$ to be the usual Euclidean space, but possibly with infinite number of dimensions. Imagine the usual vector that is infinitely long, like $\phi(x) = (\phi_{1}(x),\phi_{2}(x),...)$. In kernel methods, $\mathcal{H}$ is a RKHS (explained in the introduction). Since we only care about the iner product of the features, we will directly evaluate the kernel k.
-To explain smoothness of the functions given by the Gaussian Kernel, let us consider Fourier features. As it's easy to prove, $k(x,y)=k(x-y)$, the kernel only depends on the difference of the two arguments. Let $\hat{k}$ denote the Fourier transform of k.
-
-In this Fourier viewpoint, the features of f are given by $f = (...,frac{\hat{f_{l}}}{\sqrt{\hat{k_{l}}}},...)$, this is saying that the feature representation of your function f is given by its Fourier transform divided by the Fourier transform of the kernel k. The feature representation of x, which is $\phi(x)$ is:$(...,\sqrt{\hat{k_{l}}}exp(-ilx),...)$ where $i = \sqrt{-1}$. One can show that the reproducing property holds.
-
-Now thanks to Plancherel theorem:
-
-It states that the integral of a function's squared modulus is equal to the integral of the squared modulus of its frequency spectrum. That is, if $f(x)$ is a function on the real line, and ${\widehat {f}}(\xi )$ is its frequency spectrum, then ; 
-
-$$
-\int _{-\infty }^{\infty }|f(x)|^{2}\,dx=\int _{-\infty }^{\infty }|{\widehat {f}}(\xi )|^{2}\,d\xi
-$$
-
-Hence:
-
-$$
-\norm{f}^{2}_{H}= \sum_{l=-\infty}^{\infty}frac{\hat{f_{l}}^{2}}{\hat{k_{l}}}
-$$
-
-Which as $f\in\mathcal{L}^{2}$ the norm is finite, the sum converges. Now as the  \href{http://mathworld.wolfram.com/FourierTransformGaussian.html}{Fourier transform of a Gaussian kernel}  $K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}}$ is another Gaussian where $\hat{k_{l}}$ decreases exponentially fast with l. So if f is to be in this space, its Fourier transform must drop even faster than that of $k$. This means the function will have only a few low frequency components with high weights.(A function with only low frequency components is smooth). 
-
 First we will turn the issue of estimating the power of the RDC,HSIC and DCOV estimator. We define the power of a dependence measure as the percentage of times that it is able to discern between two samples with equal marginals, but one of them containing dependance.
 
 In order to simulate the null hypothesis of our tests($\mathcal{H}_{0}$, the variables are independent) we will generate 500 samples under $\mathcal{H}_{0}$ to compute the threshold of the statistics with a signification level $\alpha = 0.05$. This will stand for our first group of experiments.
@@ -36,7 +10,7 @@ First we generated 500 pairs  of 200 i.i.d. samples, in which the input variable
 
 To do so, we created three different experiments:
 
-In the first one, adapted from \cite{RDC1}, we studied 12 association patterns: linear, parabolic, quadratic, sin(4$\pi$x), sin(16$\pi$x), fourth root, circle, step, xsin(x),logarithm, gaussian and a 2D multivariate normal distribution.Figure \ref{FIG:Patterns1} shows grafically each association pattern.
+\label{exp:1}In the first one, adapted from \cite{RDC1}, we studied 12 association patterns: linear, parabolic, quadratic, sin(4$\pi$x), sin(16$\pi$x), fourth root, circle, step, xsin(x),logarithm, gaussian and a 2D multivariate normal distribution.Figure \ref{FIG:Patterns1} shows grafically each association pattern.
 
 Secondly for each of the 12 association patterns, we studied how gaussian noise may affect the power of our test, with a noise increasing from 0 to 3 in 10 steps we generated 200 repetitions of 200 samples uniformly distributed on the unit interval and generated the pair with each association pattern, then we added gaussian noise to the pair and normaliced both marginals.
 Figure \ref{FIG:Power1} shows for each subplot the power obtained with each association pattern. The x axis represents how the noise increases, and the y axis the power of the tests.
@@ -125,7 +99,98 @@ For size 500, we've obtained a pvalue of 0.3564, therefore we accept the null hy
        \image{}{}{RDC500_pval=0.03564}
 \end{figure}
 
+With HSIC distribution:
 
+For size 500, we've obtained a pvalue of 0.1564, therefore we accept the null hypothesis $H_{0}: RDC\sim \mathcal{X}^{2}_{9}$ for significance levels of 0.1,0.05 and 0.01. Figure \ref{FIG:RDC500} shows the pdf, qq plot, pp plot and cdf of our statistic with the one of the $\mathcal{X}^{2}_{9}$distribution
+\begin{figure}[HSIC Asymptotic distribution]{FIG:HSIC500}{HSIC statistic with a gamma distribution}
+       \image{}{}{HSIC500_pv7_6e-05}
+\end{figure}
+
+For an in depth analysis head to the Appendix \ref{Appendix}, we included the same experiment for different sizes and adding Gaussian noise.
+
+Now that we have accepted our hypothesis we will analyze how good they are. We will compare the power of the asymptotic version with the \textit{real} one on various scenarios.
+
+In our first experiment we will analyze them with a bivariate Gaussian with sizes 50, 100, 150, 200, 500 and 1000, with different correlations 0, 0.25, 0.5, 0.75, 1.
+$ X,Y \sim \mathcal{N}(0,\Sigma_{i}) $
+$$\Sigma_{1} =\begin{vmatrix}1&0\\0&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix}1&0.25\\0.25&1\\ \end{vmatrix} \Sigma_{3} =\begin{vmatrix}1&0.5\\0.5&1\\ \end{vmatrix} \Sigma_{4} =\begin{vmatrix}1&0.75\\0.75&1\\ \Sigma_{4} =\begin{vmatrix}1&1\\1&1\\ \end{vmatrix} \end{vmatrix}$$
+To the Y variable we will add  Gaussian noise going from 0 to 3
+$ Y = Y + \mathcal{N}(0,noise) $.
+
+Figures \ref{FIG:DCOV50},\ref{FIG:DCOV100},\ref{FIG:DCOV150},\ref{FIG:DCOV200},\ref{FIG:DCOV500} and \ref{FIG:DCOV1000} show the power of DCOV,  for sizes 50,100,150,200,500 and 1000 respectively.
+
+Figures \ref{FIG:HSIC50},\ref{FIG:HSIC100},\ref{FIG:HSIC150},\ref{FIG:HSIC200},\ref{FIG:HSIC500} and \ref{FIG:HSIC1000} show the power of HSIC,  for sizes 50,100,150,200,500 and 1000 respectively.
+
+Figures \ref{FIG:RDC50},\ref{FIG:RDC100},\ref{FIG:RDC150},\ref{FIG:RDC200},\ref{FIG:RDC500} and \ref{FIG:RDC1000} show the power of RDC,  for sizes 50,100,150,200,500 and 1000 respectively.
+
+\begin{figure}[DCOV asymptotic size 50]{FIG:DCOV50}{Power comparison between the asymptotic and the real version of DCOV for sample size 50}
+       \image{12cm}{5cm}{powersCheto/DCOV50}
+\end{figure}
+\begin{figure}[DCOV asymptotic size 100]{FIG:DCOV100}{Power comparison between the asymptotic and the real version of DCOV for sample size 100}
+       \image{12cm}{5cm}{powersCheto/DCOV100}
+\end{figure}
+\begin{figure}[DCOV asymptotic size 150]{FIG:DCOV150}{Power comparison between the asymptotic and the real version of DCOV for sample size 150}
+       \image{12cm}{5cm}{powersCheto/DCOV150}
+\end{figure}
+\begin{figure}[DCOV asymptotic size 200]{FIG:DCOV200}{Power comparison between the asymptotic and the real version of DCOV for sample size 200}
+       \image{12cm}{5cm}{powersCheto/DCOV200}
+\end{figure}
+\begin{figure}[DCOV asymptotic size 500]{FIG:DCOV500}{Power comparison between the asymptotic and the real version of DCOV for sample size 500}
+       \image{12cm}{5cm}{powersCheto/DCOV500}
+\end{figure}
+\begin{figure}[DCOV asymptotic size 1000]{FIG:DCOV1000}{Power comparison between the asymptotic and the real version of DCOV for sample size 1000}
+       \image{12cm}{5cm}{powersCheto/DCOV1000}
+\end{figure}
+
+\begin{figure}[HSIC asymptotic size 50]{FIG:HSIC50}{Power comparison between the asymptotic and the real version of HSIC for sample size 50}
+       \image{12cm}{5cm}{powersCheto/HSIC50version}
+\end{figure}
+\begin{figure}[HSIC asymptotic size 100]{FIG:HSIC100}{Power comparison between the asymptotic and the real version of HSIC for sample size 100}
+       \image{12cm}{5cm}{powersCheto/HSIC100version}
+\end{figure}
+\begin{figure}[HSIC asymptotic size 150]{FIG:HSIC150}{Power comparison between the asymptotic and the real version of HSIC for sample size 150}
+       \image{12cm}{5cm}{powersCheto/HSIC150version}
+\end{figure}
+\begin{figure}[HSIC asymptotic size 200]{FIG:HSIC200}{Power comparison between the asymptotic and the real version of HSIC for sample size 200}
+       \image{12cm}{5cm}{powersCheto/HSIC200version}
+\end{figure}
+\begin{figure}[HSIC asymptotic size 500]{FIG:HSIC500}{Power comparison between the asymptotic and the real version of HSIC for sample size 500}
+       \image{12cm}{5cm}{powersCheto/HSIC500version}
+\end{figure}
+\begin{figure}[HSIC asymptotic size 1000]{FIG:HSIC1000}{Power comparison between the asymptotic and the real version of HSIC for sample size 1000}
+       \image{12cm}{5cm}{powersCheto/HSIC1000version}
+\end{figure}
+
+\begin{figure}[RDC asymptotic size 50]{FIG:RDC50}{Power comparison between the asymptotic and the real version of RDC for sample size 50}
+       \image{15cm}{5cm}{powersCheto/RDC50Version}
+\end{figure}
+\begin{figure}[RDC asymptotic size 100]{FIG:RDC100}{Power comparison between the asymptotic and the real version of RDC for sample size 100}
+       \image{15cm}{5cm}{powersCheto/RDC100Version}
+\end{figure}
+\begin{figure}[RDC asymptotic size 150]{FIG:RDC150}{Power comparison between the asymptotic and the real version of RDC for sample size 150}
+       \image{15cm}{5cm}{powersCheto/RDC150Version}
+\end{figure}
+\begin{figure}[RDC asymptotic size 200]{FIG:RDC200}{Power comparison between the asymptotic and the real version of RDC for sample size 200}
+       \image{15cm}{5cm}{powersCheto/RDC200Version}
+\end{figure}
+\begin{figure}[RDC asymptotic size 500]{FIG:RDC500}{Power comparison between the asymptotic and the real version of RDC for sample size 500}
+       \image{15cm}{5cm}{powersCheto/RDC500Version}
+\end{figure}
+\begin{figure}[RDC asymptotic size 1000]{FIG:RDC1000}{Power comparison between the asymptotic and the real version of RDC for sample size 1000}
+       \image{15cm}{5cm}{powersCheto/RDC1000Version}
+\end{figure}
+
+For all tests we've seen how our null hypothesis is always conservative, this is always useful for situations where computation time is critical and the asymptotic version may be better because it minimizes type 1 error.
+
+Starting with the first experiment \ref{exp:1}, we reproduced the same experiment, with a significance level of 0.05 
+
+\begin{figure}[Experiment 1 RDC asymptotic vs real]{FIG:exp1RDC}{Power comparison between the asymptotic and the real version of RDC for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
+       \image{15cm}{5cm}{powersCheto/RDC1000Version}
+\end{figure}
+Now we will study the differences one can see in the previous experiments if we perform the test with the asymptotic version instead of the \textit{real} one.
+
+
+
+In the second experiment where we studied how good our test was for different sizes 
 
 
 

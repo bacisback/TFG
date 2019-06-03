@@ -1,0 +1,41 @@
+In the previous chapter we've explained the tests that we will be developening. In this section we will explain the software design process, starting with analysis of the tests in order to provide a general overview of the problem for a better understanding of the choices taken.
+\subsection{Analysis}
+
+Our goal is to create an scalable and easy to modify software for different types of datasets, experiments and types of datasets.
+
+On the grounds that we need to measure time differences between methods all software must be developed in the same language assuring that the differences in performance come from the actual algorithim and not the language difference.
+
+Given the volume of data that we will be working with efficiency is of key importance, therefore parallelization will be heavily used to ensure a fast process of data. 
+
+As the experiments may be reused in the future and new independence tests may be added, the software has to be scalable and with a  modular approach in order to handle the posible growth of the project.
+
+\subsection{Design}
+
+All our software is built around two classes: IndependenceTest and IndependenceTestTester. Both being abstract classes which held the code for the independence tests and the experiments respectively \ref{FIG:ClassDiagram} shows the class diagram of our project.
+
+\begin{figure}[Class diagram]{FIG:ClassDiagram}{Class diagram}
+       \image{}{}{Independence_test}
+\end{figure}
+
+\paragraph{IndependenceTest}
+
+This abstract class helds the main core which all independence tests will inherit.
+
+All tests will control their own data and the progress of the experiments within themselfs, allowing an easy paralelization. All tests will include a name, the titles for each subplot that will be made in the main plot, and the development of the experiment in a matrix called solutions.
+Furthermore this abstract class contains the functionality of plotting the results of the experiment for a given test, computing the time cost of an experiment and generating an empirical histogram of the statistic.
+
+The specific implementation of the test will be held in an abstract function called test which will be implemented in each child object.
+
+\paragraph{IndependenceTestTester}
+
+This abstract class implements the general functionalities of all the performed experiments, in order to allow for any amount of tests and the future addition of new tests, this class recives a list of IndependenceTests and will perform the desired experiments by calling the functions defined by IndependenceTest.
+
+The parameters which will be general are: the functions used in order to generate the datasets and  the subtitles for the main plot. 
+
+Finally in order to ensure the minimun amount of repeated code the functionality of measuring the power of a test given X and Y is implemented in a function called simulate, letting the task of modifying the datasets as needed to each child object. Figure \ref{FIG:SequenceDiagram} shows a sequence diagram of an experiment.
+
+\begin{figure}[Sequence diagram of an experiment]{FIG:SequenceDiagram}{Sequence diagram}
+       \image{}{}{Experiment}
+\end{figure}
+
+In the following section we will dive into the process of how this software was implemented, the main ploblems we found along the way and how we solved them.

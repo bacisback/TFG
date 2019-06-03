@@ -1,10 +1,35 @@
 \babel@toc {spanish}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Non linear dependance patterns example 1}}{23}{figure.caption.13}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Power of tests uniform marginals same size adding noise}}{23}{figure.caption.14}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Non linear dependance patterns example 2}}{25}{figure.caption.15}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Power of tests increasing sample size}}{25}{figure.caption.16}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Experiment 3 rotation pattern sample}}{26}{figure.caption.17}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Experiment 3 results}}{27}{figure.caption.18}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces RDC Asymptotic distribution}}{28}{figure.caption.19}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Class diagram}}{22}{figure.caption.13}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Sequence diagram of an experiment}}{23}{figure.caption.16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Summary of the development process}}{30}{figure.caption.17}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Non linear dependance patterns example 1}}{34}{figure.caption.18}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Power of tests uniform marginals same size adding noise}}{34}{figure.caption.19}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Non linear dependance patterns example 2}}{36}{figure.caption.20}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Power of tests increasing sample size}}{36}{figure.caption.21}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Experiment 3 rotation pattern sample}}{37}{figure.caption.22}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Experiment 3 results}}{37}{figure.caption.23}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces RDC Asymptotic distribution}}{38}{figure.caption.24}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces HSIC Asymptotic distribution}}{39}{figure.caption.25}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces DCOV asymptotic size 50}}{40}{figure.caption.26}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces DCOV asymptotic size 100}}{40}{figure.caption.27}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces DCOV asymptotic size 150}}{40}{figure.caption.28}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces DCOV asymptotic size 200}}{41}{figure.caption.29}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces DCOV asymptotic size 500}}{41}{figure.caption.30}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces DCOV asymptotic size 1000}}{41}{figure.caption.31}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces HSIC asymptotic size 50}}{42}{figure.caption.32}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces HSIC asymptotic size 100}}{42}{figure.caption.33}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces HSIC asymptotic size 150}}{42}{figure.caption.34}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces HSIC asymptotic size 200}}{43}{figure.caption.35}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces HSIC asymptotic size 500}}{43}{figure.caption.36}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces HSIC asymptotic size 1000}}{43}{figure.caption.37}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces RDC asymptotic size 50}}{44}{figure.caption.38}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces RDC asymptotic size 100}}{44}{figure.caption.39}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces RDC asymptotic size 150}}{44}{figure.caption.40}
+\contentsline {figure}{\numberline {4.24}{\ignorespaces RDC asymptotic size 200}}{45}{figure.caption.41}
+\contentsline {figure}{\numberline {4.25}{\ignorespaces RDC asymptotic size 500}}{45}{figure.caption.42}
+\contentsline {figure}{\numberline {4.26}{\ignorespaces RDC asymptotic size 1000}}{45}{figure.caption.43}
+\addvspace {10\p@ }

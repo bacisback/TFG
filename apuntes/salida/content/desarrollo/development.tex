@@ -1,0 +1,88 @@
+In the previous section we presented the design aspects of our project, in this section we will introduce our development experience and the reasons behind each decision.
+First of all we will start by how we achieved the main goals of our software.
+We decided to implement all the functionality in python, although all plots shown comparing distributions were plotted in R, this is because of the simplicity which R provides to perform plots comparing distributions. This will be explained in detail in \ref{Plots}
+
+\section{General aspects of implementation}
+
+\subsection{Efficiency}
+
+As our project was implemented in python, we had access to numpy and scipy, which are libraries implemented in low levels languages, like C, Fortran and Cython, making them really efficient. Therefore, we used them whenever it was possible.
+
+In addition to the code, parallelization was key in our project in order to obtain results in a reasonable time span. All parallelization was created by threads, given the amount of parallel lines of code we were managing, and how little work each had to made, creating process for each line wouldn't have been optimal due to the time it takes to create a new process. 
+Most parallel process we generated a thread pool with the library \href{https://pythonhosted.org/futures/}{concurrent.futures} which provides a high level interface for asynchronously executing callables, which makes most of our simulations something as simple as shown in Code \ref{CODE:THREADPOOL}, which presents how to create an histogram of the statistic of all independence tests included in our independence test tester. The parameter of max workers is fixed to the amount of independence tests we have, this is because we already know how many threads we will need.
+\label{CODE:THREADPOOL}\PythonCode[iuhui]{Thead pool example}{Code sample of how to create a thread pool with concurrent.futures}{generate_histograms.py}{1}{3}{1}
+
+\subsection{Modularity and Scalabillity}
+
+In order to ensure that our system was as modular as possible, we followed the design presented in Figure \ref{FIG:ClassDiagram}. In order to create abstract classes in python we used the modules abstractmethod and ABCMeta from the abc package. Allowing for all main code of the test to be storaged in the child class while making all the experiments being transparent to the implementation beneath. In Code  \ref{CODE:THREADPOOL} is shown how for any independence test the calling mantains the same.
+
+\section{Specific details about each independence test implementation}
+
+In order to compute efficiently all statistics we will make use of matricial calculus which will help reducing the amount of operations needed, which will help with the overall performance. Code \ref{CODE:MEDIAN}3.2 shows how we calculate the hyperparameter for the Gaussian kernel in HSIC as an example of what we mean in the previous sentence.
+
+\label{CODE:MEDIAN}\PythonCode[sfds]{Median for x}{Sample of how to calculate the median of the distances for a sample $x\in\mathbb{R}^{n}$ }{DistanceMatrix.py}{1}{8}{1}
+
+\subsection{RDC}
+
+As explained in section \ref{SEC:RDC} the parameter k will improve the performance of the test the largest it is, but due to numerical issues, if k is too large,then rank($\Phi(X)$) < k or rank($\Phi(Y)$) < k, so we need to find the largest k such that the eigenvalues, solutions of the canonical correlation analysis,  are real-valued. As this is a problem dependant of the data, we will preform a binary search for the largest k which meets the condition. Code 3.3\ref{CODE:CANCOR} shows how to calculate the canonical correlation analysis in python.
+
+\label{CODE:CANCOR}\PythonCode[CODE:CANCOR1]{Canonical Correlation Analysis}{Canonical correlation analysis in python}{Cancor.py}{1}{38}{1}
+
+
+
+
+\subsection{HSIC}
+
+We've decided to implement HSIC following the mathlab \href{http://www.gatsby.ucl.ac.uk/~gretton/indepTestFiles/indep.htm#GreEtAl10}{implementation} which makes usage of a Gaussian kernel :
+
+$K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}})$
+
+where $\mu$ is the median of the euclidian distances between samples.
+This kernel will be used because of the following:
+
+As we have seen a positive definite kernel $k(x,y)$ defines an inner product $k(x,y) = <\phi(x),\phi(y)>_{\mathcal{H}}$ for feature vector $\phi$ constructed from the input x, and $\mathcal{H}$ is a Hilbert space. The notation $<\phi(x),\phi(y)>$ means the inner product between $\phi(x)$ and $\phi(y)$.
+For a better understanding, you can imagine $\mathcal{H}$ to be the usual Euclidean space, but with an infinite number of dimensions. Then take a vector which is infinitely long, like $\phi(x) = (\phi_{1}(x),\phi_{2}(x),...)$. In kernel methods, $\mathcal{H}$ is a RKHS (explained in the introduction \ref{CAP:INTRODUCCION}). Since we only care about the iner product of the features, we will directly evaluate the kernel k.
+To explain smoothness of the functions given by the Gaussian Kernel, let us consider Fourier features. As it's easy to prove, $k(x,y)=k(x-y)$, the kernel only depends on the difference of the two arguments. Let $\hat{k}$ denote the Fourier transform of k.
+
+In this Fourier viewpoint, the features of f are given by $f = (...,\frac{\hat{f_{l}}}{\sqrt{\hat{k_{l}}}},...)$, this is saying that the feature representation of your function f is given by its Fourier transform divided by the Fourier transform of the kernel k. The feature representation of x, which is $\phi(x)$ is:$(...,\sqrt{\hat{k_{l}}}\exp(-ilx),...)$ where $i = \sqrt{-1}$. One can show that the reproducing property holds.
+
+Now thanks to Plancherel theorem: \cite{plancherel}
+
+It states that the integral of a function's squared modulus is equal to the integral of the squared modulus of its frequency spectrum. That is, if $f(x)$ is a function on the real line, and ${\widehat {f}}(\xi )$ is its frequency spectrum, then ; 
+
+$$
+\int _{-\infty }^{\infty }|f(x)|^{2}\,dx=\int _{-\infty }^{\infty }|{\widehat {f}}(\xi )|^{2}\,d\xi
+$$
+
+Hence:
+
+$$
+\norm{f}^{2}_{H}= \sum_{l=-\infty}^{\infty}frac{\hat{f_{l}}^{2}}{\hat{k_{l}}}
+$$
+
+Which as $f\in\mathcal{L}^{2}$ the norm is finite, the sum converges. Now as the  \href{http://mathworld.wolfram.com/FourierTransformGaussian.html}{Fourier transform of a Gaussian kernel}  $K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}})$ is another Gaussian where $\hat{k_{l}}$ decreases exponentially fast with l. So if f is to be in this space, its Fourier transform must drop even faster than that of $k$. This means the function will have only a few low frequency components with high weights.(A function with only low frequency components is smooth). 
+
+
+\label{Plots}\subsection{Plots} 
+
+As in this work we have been working intensively with probability distributions, in order to ease the task of testing hypothesis and showcasing the asymptotic behaviour of our statistics, we decided to make use of R in our project. All data was collected from the experiments performed in python, where we stored the results of each statistic in each transformation and experiment.
+In R we performed K-S test to each statistic with different sample sizes and variations which will be explained in detail in chapter \ref{Cap:Experiments} and saw how good our null hypothesis was. In the appendix we showcase some results obtained with R, for example Figure \ref{FIG:HSIC500} shows how good of a fit is a Gamma distribution to the HSIC distribution.
+
+\section{Version control, repositories and continuous integration}
+
+In order to maintain control of each change throughout the project we needed to use tools in order to manage and control the advance of the project.
+
+As a version control system we used git, which provides simplicity and comes with the advantage that hosting services for version control using git like GitHub exist. We chose GitHub because it is free and comes with all functionality for public repositories, one key functionality is that provides a version history of your code, so that previous versions are not lost with every new merge, easing removing mistakes or going back to a previous version if necessary. 
+
+In addition of version control we used \href{Travis-CI}{https://travis-ci.org/} in order to automatically test all changes made. \href{Travis CI}{https://github.com/travis-ci/travis-ci/blob/master/README.md} is a hosted continuous integration service used to build and test software projects hosted at GitHub, furthermore this tool is free for open projects.
+
+Travis-CI is configured by adding a file named \textit{.travis.yml} to the root of the repository, specifying programming language used, the desired building and testing environment, the script to run the tests, when and what to do whenever a pettition is made to the repository. Code \ref{CODE:TRAVIS}3.4 shows an example of a \textit{.travis.yml}.
+
+\label{CODE:TRAVIS}\MakeCode[fdsf]{Travis CI yml}{yml file used in order to incorporate Travis-CI in our repository.}{travis.yml}{1}{20}{1}
+
+
+To sum up this section Figure \ref{FIG:SumDev} presents graphically the development process of this project showcasing the different tools used and their relations.
+
+\begin{figure}[Summary of the development process]{FIG:SumDev}{Diagram showcasing the different tools used to create this project and their relations.}
+       \image{}{}{Integration}
+\end{figure}

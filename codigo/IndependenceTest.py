@@ -81,7 +81,7 @@ class IndependenceTest:
 	def add_solution(self,row,column,solution):
 		self.solutions[row,column] = solution
 
-	def test_varing_size(self,generate_func,nin,nend,steps,row,perms=100):
+	def test_varing_size(self,generate_func,nin,nend,steps,row,perms=500):
 		space = np.linspace(nin,nend,steps).astype(int) 
 		for i in range(steps):
 			

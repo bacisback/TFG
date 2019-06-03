@@ -1,0 +1,12 @@
+In this section we will give our final aproach to measuring dependencies, taken from \cite{RDC1} and \cite{RDC2}. This statistic is a scalable and easy to implement estimator of the following:
+
+\begin{Definition}
+The \textit{Hirschfeld-Gebelein-Rényi’s Maximum Correlation
+Coefficient} (HGR) was defined by Gebelein in 1941 \cite{HGR_text} as:
+\begin{equation}{HGR}
+hgr(X,Y) = \sup_{f,g}\rho(f(X),g(Y))
+\end{equation}
+
+Where f and g are any Borel-measurable function with finite variance. Given that this estatistic the search of a supremum in an infinite-dimensional space in practice may be really difficult to compute. 
+
+The \textit{Randomized Dependence Coefficient} (RDC) measures the dependence between the random variables $X\in\mathbb{R}^{p}$ and $Y\in\mathbb{R}^{q}$ as the largest canonical correlation \ref{CANCOR} between the k random non-linear projections of the copula\ref{COPULA} transformation of the variables

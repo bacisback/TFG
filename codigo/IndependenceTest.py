@@ -50,18 +50,31 @@ class IndependenceTest:
 	@abstractmethod
 	def generate_statistic(self,x,y):
 		pass
-	def test_tiempos(self,n,begin,end):
-		self.times = np.empty(n)
-		division = np.linspace(begin,end,n)
+	def test_tiempos(self,n,begin,end,perms = 100):
+		self.times = np.zeros((3,n))
+		division = np.linspace(begin,end,n).astype(int)
 		mean = [0, 0]
 		cov = [[1, 0], [0, 1]]  # diagonal covariance
+
 		for i,d in enumerate(division):
-			x,y = np.random.multivariate_normal(mean, cov, n).T
-			start_time = time.time()
-			self.test(x,y,0.05)
-			self.times[i] = time.time() - start_time
-		text = './datos/'+self.__name+'tiempos.txt'
+			current = np.empty(perms)
+			for j in range(perms):
+				x,y = np.random.multivariate_normal(mean, cov, d).T
+				start_time = time.time()
+				self.test(x,y,0.05)
+				current[j] = time.time() - start_time
+			self.times[1,i] = np.mean(current)
+			self.times[0,i] = np.percentile(current, 25)
+			self.times[2,i] = np.percentile(current, 75)
+		text = './datos/TIMES/'+self.__name+'tiempos.txt'
 		np.savetxt(text,self.times,delimiter="\t")
+		plt.plot(division,self.times[1,:],'r', label ="Mean")
+		plt.plot(division,self.times[0,:],'b', label ="First Quantile")
+		plt.plot(division,self.times[2,:],'b', label ="Third Quantile")
+		plt.xlabel(Size)
+		plt.ylabel(Time)
+		plt.title(self.__name)
+		plt.savefig("figuras/TIMES/"+self.__name+".png")
 
 	def generate_histogram(self,n,size=500):
 		self.dependant = np.empty(n)
@@ -91,4 +104,13 @@ class IndependenceTest:
 				sol += self.test(x,y,0.05)
 			sol = sol*1./perms
 			self.solutions[row,i] = sol
+	def test_rotation(self,anglein,angleend,steps,size,perms=500):
+		angle = np.linspace(anglein,angleend,steps)
+		for i in range(steps):
+			sol = 0
+			for _ in range(perms):
+				x,y = rotation(size,angle[i]*np.pi)
+				sol += self.test(x,y,0.05)
+			sol = sol*1./perms
+			self.solutions[1,i] = sol
 

@@ -95,8 +95,12 @@ class Tester:
 			with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
 				futures = {executor.submit(test.test_varing_size,generate_func[i],ninit,nend,steps, i) for test in self.tests}
 				concurrent.futures.wait(futures)
+	def rotation_test(self,anglein,angleend,steps):
+		with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+			futures = {executor.submit(test.test_rotation,anglein,angleend,steps,self.size) for test in self.tests}
+			concurrent.futures.wait(futures)
 		
-"""
+""" EXP 2
 functions = [bivariate_gaussian,gaussian_multiply_uniform,mixture_3_gaussians,gaussian_multiplicative_noise]
 titles = ["bivariate gaussian","Gaussian multiply uniform", "Mixture of 3 gaussians","Gaussian multiplicative noise"]
 steps = 7
@@ -114,6 +118,7 @@ tester.sample_size_test(ninit,nend,steps,functions)
 tester.plot()
 tester.print("testPerms/Asymptotic/")
 """
+""" EXP 1
 titles = ["Linear","Parabolic","Cubic","Sin1","Sin2","root4","circle","step","xsin","logarithm","gausian","2D Gaussian"]
 steps = 10
 n = 200
@@ -128,3 +133,18 @@ tester.add_test(hsic)
 tester.simulate()
 tester.plot()
 tester.print("exp1Asint/2")
+"""
+
+"""TIMES"""
+titles = ["None"]
+steps = 10
+n = 200
+tester = Tester([],titles,1,1)
+dcov = DCOV_IndependenceTest(len(titles),1,titles)
+#dcov.test_varing_size(bivariate_gaussian,ninit,nend,steps,1)
+rdc = RDC_IndependenceTest(len(titles),1,titles)
+hsic = HSIC_IndependenceTest(len(titles),1,titles)
+tester.add_test(dcov)
+tester.add_test(rdc)
+tester.add_test(hsic)
+tester.compute_times(20,10,1000)

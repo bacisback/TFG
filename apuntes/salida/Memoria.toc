@@ -30,4 +30,4 @@
 \contentsline {subsection}{\numberline {3.2.3}Plots}{29}{subsection.3.2.3}
 \contentsline {section}{\numberline {3.3}Version control, repositories and continuous integration}{29}{section.3.3}
 \contentsline {chapter}{\numberline {4}Experiments}{33}{chapter.4}
-\contentsline {chapter}{\numberline {5}Appendix}{47}{chapter.5}
+\contentsline {chapter}{\numberline {5}Appendix}{51}{chapter.5}

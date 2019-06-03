@@ -75,7 +75,7 @@ For this set of experiments in which we try to determine the power of the tests,
 For this experiment we will use two independent random variables, X and Y, where X is a uniform random variable $(X\sim U[-\sqrt{3},\sqrt{3}])$ whereas Y is a mixture of two uniform random variables, each having equal probability of ocurrence on disjoint supports. That is, Y has density: $0.5U[-1,0.5] + 0.5U[0.5,1]$.
 
 We generate new pairs of random variables by rotating this random pair (X,Y). This will affect the dependence between them, this variables will be independent if and only if the angle of rotation is an integer multiple of pi, $n\cdot\pi : n\in\mathbb{Z}$. After this rotation we had scaled X,Y to have zero mean and unit variance.
-For this experiment we have generated 500 samples and tested the power for 100 rotation angles going from 0 to $2\pi$, with sample size 200. In Figure \ref{FIG:RotationSample} shows samples of the data with different rotations.
+For this experiment we have generated 500 samples and tested the power for 100 rotation angles going from 0 to $2\pi$, with sample size 200. In Figure \ref{FIG:RotationSample} shows samples of the same data with different rotation angle.
 As we can see in Figure \ref{FIG:RotationPower} the function power for all tests is a $\frac{\pi}{2}$ even periodic function, which confirms that the potency of our tests does not depend on the sign of the correlation.
 
 \begin{figure}[Experiment 3 rotation pattern sample]{FIG:RotationSample}{Samples from the data sets for the third experiment}
@@ -181,17 +181,31 @@ Figures \ref{FIG:RDC50},\ref{FIG:RDC100},\ref{FIG:RDC150},\ref{FIG:RDC200},\ref{
 
 For all tests we've seen how our null hypothesis is always conservative, this is always useful for situations where computation time is critical and the asymptotic version may be better because it minimizes type 1 error.
 
-Starting with the first experiment \ref{exp:1}, we reproduced the same experiment, with a significance level of 0.05 
-
-\begin{figure}[Experiment 1 RDC asymptotic vs real]{FIG:exp1RDC}{Power comparison between the asymptotic and the real version of RDC for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
-       \image{15cm}{5cm}{powersCheto/RDC1000Version}
-\end{figure}
 Now we will study the differences one can see in the previous experiments if we perform the test with the asymptotic version instead of the \textit{real} one.
 
+Starting with the first experiment \ref{exp:1}, we reproduced the same experiment, with a significance level of 0.05, sample size of 200 and Gaussian noise going from 0 to 3. Figures \ref{FIG:exp1DCOV}, \ref{FIG:exp1HSIC}, \ref{FIG:exp1RDC} show the asymptotic behaviour of DCOV, HSIC and RDC against the original one respectively for the relation patterns shown in Figure \ref{FIG:Patterns1}
 
+\begin{figure}[Experiment 1 DCOV asymptotic vs real]{FIG:exp1DCOV}{Power comparison between the asymptotic and the real version of DCOV for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
+       \image{}{}{DCOV_exp1_asympt}
+\end{figure}
+\begin{figure}[Experiment 1 HSIC asymptotic vs real]{FIG:exp1HSIC}{Power comparison between the asymptotic and the real version of HSIC for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
+       \image{}{}{HSIC_exp1_asympt}
+\end{figure}
+\begin{figure}[Experiment 1 RDC asymptotic vs real]{FIG:exp1RDC}{Power comparison between the asymptotic and the real version of RDC for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
+       \image{}{}{RDC_exp1_asympt}
+\end{figure}
 
-In the second experiment where we studied how good our test was for different sizes 
+In the second experiment where we studied how good our test was for different sizes and , in this experiment we will see how RDC will outperform the other two tests in their asymptotic behaviour, this may be explained by the fact that HSIC and DCOV asymptotics distributions used for the test were good aproximations of the real one, while in RDC we used the actual asymptotic distribution. Figures \ref{FIG:exp2DCOV}, \ref{FIG:exp2HSIC}, \ref{FIG:exp2RDC} show respectively the obtained results.
 
+\begin{figure}[Experiment 2 DCOV asymptotic vs real]{FIG:exp2DCOV}{Power comparison between the asymptotic and the real version of DCOV for different relation patterns with sample sizes of varing from 10 to 500, significance level of 0.05}
+       \image{}{}{Varing_Size_DCOV}
+\end{figure}
+\begin{figure}[Experiment 2 HSIC asymptotic vs real]{FIG:exp2HSIC}{Power comparison between the asymptotic and the real version of HSIC ffor different relation patterns with sample sizes of varing from 10 to 500, significance level of 0.05}
+       \image{}{}{Varing_Size_HSIC}
+\end{figure}
+\begin{figure}[Experiment 2 RDC asymptotic vs real]{FIG:exp2RDC}{Power comparison between the asymptotic and the real version of RDC for different relation patterns with sample sizes of varing from 10 to 500, significance level of 0.05}
+       \image{}{}{Varing_Size_RDC}
+\end{figure}
 
-
+For our last experiment we studied how rotating variables may affect the power of our tests, Figure \ref{FIG:RotationSample} shows samples of the same data with different rotation angle.
 

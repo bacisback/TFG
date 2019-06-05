@@ -102,7 +102,7 @@ First of all we will start with RDC:
 For size 500, we've obtained a pvalue of 0.3564, therefore we accept the null hypothesis $H_{0}: RDC\sim \mathcal{X}^{2}_{9}$ for significance levels of 0.1,0.05 and 0.01. Figure \ref{FIG:RDC500} shows the pdf, qq plot, pp plot and cdf of our statistic with the one of the $\mathcal{X}^{2}_{9}$distribution
 
 \begin{figure}[RDC Asymptotic distribution]{FIG:RDC500}{RDC statistic with a chi-squared distribution with 9 degrees of freedom}
-       \image{}{}{RDC500_pval=0.03564}
+       \image{}{}{RDCbonito}
 \end{figure}
 
 With HSIC distribution:
@@ -126,64 +126,13 @@ $$\Sigma_{1} =\begin{vmatrix}1&0\\0&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix
 To the Y variable we will add  Gaussian noise going from 0 to 3
 $ Y = Y + \mathcal{N}(0,noise) $.
 
-Figures \ref{FIG:DCOV50},\ref{FIG:DCOV100},\ref{FIG:DCOV150},\ref{FIG:DCOV200},\ref{FIG:DCOV500} and \ref{FIG:DCOV1000} show the power of DCOV,  for sizes 50,100,150,200,500 and 1000 respectively.
+Figures \ref{FIG:DCOV1000} , \ref{FIG:RDC1000}, \ref{FIG:HSIC1000}, showcase the power of the real tests vs the asymptotic version for sample sizes of 1000  for DCOV,RDC and HSIC respectively. In the Appendix \ref{Apendix} it's show this experiment for sample sizes 50,100,150,200 and 500.
 
-Figures \ref{FIG:HSIC50},\ref{FIG:HSIC100},\ref{FIG:HSIC150},\ref{FIG:HSIC200},\ref{FIG:HSIC500} and \ref{FIG:HSIC1000} show the power of HSIC,  for sizes 50,100,150,200,500 and 1000 respectively.
-
-Figures \ref{FIG:RDC50},\ref{FIG:RDC100},\ref{FIG:RDC150},\ref{FIG:RDC200},\ref{FIG:RDC500} and \ref{FIG:RDC1000} show the power of RDC,  for sizes 50,100,150,200,500 and 1000 respectively.
-
-\begin{figure}[DCOV asymptotic size 50]{FIG:DCOV50}{Power comparison between the asymptotic and the real version of DCOV for sample size 50}
-       \image{12cm}{5cm}{powersCheto/DCOV50}
-\end{figure}
-\begin{figure}[DCOV asymptotic size 100]{FIG:DCOV100}{Power comparison between the asymptotic and the real version of DCOV for sample size 100}
-       \image{12cm}{5cm}{powersCheto/DCOV100}
-\end{figure}
-\begin{figure}[DCOV asymptotic size 150]{FIG:DCOV150}{Power comparison between the asymptotic and the real version of DCOV for sample size 150}
-       \image{12cm}{5cm}{powersCheto/DCOV150}
-\end{figure}
-\begin{figure}[DCOV asymptotic size 200]{FIG:DCOV200}{Power comparison between the asymptotic and the real version of DCOV for sample size 200}
-       \image{12cm}{5cm}{powersCheto/DCOV200}
-\end{figure}
-\begin{figure}[DCOV asymptotic size 500]{FIG:DCOV500}{Power comparison between the asymptotic and the real version of DCOV for sample size 500}
-       \image{12cm}{5cm}{powersCheto/DCOV500}
-\end{figure}
 \begin{figure}[DCOV asymptotic size 1000]{FIG:DCOV1000}{Power comparison between the asymptotic and the real version of DCOV for sample size 1000}
        \image{12cm}{5cm}{powersCheto/DCOV1000}
 \end{figure}
-
-\begin{figure}[HSIC asymptotic size 50]{FIG:HSIC50}{Power comparison between the asymptotic and the real version of HSIC for sample size 50}
-       \image{12cm}{5cm}{powersCheto/HSIC50version}
-\end{figure}
-\begin{figure}[HSIC asymptotic size 100]{FIG:HSIC100}{Power comparison between the asymptotic and the real version of HSIC for sample size 100}
-       \image{12cm}{5cm}{powersCheto/HSIC100version}
-\end{figure}
-\begin{figure}[HSIC asymptotic size 150]{FIG:HSIC150}{Power comparison between the asymptotic and the real version of HSIC for sample size 150}
-       \image{12cm}{5cm}{powersCheto/HSIC150version}
-\end{figure}
-\begin{figure}[HSIC asymptotic size 200]{FIG:HSIC200}{Power comparison between the asymptotic and the real version of HSIC for sample size 200}
-       \image{12cm}{5cm}{powersCheto/HSIC200version}
-\end{figure}
-\begin{figure}[HSIC asymptotic size 500]{FIG:HSIC500}{Power comparison between the asymptotic and the real version of HSIC for sample size 500}
-       \image{12cm}{5cm}{powersCheto/HSIC500version}
-\end{figure}
 \begin{figure}[HSIC asymptotic size 1000]{FIG:HSIC1000}{Power comparison between the asymptotic and the real version of HSIC for sample size 1000}
        \image{12cm}{5cm}{powersCheto/HSIC1000version}
-\end{figure}
-
-\begin{figure}[RDC asymptotic size 50]{FIG:RDC50}{Power comparison between the asymptotic and the real version of RDC for sample size 50}
-       \image{15cm}{5cm}{powersCheto/RDC50Version}
-\end{figure}
-\begin{figure}[RDC asymptotic size 100]{FIG:RDC100}{Power comparison between the asymptotic and the real version of RDC for sample size 100}
-       \image{15cm}{5cm}{powersCheto/RDC100Version}
-\end{figure}
-\begin{figure}[RDC asymptotic size 150]{FIG:RDC150}{Power comparison between the asymptotic and the real version of RDC for sample size 150}
-       \image{15cm}{5cm}{powersCheto/RDC150Version}
-\end{figure}
-\begin{figure}[RDC asymptotic size 200]{FIG:RDC200}{Power comparison between the asymptotic and the real version of RDC for sample size 200}
-       \image{15cm}{5cm}{powersCheto/RDC200Version}
-\end{figure}
-\begin{figure}[RDC asymptotic size 500]{FIG:RDC500}{Power comparison between the asymptotic and the real version of RDC for sample size 500}
-       \image{15cm}{5cm}{powersCheto/RDC500Version}
 \end{figure}
 \begin{figure}[RDC asymptotic size 1000]{FIG:RDC1000}{Power comparison between the asymptotic and the real version of RDC for sample size 1000}
        \image{15cm}{5cm}{powersCheto/RDC1000Version}
@@ -205,7 +154,9 @@ Starting with the first experiment \ref{exp:1}, we reproduced the same experimen
        \image{}{}{RDC_exp1_asympt}
 \end{figure}
 
+
 In the second experiment where we studied how good our test was for different sizes and , in this experiment we will see how RDC will outperform the other two tests in their asymptotic behaviour, this may be explained by the fact that HSIC and DCOV asymptotics distributions used for the test were good aproximations of the real one, while in RDC we used the actual asymptotic distribution. Figures \ref{FIG:exp2DCOV}, \ref{FIG:exp2HSIC}, \ref{FIG:exp2RDC} show respectively the obtained results.
+
 \begin{figure}[Experiment 2 DCOV asymptotic vs real]{FIG:exp2DCOV}{Power comparison between the asymptotic and the real version of DCOV for different relation patterns with sample sizes of varing from 10 to 500, significance level of 0.05}
        \image{}{}{Varing_Size_DCOV}
 \end{figure}
@@ -217,8 +168,11 @@ In the second experiment where we studied how good our test was for different si
 \end{figure}
 
 
+For our last experiment we studied how rotating variables may affect the power of our tests, Figure \ref{FIG:RotationSample} shows samples of the same data with different rotation angle. Figure \ref{FIG:rotationAs} presents shows that the asymptotic version of our tests is more conservative than the experimental one. This behaviour was already seen in all the previous experiments. 
 
-For our last experiment we studied how rotating variables may affect the power of our tests, Figure \ref{FIG:RotationSample} shows samples of the same data with different rotation angle.
+\begin{figure}[Experiment 3 asymptotic vs experimental]{FIG:rotationAs}{Power comparison between the asymptotic and the real version of HSIC,RDC and DCOV for different rotation angles of the same data}
+       \image{}{}{RotationAsympt}
+\end{figure}
 
 \clearpage
 \section{Time}

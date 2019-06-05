@@ -162,7 +162,7 @@ Let (X,Y),(X',Y'),(X'',Y'') $\sim \mathbb{P}_{XY}$ be iid copies of (X,Y), it ho
 &-2\mathbb{E}_{XY}[\mathbb{E}_{X'}\norm{X-X'}_{d_{x}}\mathbb{E}_{Y'}\norm{Y-Y'}_{d_{y}}]
 \end{split}
 \end{equation} 
-This proof is similar to the one of \cite{DcovDemRara}. therefore we will leave it for the interested readers.
+This proof is similar to the one of \ref{DcovDemRara}. therefore we will leave it for the interested readers.
 \end{lem}
 
 \subsection{Statistics}
@@ -259,17 +259,16 @@ $$
 \end{thm}
 
 \begin{proof}
-Lemma \cite{cd} implies that there exist constants $c_{p}$ and $c_{q}$ such that for all $X\in \mathbb{R}^{p}, y\in \mathbb{R}^{q}$.
+Lemma \ref{cd} implies that there exist constants $c_{p}$ and $c_{q}$ such that for all $X\in \mathbb{R}^{p}, y\in \mathbb{R}^{q}$.
 
-$$
-\int_{\mathbb{R}^{p}}\frac{1- exp[i<t,X>]}{\norm{t}_{p}^{1+p}}dt = c_p\norm{X}_{p}
-$$
-$$
-\int_{\mathbb{R}^{q}}\frac{1- exp[i<s,Y>]}{\norm{s}_{p}^{1+p}}dt = c_q\norm{Y}_{q}\\
-$$
-$$
-\int_{\mathbb{R}^{p}}\int_{\mathbb{R}^{q}}\frac{1- exp[i<t,X>+i<s,Y>]}{\norm{t}_{p}^{1+p}\norm{s}_{p}^{1+p}}dt = c_qc_p\norm{X}_{p}\norm{Y}_{q}
-$$
+\begin{equation}{}
+\begin{split}
+&\int_{\mathbb{R}^{p}}\frac{1- exp[i<t,X>]}{\norm{t}_{p}^{1+p}}dt = c_p\norm{X}_{p} \\
+&\int_{\mathbb{R}^{q}}\frac{1- exp[i<s,Y>]}{\norm{s}_{p}^{1+p}}dt = c_q\norm{Y}_{q} \\
+&\int_{\mathbb{R}^{p}}\int_{\mathbb{R}^{q}}\frac{1- exp[i<t,X>+i<s,Y>]}{\norm{t}_{p}^{1+p}\norm{s}_{p}^{1+p}}dt = c_{q}c_{p}\norm{X}_{p}\norm{Y}_{q}
+\end{split}
+\end{equation}
+
 where the integrals are understood in the principal value sense. For simplicity, consider the case p=q=1. The distance between the empirical characteristic functions in the weighted norm involves $\norm{f_{XY}^{n}(t,s)}^{2}$ , $\norm{f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}$ and $\overline{f_{XY}^{n}(t,s)}f_{X}^{n}(t)f_{Y}^{n}(s)$.
 Now we will give the result of evaluating this, due to the similarity to previous demostrations.
 
@@ -282,7 +281,7 @@ $\norm{f_{X}^{n}(t)f_{Y}^{n}(s)}^{2} = \frac{1}{n^{2}}\sum_{k,l=1}^{n} cos(X_{k}
 $\overline{f_{XY}^{n}(t,s)}f_{X}^{n}(t)f_{Y}^{n}(s) = \frac{1}{n^{3}}\sum_{k,l,m=1}^{n} cos(X_{k}-X_{l})tcos(Y_{k}-Y_{l})s + V_{3}$
 
 
-where $V_{2}$ and $V_{3}$ represent terms that vanish when the integral is evaluated. To evaluate the integral $\norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}$, apply \cite{cd} and use:
+where $V_{2}$ and $V_{3}$ represent terms that vanish when the integral is evaluated. To evaluate the integral $\norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}$, apply Lemma \ref{cd} and use:
 
 $$
 cos(u)cos(v) = 1-(1-cos(u))-(1-cos(v))+(1-cos(u))(1-cos(v))
@@ -307,15 +306,13 @@ $$
 
 Where:
 
-$$
-S_{1} =\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{j}}_{q}
-$$
-$$
-S_{2} =\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{j}}_{q}
-$$
-$$
-S_{1} =\frac{1}{n^{3}} \sum_{i=1}^{n}\sum_{j,k=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{k}}_{q}
-$$
+\begin{equation}{}
+\begin{split}
+& S_{1} =\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{j}}_{q} \\
+& S_{2} =\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{j}}_{q} \\
+&S_{1} =\frac{1}{n^{3}} \sum_{i=1}^{n}\sum_{j,k=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{k}}_{q}
+\end{split}
+\end{equation}
 \end{proof}
 Now that we have proven the equality we will proove the theorem \ref{Objective}
 \begin{proof}
@@ -371,7 +368,7 @@ The Cauchy–Schwarz inequality states that for all vectors u and v of an inner 
 
 $|\langle \mathbf {u} ,\mathbf {v} \rangle |^{2}\leq \langle \mathbf {u} ,\mathbf {u} \rangle \cdot \langle \mathbf {v} ,\mathbf {v} \rangle $
 
-where $ \langle \cdot ,\cdot \rangle $ is the inner product. By taking the square root of both sides, and referring to the norms of the vectors, the inequality is written as \cite{C-S-B_inequality1}\cite{C-S-B_inequality2}
+where $ \langle \cdot ,\cdot \rangle $ is the inner product. By taking the square root of both sides, and referring to the norms of the vectors, the inequality is written as \cite{C-S-B_inequality1}, \cite{C-S-B_inequality2}
 
 $ |\langle \mathbf {u} ,\mathbf {v} \rangle |\leq \|\mathbf {u} \|\|\mathbf {v} \|$
 
@@ -388,9 +385,9 @@ one can obtain that:
 \leq 2 \norm{\frac{1}{n}\sum_{k=1}^{n}u_{k}v_{k}}^{2} + 2\norm{\frac{1}{n}\sum_{k=1}^{n}u_{k}\frac{1}{n}\sum_{k=1}^{n}v_{k}}^{2} \\
 &\leq \frac{4}{n}\sum_{k=1}^{n}\norm{u_{k}}^{2}\frac{1}{n}\sum_{k=1}^{n}\norm{v_{k}}^{2}
 \end{split}
-\end{equation}
+\end{equation}\label{eq_conaaazo}
 
-Therefore the first summand in \cite{asymptotic_inequality} satisfies
+Therefore the first summand in \ref{asymptotic_inequality} satisfies
 
 $$
 \int_{\norm{t}_{p}\leq\theta}\norm{\zeta(t,s)}^{2}dw \leq \frac{4}{n}\sum_{k=1}^{n}\int_{\norm{t}_{p}\leq\theta} \frac{\norm{u_{k}}^{2}dt}{c_{p}\norm{t}^{1+p}_{p}}\frac{1}{n}\sum_{k=1}^{n}\int_{\mathbb{R}^{q}}\frac{\norm{v_{k}}^{2}ds}{c_{q}\norm{s}^{1+q}_{q}}
@@ -407,10 +404,62 @@ where the expectation $E_{Y}$ is taken with respect to Y, and Y'$=^{D}Y$ is inde
 \begin{equation}{}
 \begin{split}
 \int_{\norm{t}_{p}\leq\theta} \frac{\norm{u_{k}}^{2}dt}{c_{p}\norm{t}^{1+p}_{p}} &
-= 
+= 2E_{X}\norm{X_{k}-X}G(\norm{X_{k}-X}\theta) - E\norm{X-X'}G(\norm{X-X'}\theta) \\
+&\leq  2E_{X}\norm{X_{k}-X}G(\norm{X_{k}-X}\theta)
 \end{split}
 \end{equation}
+
+Therefore from \ref{eq_conaaazo}:
+
+$$
+\norm{\zeta_{n}(t,s)}^{2} \leq 4\frac{2}{n}\sum_{k=1}^{n}(\abs{Y_{k}}+ E\abs{Y})\frac{2}{n}\sum_{k=1}^{n}E_{X}\norm{X_{k}-X}G(\norm{X_{k}-X}\theta)
+$$
+
+By the SLLN:
+$$
+\limsup_{n\rightarrow\infty}\int_{\norm{t}_{p}\leq\theta}\norm{\zeta_{n}(t,s)}^{2} dw = 0
+$$
+almost surely.
+
+Now for the second summand in \ref{asymptotic_inequality}. Inequalities \label{eq_conaaazo} imply that $\norm{u_k}^{2} \leq 4$ and $\frac{1}{n}\sum_{k=1}^{n}\norm{u_k}^{2}\leq 4$. 
+
+Which lead us with further calculation to:
+
+$$
+\limsup_{\theta\rightarrow0}\limsup_{n\rightarrow\infty}\int_{\norm{t}_{p}\leq\theta}\norm{\zeta_{n}(t,s)}^{2} dw = 0
+$$
+
+For the rest of the summands it's pretty similar, which lead us to what we wanted to proof:
+
+$$
+\lim\sup_{\theta \to 0} \lim\sup_{n \to \infty} \norm{\nu^{2}_{n,\theta}-\nu^{2}_{n}} = 0
+$$
 \end{proof}
+
+\begin{prop}
+As a corollary for the theorem \ref{Objective} 
+if $\mathbb{E}\norm{X} + \mathbb{E}\norm{Y} < \infty$ then
+
+$$
+\lim_{n\to\infty} \mathcal{R}^{2}_{n}(x,y) \xrightarrow{a.s} \mathcal{R}^{2}(X,Y)
+$$
+\end{prop}
+
+\paragraph{Asymptotic properties of n$\nu^{2}$}
+
+In \cite{DCOV_1} Section 2.4 \textit{Asymptotic properties of n$\nu^{2}$}, it is proven that if $\mathbb{E}\norm{X+Y}< \infty$ then $\nu^{2}\frac{n}{S2}$ converges in distribution to a quadratic form.
+\begin{equation}{Asymptotic quadratic form of DCOV}
+Q =^{D}\sum_{j=1}^{\infty} \lambda_{j}Z_{j}^{2}
+\end{equation}
+where $Z_{j}$ are independent standard normal random variables, a$\lambda_{j}$ are non-negative constants that depend on the distribution og (X,Y), and $E(Q)=1$.
+
+As calculating this distribution is not efficient, in order to create a asymptotic test with a significance level we will use that: the tail of the quadratic form it's similar enough to the one of a Chisquared with one degree of freedom.
+
+$$
+\nu^{2}\frac{n}{S2} \geq \mathcal{X}_{1;1-\alpha}^{2}
+$$ 
+
+where $\mathcal{X}_{1}^{2}$ denotes a Chisquared distribution with one degree of freedom, and let $0<\alpha\leq0.215$. This result is taken from \cite{DCOV_Chisq}, page 181.
 
 
 

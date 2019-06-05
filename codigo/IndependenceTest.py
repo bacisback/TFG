@@ -105,7 +105,7 @@ class IndependenceTest:
 				sol += self.test(x,y,0.05)
 			sol = sol*1./perms
 			self.solutions[row,i] = sol
-	def test_rotation(self,anglein,angleend,steps,size,perms=500):
+	def test_rotation(self,anglein,angleend,steps,size,perms=100):
 		angle = np.linspace(anglein,angleend,steps)
 		for i in range(steps):
 			sol = 0

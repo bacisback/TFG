@@ -151,7 +151,7 @@ tester.add_test(hsic)
 tester.compute_times(20,10,1000)
 """
 n = 200
-steps =50
+steps =20
 titles=["Rotation"]
 tester = Tester([],titles,steps,200)
 dcov = DCOV_IndependenceTest(len(titles),steps,titles)
@@ -161,7 +161,7 @@ hsic = HSIC_IndependenceTest(len(titles),steps,titles)
 tester.add_test(dcov)
 tester.add_test(rdc)
 tester.add_test(hsic)
-tester.rotation_test(0,2)
+tester.rotation_test(0,0.25)
 #dcov.test_rotation(0,2,20,200)
-tester.print("rotations/Asymptotic/")
+tester.print("rotations/Asymptotic/peque")
 tester.plot()

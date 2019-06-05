@@ -18,7 +18,7 @@ In order to ensure that our system was as modular as possible, we followed the d
 
 \section{Specific details about each independence test implementation}
 
-In order to compute efficiently all statistics we will make use of matricial calculus which will help reducing the amount of operations needed, which will help with the overall performance. Code \ref{CODE:MEDIAN}3.2 shows how we calculate the hyperparameter for the Gaussian kernel in HSIC as an example of what we mean in the previous sentence.
+In order to compute efficiently all statistics we will make use of matricial calculus which will help reducing the amount of operations needed, which will help with the overall performance. Code 3.2 shows how we calculate the hyperparameter for the Gaussian kernel in HSIC as an example of what we mean in the previous sentence.
 
 \label{CODE:MEDIAN}\PythonCode[sfds]{Median for x}{Sample of how to calculate the median of the distances for a sample $x\in\mathbb{R}^{n}$ }{DistanceMatrix.py}{1}{8}{1}
 
@@ -26,7 +26,7 @@ In order to compute efficiently all statistics we will make use of matricial cal
 
 As explained in section \ref{SEC:RDC} the parameter k will improve the performance of the test the largest it is, but due to numerical issues, if k is too large,then rank($\Phi(X)$) < k or rank($\Phi(Y)$) < k, so we need to find the largest k such that the eigenvalues, solutions of the canonical correlation analysis,  are real-valued. As this is a problem dependant of the data, we will preform a binary search for the largest k which meets the condition. As the complexity of RDC is $O(k^{2}n)$ adding a binary search to the algorithm wont affect its overall complexity as the complexity of the binary search is $O(log(k))$, which is irrelevant.
 
-In order to compute RDC, we needed to calculate the canonical correlation analysis, which is not implemented in python. Code 3.3\ref{CODE:CANCOR} shows how we calculate the canonical correlation analysis in python.
+In order to compute RDC, we needed to calculate the canonical correlation analysis, which is not implemented in python. Code 3.3 shows how we calculate the canonical correlation analysis in python.
 
 \label{CODE:CANCOR}\PythonCode[CODE:CANCOR1]{Canonical Correlation Analysis}{Canonical correlation analysis in python}{Cancor.py}{1}{38}{1}
 
@@ -78,7 +78,7 @@ As a version control system we used git, which provides simplicity and comes wit
 
 In addition of version control we used \href{Travis-CI}{https://travis-ci.org/} in order to automatically test all changes made. \href{Travis CI}{https://github.com/travis-ci/travis-ci/blob/master/README.md} is a hosted continuous integration service used to build and test software projects hosted at GitHub, furthermore this tool is free for open projects.
 
-Travis-CI is configured by adding a file named \textit{.travis.yml} to the root of the repository, specifying programming language used, the desired building and testing environment, the script to run the tests, when and what to do whenever a pettition is made to the repository. Code \ref{CODE:TRAVIS}3.4 shows an example of a \textit{.travis.yml}.
+Travis-CI is configured by adding a file named \textit{.travis.yml} to the root of the repository, specifying programming language used, the desired building and testing environment, the script to run the tests, when and what to do whenever a pettition is made to the repository. Code 3.4 shows an example of a \textit{.travis.yml}.
 
 \label{CODE:TRAVIS}\MakeCode[fdsf]{Travis CI yml}{yml file used in order to incorporate Travis-CI in our repository.}{travis.yml}{1}{20}{1}
 
@@ -86,5 +86,5 @@ Travis-CI is configured by adding a file named \textit{.travis.yml} to the root 
 To sum up this section Figure \ref{FIG:SumDev} presents graphically the development process of this project showcasing the different tools used and their relations.
 
 \begin{figure}[Summary of the development process]{FIG:SumDev}{Diagram showcasing the different tools used to create this project and their relations.}
-       \image{}{}{Integration}
+       \image{15cm}{12cm}{Integration}
 \end{figure}

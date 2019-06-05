@@ -95,9 +95,9 @@ class Tester:
 			with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
 				futures = {executor.submit(test.test_varing_size,generate_func[i],ninit,nend,steps, i) for test in self.tests}
 				concurrent.futures.wait(futures)
-	def rotation_test(self,anglein,angleend,steps):
+	def rotation_test(self,anglein,angleend):
 		with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-			futures = {executor.submit(test.test_rotation,anglein,angleend,steps,self.size) for test in self.tests}
+			futures = {executor.submit(test.test_rotation,anglein,angleend,self.steps,self.n) for test in self.tests}
 			concurrent.futures.wait(futures)
 		
 """ EXP 2
@@ -136,6 +136,7 @@ tester.print("exp1Asint/2")
 """
 
 """TIMES"""
+"""
 titles = ["None"]
 steps = 10
 n = 200
@@ -148,3 +149,19 @@ tester.add_test(dcov)
 tester.add_test(rdc)
 tester.add_test(hsic)
 tester.compute_times(20,10,1000)
+"""
+n = 200
+steps =50
+titles=["Rotation"]
+tester = Tester([],titles,steps,200)
+dcov = DCOV_IndependenceTest(len(titles),steps,titles)
+#dcov.test_varing_size(bivariate_gaussian,ninit,nend,steps,1)
+rdc = RDC_IndependenceTest(len(titles),steps,titles)
+hsic = HSIC_IndependenceTest(len(titles),steps,titles)
+tester.add_test(dcov)
+tester.add_test(rdc)
+tester.add_test(hsic)
+tester.rotation_test(0,2)
+#dcov.test_rotation(0,2,20,200)
+tester.print("rotations/Asymptotic/")
+tester.plot()

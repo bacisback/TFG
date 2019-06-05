@@ -24,7 +24,9 @@ In order to compute efficiently all statistics we will make use of matricial cal
 
 \subsection{RDC}
 
-As explained in section \ref{SEC:RDC} the parameter k will improve the performance of the test the largest it is, but due to numerical issues, if k is too large,then rank($\Phi(X)$) < k or rank($\Phi(Y)$) < k, so we need to find the largest k such that the eigenvalues, solutions of the canonical correlation analysis,  are real-valued. As this is a problem dependant of the data, we will preform a binary search for the largest k which meets the condition. Code 3.3\ref{CODE:CANCOR} shows how to calculate the canonical correlation analysis in python.
+As explained in section \ref{SEC:RDC} the parameter k will improve the performance of the test the largest it is, but due to numerical issues, if k is too large,then rank($\Phi(X)$) < k or rank($\Phi(Y)$) < k, so we need to find the largest k such that the eigenvalues, solutions of the canonical correlation analysis,  are real-valued. As this is a problem dependant of the data, we will preform a binary search for the largest k which meets the condition. As the complexity of RDC is $O(k^{2}n)$ adding a binary search to the algorithm wont affect its overall complexity as the complexity of the binary search is $O(log(k))$, which is irrelevant.
+
+In order to compute RDC, we needed to calculate the canonical correlation analysis, which is not implemented in python. Code 3.3\ref{CODE:CANCOR} shows how we calculate the canonical correlation analysis in python.
 
 \label{CODE:CANCOR}\PythonCode[CODE:CANCOR1]{Canonical Correlation Analysis}{Canonical correlation analysis in python}{Cancor.py}{1}{38}{1}
 

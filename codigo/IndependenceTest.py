@@ -2,6 +2,7 @@ from abc import abstractmethod, ABCMeta
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+from funciones import *
 
 class IndependenceTest:
 	__metaclass__ = ABCMeta
@@ -71,8 +72,8 @@ class IndependenceTest:
 		plt.plot(division,self.times[1,:],'r', label ="Mean")
 		plt.plot(division,self.times[0,:],'b', label ="First Quantile")
 		plt.plot(division,self.times[2,:],'b', label ="Third Quantile")
-		plt.xlabel(Size)
-		plt.ylabel(Time)
+		plt.xlabel("Size")
+		plt.ylabel("Time")
 		plt.title(self.__name)
 		plt.savefig("figuras/TIMES/"+self.__name+".png")
 
@@ -112,5 +113,5 @@ class IndependenceTest:
 				x,y = rotation(size,angle[i]*np.pi)
 				sol += self.test(x,y,0.05)
 			sol = sol*1./perms
-			self.solutions[1,i] = sol
+			self.solutions[0,i] = sol
 

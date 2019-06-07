@@ -1,15 +1,18 @@
 In the previous chapter we've explained the tests that we will be developening. In this section we will explain the software design process, starting with analysis of the tests in order to provide a general overview of the problem for a better understanding of the choices taken.
+As we've explained our goal for this project is to study three different independence tests, implement them and compare them in order to determine in which scenarios a test should be prefered over the others. With this in mind it's easy to see that this experiment in the future may be used again with more independence test as they shall arise in the scientific field.
 \subsection{Analysis}
 
-Our goal is to create an scalable and easy to modify software for different types of datasets, experiments and types of datasets.
+As we said in the previous introduction to the chapter the biggest requirement in our project is for it to be scalable and easy to modify, the scope of bein scalable includes not only the structure of the testing, where adding new tests needs to be as easy as possible, but it goes as far as the different types of datasets that may be used, shall they be a function which generates them or a database; the experiments which will be performed to the tests, should they study how any parameter may affect the performance of the independence tests, for example:
+studying how varying the sample size of the data may affect the overall performance, applying different functions to the data, such as rotating the data, and  seeing how adding small variations to the data like Gaussian noise may affect the measures.
 
-On the grounds that we need to measure time differences between methods all software must be developed in the same language assuring that the differences in performance come from the actual algorithim and not the language difference.
+On the grounds that we need to measure performance differences between methods all software must be developed in the same language assuring that the obtained results come from the actual algorithim and not the language difference, for example if one algorithm were to be implemented in C and another in Python and we were to analyze time performance of our algorithms, the results wont be concluyent because the differences found may be produced only because a good programmer in C will manage the memory and the data access way more acurately than the one in python.
 
-Given the volume of data that we will be working with efficiency is of key importance, therefore parallelization will be heavily used to ensure a fast process of data. 
+Other aspect to take into account is that given the volume of data that we will be working with efficiency is of key importance, therefore parallelization will be heavily used to ensure a fast process of data. This requirement implies much more than only being efficient, as mentioned before, our software needs to be scalable, as we may add new tests, measures, and data, if we intend to parallelizate, we will need to make the software as modular as possible in order to avoid complications in the future and handle the posible growth of the project.
 
-As the experiments may be reused in the future and new independence tests may be added, the software has to be scalable and with a  modular approach in order to handle the posible growth of the project.
 
 \subsection{Design}
+
+With all the requirements specified in the previous section, now we will explain the design chosen to implement our project.
 
 All our software is built around two classes: IndependenceTest and IndependenceTestTester. Both being abstract classes which held the code for the independence tests and the experiments respectively \ref{FIG:ClassDiagram} shows the class diagram of our project.
 
@@ -21,20 +24,34 @@ All our software is built around two classes: IndependenceTest and IndependenceT
 
 This abstract class helds the main core which all independence tests will inherit.
 
-All tests will control their own data and the progress of the experiments within themselfs, allowing an easy paralelization. All tests will include a name, the titles for each subplot that will be made in the main plot, and the development of the experiment in a matrix called solutions.
-Furthermore this abstract class contains the functionality of plotting the results of the experiment for a given test, computing the time cost of an experiment and generating an empirical histogram of the statistic.
+As one of the requirement is for the software to be modular, all tests will control their own data and the progress of the experiments within themselves, the internal variables are the following: 
+Name,a string containing the name of the test, this will be automatically given to the mother class constructor by the child's constructors, this will help the implementation of plotting, which will also be held by the IndependenceTests.
+Solutions, a matrix of floats which will include the progress of the experiment. The child's constructor will need to know the number of different variations which will be performed and the number of different data sets which will be used, because they will be the number of columns and rows of this matrix respectively.
+Titles, as mentioned before, this class will held the implementation of the plots within itself, this variable contains the title of each subplot.
 
-The specific implementation of the test will be held in an abstract function called test which will be implemented in each child object.
+This design will allow us an easy paralelization,as will be shown in \cref{CAP:DEVPMT}, where we will dive in depth on how we parallelized our project.
+
+All functionality will be held in this abstract class containing all functionality, such as plotting the results of the experiment for a given test, computing the time cost of an experiment and generating an empirical histogram of the statistic. The specific implementation of the test will be held in an abstract function called test which will be implemented in each child object.
+
+To sum things up for this class,Figure \ref{FIG:ejemplo_generico} will be included the sequence diagram for plotting, which showcase the general idea of how any functionality will be implemented besides the experiments, which are more complex, Figure \ref{FIG:SequenceDiagram} contains the sequence diagram of any experiment which is the only process which differs from the general one shown in \ref{FIG:ejemplo_generico}.
+
+\begin{figure}[Sequence diagram of plotting]{FIG:ejemplo_generico}{Sequence diagram for plots}
+       \image{}{}{SeqBas}
+\end{figure}
+
 
 \paragraph{IndependenceTestTester}
 
-This abstract class implements the general functionalities of all the performed experiments, in order to allow for any amount of tests and the future addition of new tests, this class recives a list of IndependenceTests and will perform the desired experiments by calling the functions defined by IndependenceTest.
+As we've seen, while IndependenceTest helds the implementation for the dependence measures, this abstract class implements the general functionalities of all the performed experiments.
+As we've said, this software needs to be scalable for any amount of dependence measures which may not be implemented now, that's why we decided to create that abstract class, while each test may differ as much as needed one from another, all are forced to follow the same squeleton, allowing us to provide to our tests a list of IndependenceTest which are transparent to the class IndependenceTestTester, and the experiment will be performed by calling the function test of each instance, which will be overwritten by the child instance with each desired dependence measure.
 
-The parameters which will be general are: the functions used in order to generate the datasets and  the subtitles for the main plot. 
+This class recives: a list of IndependenceTests, a list of functions which will be used to generate data, this functions may be calls to a data base or functions which generate the data through random samples of a mixture of known probability distributions, the only requirement of this functions is for them to only have one parameter which is the sample size.
+
+The variables step and size are stored because each test needs the sample size which will be used, as this parameter may vary it's stored as a pointer to int (array). Step is the number of variations which will be performed.
 
 Finally in order to ensure the minimun amount of repeated code the functionality of measuring the power of a test given X and Y is implemented in a function called simulate, letting the task of modifying the datasets as needed to each child object. Figure \ref{FIG:SequenceDiagram} shows a sequence diagram of an experiment.
 
-\begin{figure}[Sequence diagram of an experiment]{FIG:SequenceDiagram}{Sequence diagram}
+\begin{figure}[Sequence diagram of an experiment]{FIG:SequenceDiagram}{Sequence diagram for experiments}
        \image{}{}{Experiment}
 \end{figure}
 

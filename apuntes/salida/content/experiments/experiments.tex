@@ -1,8 +1,9 @@
-In this chapter we will present the results of various experiments in which we will compare the power of the explained tests between them and with other state-of-the-art independence tests, as well as comparing the power of these tests based on their asimptotic distribution and their empirical distribution. and \cite{HSICdistribution}.
-
-In all our experiments, we set the number of random features for RDC to k = 3, and the random sampling width to s = $10^{-2}$. All kernel methods make use of a Gaussian kernel with width hyper-parameter set to the median of the euclidean distances between samples of each of the input random variables.
+In this chapter we will present the results of various experiments in which we will compare the power of the explained tests between them and with other state-of-the-art independence tests, as well as comparing the power of these tests based on their asimptotic distribution and their empirical distribution. and \cite{HSICdistribution}. This experiments will help us analyze in which conditions one dependence measure may be better than other.
+This is of key importance in various fields, such as multiple linear regression, where one of the hypothesis for the model to be functional is for all variables to be independent. Therefore finding if there is a dependant variable and erasing it from the model can drastically affect the performance of the classification. 
 
 \section{Power}
+
+In all our experiments, we set the number of random features for RDC to k = 3, and the random sampling width to s = $10^{-2}$. All kernel methods make use of a Gaussian kernel with width hyper-parameter set to the median of the euclidean distances between samples of each of the input random variables.
 
 \subsection{Real}
 First we will turn the issue of estimating the power of the RDC,HSIC and DCOV estimator. We define the power of a dependence measure as the percentage of times that it is able to discern between two samples with equal marginals, but one of them containing dependance.
@@ -17,7 +18,7 @@ To do so, we created three different experiments:
 
 Secondly for each of the 12 association patterns, we studied how Gaussian noise may affect the power of our test, with a noise increasing from 0 to 3 in 10 steps we generated 200 repetitions of 200 samples uniformly distributed on the unit interval and generated the pair with each association pattern, then we added Gaussian noise to the pair and normaliced both marginals.
 Figure \ref{FIG:Power1} shows for each subplot the power obtained with each association pattern. The x axis represents how the noise increases, and the y axis the power of the tests.
-
+\FloatBarrier
 \begin{figure}[Non linear dependance patterns example 1]{FIG:Patterns1}{Representation of non linear dependance patterns}
        \image{}{}{Patterns1}
 \end{figure}
@@ -25,7 +26,7 @@ Figure \ref{FIG:Power1} shows for each subplot the power obtained with each asso
 \begin{figure}[Power of tests uniform marginals same size adding noise]{FIG:Power1}{Power of tests adding Gaussian noise to marginals}
        \image{}{}{Power_Real_1}
 \end{figure}
-
+\FloatBarrier
 In our second experiment we studied different sets of data and studied how the sample size affected the power of our tests. This test is taken from \cite{Size}, the data sets are also taken from \cite{Size}.
 The first data set is a bivariate Gaussian with a correlation of 0.5, $(X,Y)\sim \mathcal{N}(0,\Sigma)$, where:
 
@@ -53,7 +54,7 @@ $$\Sigma_{1} =\begin{vmatrix}1&0\\0&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix
 
 The variables of the last example are generated as bivariate Gaussian random variable with correlation of 0.8 and then multiply each marginal with white Gaussian noise:
 
-$$(X,Y) = (Z_{1}\epsilon_{1},Z_{2}\epsilon_{2}) \text{where } Z\sim\mathcal{N}(0,\Sigma_{2}) and \epsilon_{1},\epsilon_{2}\sim\mathcal{N}(0,\Sigma_{1})$$
+$$(X,Y) = (Z_{1}\epsilon_{1},Z_{2}\epsilon_{2}) \text{where } Z\sim\mathcal{N}(0,\Sigma_{2}) \text{and} \epsilon_{1},\epsilon_{2}\sim\mathcal{N}(0,\Sigma_{1})$$
 
 Below samples from this data sets are displayed in \ref{FIG:Patterns2}. The power is measured for sample sizes 10,  91, 173, 255, 336, 418 and 500. For this experiment and the next one, we also compared the performance of RDC,HSIC and DCOV with other state of the art independence measures, being : 
 
@@ -65,7 +66,7 @@ MMD are used instead of negentropy
 \end{enumerate}
 
 The results of this experiment is presented in Figure \ref{FIG:PowerSize}. 
-
+\FloatBarrier
 \begin{figure}[Non linear dependance patterns example 2]{FIG:Patterns2}{Samples from the data sets for the second experiment}
        \image{}{}{Patterns2}
 \end{figure}
@@ -73,21 +74,21 @@ The results of this experiment is presented in Figure \ref{FIG:PowerSize}.
 \begin{figure}[Power of tests increasing sample size]{FIG:PowerSize}{Power of tests adding Gaussian noise to marginals}
        \image{}{}{power_varing_size_1}
 \end{figure}
-
+\FloatBarrier
 For this set of experiments in which we try to determine the power of the tests, we have performed a final experiment following \cite{Size} in which we studied the power of the tests and how they are affected by the rotation of the set.
 For this experiment we will use two independent random variables, X and Y, where X is a uniform random variable $(X\sim U[-\sqrt{3},\sqrt{3}])$ whereas Y is a mixture of two uniform random variables, each having equal probability of ocurrence on disjoint supports. That is, Y has density: $0.5U[-1,0.5] + 0.5U[0.5,1]$.
 
 We generate new pairs of random variables by rotating this random pair (X,Y). This will affect the dependence between them, this variables will be independent if and only if the angle of rotation is an integer multiple of pi, $n\cdot\pi : n\in\mathbb{Z}$. After this rotation we had scaled X,Y to have zero mean and unit variance.
 For this experiment we have generated 500 samples and tested the power for 100 rotation angles going from 0 to $2\pi$, with sample size 200. In Figure \ref{FIG:RotationSample} shows samples of the same data with different rotation angle.
 As we can see in Figure \ref{FIG:RotationPower} the function power for all tests is a $\frac{\pi}{2}$ even periodic function, which confirms that the potency of our tests does not depend on the sign of the correlation.
-
+\FloatBarrier
 \begin{figure}[Experiment 3 rotation pattern sample]{FIG:RotationSample}{Samples from the data sets for the third experiment}
        \image{}{}{rotationPatterns}
 \end{figure}
 \begin{figure}[Experiment 3 results]{FIG:RotationPower}{Power of the tests rotating the dataset}
        \image{15cm}{6cm}{rotation0-2-big}
 \end{figure}
-
+\FloatBarrier
 This concludes our first set of experiments, in the three experiments shown we can see that HSIC,DCOV and RDC are the sturdiest tests showing the best performance consistently. Among these threee tests RDC has proven to be the most consistent test, outperforming almost everytime the other tests. 
 
 
@@ -121,29 +122,29 @@ In our first experiment we will analyze them with a bivariate Gaussian with size
 $ X,Y \sim \mathcal{N}(0,\Sigma_{i}) $
 
 
-$$\Sigma_{1} =\begin{vmatrix}1&0\\0&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix}1&0.25\\0.25&1\\ \end{vmatrix} \Sigma_{3} =\begin{vmatrix}1&0.5\\0.5&1\\ \end{vmatrix} \Sigma_{4} =\begin{vmatrix}1&0.75\\0.75&1\\ \Sigma_{4} =\begin{vmatrix}1&1\\1&1\\ \end{vmatrix} \end{vmatrix}$$
+$$\Sigma_{1} =\begin{vmatrix}1&0\\0&1\\ \end{vmatrix} \Sigma_{2} =\begin{vmatrix}1&0.25\\0.25&1\\ \end{vmatrix} \Sigma_{3} =\begin{vmatrix}1&0.5\\0.5&1\\ \end{vmatrix} \Sigma_{4} =\begin{vmatrix}1&0.75\\0.75&1\\ \end{vmatrix} \Sigma_{5} =\begin{vmatrix}1&1\\1&1\\ \end{vmatrix} $$
 
 To the Y variable we will add  Gaussian noise going from 0 to 3
-$ Y = Y + \mathcal{N}(0,noise) $.
+$ Y = Y + \mathcal{N}(0,\text{noise}) $.
 
-Figures \ref{FIG:DCOV1000} , \ref{FIG:RDC1000}, \ref{FIG:HSIC1000}, showcase the power of the real tests vs the asymptotic version for sample sizes of 1000  for DCOV,RDC and HSIC respectively. In the Appendix \ref{Apendix} it's show this experiment for sample sizes 50,100,150,200 and 500.
-
+Figures \ref{FIG:DCOV1000} , \ref{FIG:RDC1000}, \ref{FIG:HSIC1000}, showcase the power of the real tests vs the asymptotic version for sample sizes of 1000  for DCOV,RDC and HSIC respectively. In the Appendix \ref{Appendix} it's show this experiment for sample sizes 50,100,150,200 and 500.
+\FloatBarrier
 \begin{figure}[DCOV asymptotic size 1000]{FIG:DCOV1000}{Power comparison between the asymptotic and the real version of DCOV for sample size 1000}
-       \image{12cm}{5cm}{powersCheto/DCOV1000}
+       \image{}{}{powersCheto/DCOV1000}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 1000]{FIG:HSIC1000}{Power comparison between the asymptotic and the real version of HSIC for sample size 1000}
-       \image{12cm}{5cm}{powersCheto/HSIC1000version}
+       \image{}{}{powersCheto/HSIC1000version}
 \end{figure}
 \begin{figure}[RDC asymptotic size 1000]{FIG:RDC1000}{Power comparison between the asymptotic and the real version of RDC for sample size 1000}
-       \image{15cm}{5cm}{powersCheto/RDC1000Version}
+       \image{}{}{powersCheto/RDC1000Version}
 \end{figure}
-
+\FloatBarrier
 For all tests we've seen how our null hypothesis is always conservative, this is always useful for situations where computation time is critical and the asymptotic version may be better because it minimizes type 1 error.
 
 Now we will study the differences one can see in the previous experiments if we perform the test with the asymptotic version instead of the \textit{real} one.
 
 Starting with the first experiment \ref{exp:1}, we reproduced the same experiment, with a significance level of 0.05, sample size of 200 and Gaussian noise going from 0 to 3. Figures \ref{FIG:exp1DCOV}, \ref{FIG:exp1HSIC}, \ref{FIG:exp1RDC} show the asymptotic behaviour of DCOV, HSIC and RDC against the original one respectively for the relation patterns shown in Figure \ref{FIG:Patterns1}
-
+\FloatBarrier
 \begin{figure}[Experiment 1 DCOV asymptotic vs real]{FIG:exp1DCOV}{Power comparison between the asymptotic and the real version of DCOV for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
        \image{}{}{DCOV_exp1_asympt}
 \end{figure}
@@ -153,10 +154,10 @@ Starting with the first experiment \ref{exp:1}, we reproduced the same experimen
 \begin{figure}[Experiment 1 RDC asymptotic vs real]{FIG:exp1RDC}{Power comparison between the asymptotic and the real version of RDC for different relation patterns with sample sizes of 200, significance level of 0.05 and Gaussian noise from 0 to 3}
        \image{}{}{RDC_exp1_asympt}
 \end{figure}
-
+\FloatBarrier
 
 In the second experiment where we studied how good our test was for different sizes and , in this experiment we will see how RDC will outperform the other two tests in their asymptotic behaviour, this may be explained by the fact that HSIC and DCOV asymptotics distributions used for the test were good aproximations of the real one, while in RDC we used the actual asymptotic distribution. Figures \ref{FIG:exp2DCOV}, \ref{FIG:exp2HSIC}, \ref{FIG:exp2RDC} show respectively the obtained results.
-
+\FloatBarrier
 \begin{figure}[Experiment 2 DCOV asymptotic vs real]{FIG:exp2DCOV}{Power comparison between the asymptotic and the real version of DCOV for different relation patterns with sample sizes of varing from 10 to 500, significance level of 0.05}
        \image{}{}{Varing_Size_DCOV}
 \end{figure}
@@ -166,21 +167,21 @@ In the second experiment where we studied how good our test was for different si
 \begin{figure}[Experiment 2 RDC asymptotic vs real]{FIG:exp2RDC}{Power comparison between the asymptotic and the real version of RDC for different relation patterns with sample sizes of varing from 10 to 500, significance level of 0.05}
        \image{}{}{Varing_Size_RDC}
 \end{figure}
-
+\FloatBarrier
 
 For our last experiment we studied how rotating variables may affect the power of our tests, Figure \ref{FIG:RotationSample} shows samples of the same data with different rotation angle. Figure \ref{FIG:rotationAs} presents shows that the asymptotic version of our tests is more conservative than the experimental one. This behaviour was already seen in all the previous experiments. 
-
+\FloatBarrier
 \begin{figure}[Experiment 3 asymptotic vs experimental]{FIG:rotationAs}{Power comparison between the asymptotic and the real version of HSIC,RDC and DCOV for different rotation angles of the same data}
        \image{}{}{RotationAsympt}
 \end{figure}
+\FloatBarrier
 
-\clearpage
 \section{Time}
 
 As we have seen in this experiments generally RDC outperforms the rest of tests, both in it's \textit{real} and asymptotic version. Now to conclude this set of experiments, we will compare the complexity and the times to calculate the statistic for sample sizes going from 10 to 1000.
 
 The following table, Table \ref{TB:Complex}, contains different charasteristics of the studied tests, as well as Pearson's$\rho$ to compare, taken from \cite{RDC1}. 
-
+\FloatBarrier
 \begin{table}[Table with the complexity of the algorithms]{TB:Complex}{Table with differences between the statistics and other relevant independence statistics.}
   \begin{tabular}{cccc}
     \hline \hline
@@ -193,9 +194,9 @@ The following table, Table \ref{TB:Complex}, contains different charasteristics 
     \hline
   \end{tabular}
 \end{table}
-
+\FloatBarrier
 Finally Figure \ref{FIG:TIMES} showcase how RDC is considerably faster than HSIC and DCOV. In the figure we can see how around 500 the time curve changes slope, that is because for samples larger than 500 for a bivariate Gaussian the optimal k changes from 3 to 4, therefore the slope increases on the basis of $\frac{16}{9}$. Figure \ref{PolAprox} showcases a polinomic aproximation for the times, where we can see how HSIC follows a quadratic form with respect to the sample size , while RDC follows a linear form with respect to the sample size.
-
+\FloatBarrier
 \begin{figure}[Time comparison]{FIG:TIMES}{Comparison of time needed to calculate each statistic with different sample sizes, going from 10 to 1000}
        \image{}{}{Times}
 \end{figure}
@@ -203,7 +204,7 @@ Finally Figure \ref{FIG:TIMES} showcase how RDC is considerably faster than HSIC
 \begin{figure}[Polinomical aproximation for HSIC and RDC time curve]{PolAprox}{Theorical polinomical aproximation of HSIC and RDC put against the mean of the time needed to calculate the statistic}
        \image{}{}{TimesPolinomicAprox}
 \end{figure}
-
+\FloatBarrier
 \section{Conclusion}
 
 In general RDC performs better than the other statistics, there are few case scenarios where it may be better to use another test, the most relevant one being the relation pattern step, where DCOV outperformed RDC. This may be important to notice because this relation pattern is two variables X,Y, where Y = heaviside(X), this relation pattern is of key importance various scientific fields, such as differential equations, where it represents a signal which switches on at a specified time and stays switched on indefinitely. 

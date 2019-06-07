@@ -18,22 +18,23 @@
 \contentsline {paragraph}{Asymptotic properties of n$\nu ^{2}$}{20}{section*.13}
 \contentsline {chapter}{\numberline {2}Design}{23}{chapter.2}
 \contentsline {subsection}{\numberline {2.0.1}Analysis}{23}{subsection.2.0.1}
-\contentsline {subsection}{\numberline {2.0.2}Design}{23}{subsection.2.0.2}
-\contentsline {paragraph}{IndependenceTest}{23}{section*.15}
-\contentsline {paragraph}{IndependenceTestTester}{24}{section*.16}
-\contentsline {chapter}{\numberline {3}Development}{27}{chapter.3}
-\contentsline {section}{\numberline {3.1}General aspects of implementation}{27}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Efficiency}{27}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Modularity and Scalabillity}{27}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Specific details about each independence test implementation}{28}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}RDC}{28}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}HSIC}{29}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Plots}{30}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Version control, repositories and continuous integration}{31}{section.3.3}
-\contentsline {chapter}{\numberline {4}Experiments}{33}{chapter.4}
-\contentsline {section}{\numberline {4.1}Power}{33}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Real}{33}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Asymptotic}{38}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Time}{45}{section.4.2}
-\contentsline {section}{\numberline {4.3}Conclusion}{47}{section.4.3}
-\contentsline {chapter}{\numberline {5}Appendix}{49}{chapter.5}
+\contentsline {subsection}{\numberline {2.0.2}Design}{24}{subsection.2.0.2}
+\contentsline {paragraph}{IndependenceTest}{24}{section*.15}
+\contentsline {paragraph}{IndependenceTestTester}{25}{section*.17}
+\contentsline {chapter}{\numberline {3}Development}{29}{chapter.3}
+\contentsline {section}{\numberline {3.1}General aspects of implementation}{29}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Efficiency}{29}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Modularity and Scalabillity}{32}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Specific details about each independence test implementation}{32}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}RDC}{32}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}HSIC}{32}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Plots}{34}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Version control, repositories and continuous integration}{35}{section.3.3}
+\contentsline {section}{\numberline {3.4}Software development}{37}{section.3.4}
+\contentsline {chapter}{\numberline {4}Experiments}{39}{chapter.4}
+\contentsline {section}{\numberline {4.1}Power}{39}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Real}{39}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Asymptotic}{45}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Time}{53}{section.4.2}
+\contentsline {section}{\numberline {4.3}Conclusion}{56}{section.4.3}
+\contentsline {chapter}{\numberline {5}Appendix}{57}{chapter.5}

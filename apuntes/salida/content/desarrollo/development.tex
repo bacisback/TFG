@@ -1,26 +1,39 @@
 In the previous section we presented the design aspects of our project, in this section we will introduce our development experience and the reasons behind each decision.
-First of all we will start by how we achieved the main goals of our software.
-We decided to implement all the functionality in python, although all plots shown comparing distributions were plotted in R, this is because of the simplicity which R provides to perform plots comparing distributions. This will be explained in detail in \ref{Plots}
+First of all we will start by how we achieved the main goals of our software, being: efficiency, modularity and scalability. In each of this subsections we will dive into subjects such as how we paralelized, which language was used and which tools were applied. We will follow with specific details about each independence test implementation, including ploblems which rose douring implementation. Finally we will conclude this chapter explaining how we kept track of the progress, backups testing and the project management. 
 
 \section{General aspects of implementation}
 
+As this software includes a heavy mathematical component we decided to implement all the functionality in Python, due to the amount of already existing mathematical libraries such as numpy and scipy, which were really helpfull douring the implementation of all functionality. The graphical display was mostly implemented in Python although all plots shown comparing distributions were plotted in R, this is because of the simplicity which R provides to perform plots comparing distributions. This will be explained in detail in \ref{Plots}.
+Now we will dive into how we achived each general requirement of our project.
+
+
 \subsection{Efficiency}
 
-As our project was implemented in python, we had access to numpy and scipy, which are libraries implemented in low levels languages, like C, Fortran and Cython, making them really efficient. Therefore, we used them whenever it was possible.
+In this subsection we will explain how we achived efficiency in this project, diving into parallelization and libraries used. The efficiency in our implementation, as memory in this project is generally a problem, is generally related to time efficiency, which is the key factor which might detrimine the performance of this measures and make us choose one over other.
+
+As our project was implemented in python, we had access to numpy and scipy, which are libraries implemented in low levels languages, like C, Fortran and Cython, making them really efficient. Therefore, we used them whenever it was possible, this also allowed us to use matricial calculus with numpy arrays, which not only makes the code easier to read, but it also makes it much more efficient reducing the number of for loops and operations. Code 3.1 shows how we calculate the hyperparameter for the Gaussian kernel in HSIC as an example of what we mean in the previous sentence.
+
+\label{CODE:MEDIAN}\PythonCode[sfds]{Median for x}{Sample of how to calculate the median of the distances for a sample $x\in\mathbb{R}^{n}$ }{DistanceMatrix.py}{1}{8}{1}
 
 In addition to the code, parallelization was key in our project in order to obtain results in a reasonable time span. All parallelization was created by threads, given the amount of parallel lines of code we were managing, and how little work each had to made, creating process for each line wouldn't have been optimal due to the time it takes to create a new process. 
-Most parallel process we generated a thread pool with the library \href{https://pythonhosted.org/futures/}{concurrent.futures} which provides a high level interface for asynchronously executing callables, which makes most of our simulations something as simple as shown in Code \ref{CODE:THREADPOOL}, which presents how to create an histogram of the statistic of all independence tests included in our independence test tester. The parameter of max workers is fixed to the amount of independence tests we have, this is because we already know how many threads we will need.
+For most parallel process we generated a thread pool with the library \href{https://pythonhosted.org/futures/}{concurrent.futures}\footnote{https://pythonhosted.org/futures/} which provides a high level interface for asynchronously executing callables, which makes most of our simulations something as simple as shown in Code 3.1, which presents how to create an histogram of the statistic of all independence tests included in our independence test tester and the amount of cores we will be using. The parameter of max workers is fixed to the maximum between the amount of independence tests we have and the number of cores of the computer. This is because if we are working with less threads than the number of cores there's no need to allow for more workers to be active, while if there are more independence tests than cores, then the computation time will decrease to the number of cores and increase afterwards, this is because of the cost of context switching. In order to showcase this fact we designed a small experiment where we generated different thread pools with different maximum number of workers, and sequerntially made the pools work in a simple task, calculate the inverse of 40 different matrix , and we studied how the number of maximum workers affected the time efficiency of the task. Figure \ref{FIG:TIME_POOL} shows how at 8 workers reaches it's peak, which is the number of cores of the computer performed the experiment.
+
+\begin{figure}[Time efficience varying the amount of workers]{FIG:TIME_POOL}{Testing how the number of workers affects the performance of a task.}
+       \image{}{}{threadPool_workers}
+\end{figure} 
+  
 \label{CODE:THREADPOOL}\PythonCode[iuhui]{Thead pool example}{Code sample of how to create a thread pool with concurrent.futures}{generate_histograms.py}{1}{3}{1}
 
 \subsection{Modularity and Scalabillity}
 
-In order to ensure that our system was as modular as possible, we followed the design presented in Figure \ref{FIG:ClassDiagram}. In order to create abstract classes in python we used the modules abstractmethod and ABCMeta from the abc package. Allowing for all main code of the test to be storaged in the child class while making all the experiments being transparent to the implementation beneath. In Code  \ref{CODE:THREADPOOL} is shown how for any independence test the calling mantains the same.
+Another requirement was for our software to be as modular and scalable as possible, this comes due to the fact that this experiments may be used again in the future whether other dependance measures may be compared.
+In order to ensure that our system was as modular as possible, we followed the design presented in Figure \ref{FIG:ClassDiagram}.
+For the implementation of the abstract classes in python we used the modules abstractmethod and ABCMeta from the abc package. Allowing for all main code of the test to be storaged in the child class while making all the experiments transparent to the implementation underneath. In Code  \ref{CODE:THREADPOOL} is shown how for any independence test the calling mantains the same.
 
 \section{Specific details about each independence test implementation}
 
-In order to compute efficiently all statistics we will make use of matricial calculus which will help reducing the amount of operations needed, which will help with the overall performance. Code 3.2 shows how we calculate the hyperparameter for the Gaussian kernel in HSIC as an example of what we mean in the previous sentence.
+We've already discussed the general aspects of the implementation, now we will dive into specific details that rose for each dependence measure, such as problems which rose douring the implementation, choices taken in each algorithm 
 
-\label{CODE:MEDIAN}\PythonCode[sfds]{Median for x}{Sample of how to calculate the median of the distances for a sample $x\in\mathbb{R}^{n}$ }{DistanceMatrix.py}{1}{8}{1}
 
 \subsection{RDC}
 
@@ -31,11 +44,9 @@ In order to compute RDC, we needed to calculate the canonical correlation analys
 \label{CODE:CANCOR}\PythonCode[CODE:CANCOR1]{Canonical Correlation Analysis}{Canonical correlation analysis in python}{Cancor.py}{1}{38}{1}
 
 
-
-
 \subsection{HSIC}
 
-We've decided to implement HSIC following the mathlab \href{http://www.gatsby.ucl.ac.uk/~gretton/indepTestFiles/indep.htm#GreEtAl10}{implementation} which makes usage of a Gaussian kernel :
+We've decided to implement HSIC following the mathlab \href{http://www.gatsby.ucl.ac.uk/~gretton/indepTestFiles/indep.htm#GreEtAl10}{implementation} \footnote{http://www.gatsby.ucl.ac.uk/~gretton/indepTestFiles/indep.htm} which makes usage of a Gaussian kernel :
 
 $K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}})$
 
@@ -59,7 +70,7 @@ $$
 Hence:
 
 $$
-\norm{f}^{2}_{H}= \sum_{l=-\infty}^{\infty}frac{\hat{f_{l}}^{2}}{\hat{k_{l}}}
+\norm{f}^{2}_{H}= \sum_{l=-\infty}^{\infty}\frac{\hat{f_{l}}^{2}}{\hat{k_{l}}}
 $$
 
 Which as $f\in\mathcal{L}^{2}$ the norm is finite, the sum converges. Now as the  \href{http://mathworld.wolfram.com/FourierTransformGaussian.html}{Fourier transform of a Gaussian kernel}  $K(x,y) = exp(-\frac{\norm{x-y}^{2}}{\mu^{2}})$ is another Gaussian where $\hat{k_{l}}$ decreases exponentially fast with l. So if f is to be in this space, its Fourier transform must drop even faster than that of $k$. This means the function will have only a few low frequency components with high weights.(A function with only low frequency components is smooth). 
@@ -67,16 +78,16 @@ Which as $f\in\mathcal{L}^{2}$ the norm is finite, the sum converges. Now as the
 
 \label{Plots}\subsection{Plots} 
 
-As in this work we have been working intensively with probability distributions, in order to ease the task of testing hypothesis and showcasing the asymptotic behaviour of our statistics, we decided to make use of R in our project. All data was collected from the experiments performed in python, where we stored the results of each statistic in each transformation and experiment.
-In R we performed K-S test to each statistic with different sample sizes and variations which will be explained in detail in chapter \ref{Cap:Experiments} and saw how good our null hypothesis was. In the appendix we showcase some results obtained with R, for example Figure \ref{FIG:HSIC500} shows how good of a fit is a Gamma distribution to the HSIC distribution.
+
+As in this work we have been working intensively with probability distributions, in order to ease the task of testing hypothesis and showcasing the asymptotic behaviour of our statistics, we decided to make use of R in our project. All data was collected from the experiments performed in python, in R we performed K-S test to each statistic with different sample sizes and variations which will be explained in detail in chapter \ref{Cap:Experiments} and saw how good our null hypothesis was. In the appendix we showcase some results obtained with R, for example Figure \ref{FIG:HSIC500} shows how good of a fit is a Gamma distribution to the HSIC distribution.
 
 \section{Version control, repositories and continuous integration}
-
+\FloatBarrier
 In order to maintain control of each change throughout the project we needed to use tools in order to manage and control the advance of the project.
 
 As a version control system we used git, which provides simplicity and comes with the advantage that hosting services for version control using git like GitHub exist. We chose GitHub because it is free and comes with all functionality for public repositories, one key functionality is that provides a version history of your code, so that previous versions are not lost with every new merge, easing removing mistakes or going back to a previous version if necessary. 
 
-In addition of version control we used \href{Travis-CI}{https://travis-ci.org/} in order to automatically test all changes made. \href{Travis CI}{https://github.com/travis-ci/travis-ci/blob/master/README.md} is a hosted continuous integration service used to build and test software projects hosted at GitHub, furthermore this tool is free for open projects.
+In addition of version control we used \href{https://travis-ci.org/}{Travis-CI} in order to automatically test all changes made. \href{https://github.com/travis-ci/travis-ci/blob/master/README.md}{Travis-CI} is a hosted continuous integration service used to build and test software projects hosted at GitHub, furthermore this tool is free for open projects.
 
 Travis-CI is configured by adding a file named \textit{.travis.yml} to the root of the repository, specifying programming language used, the desired building and testing environment, the script to run the tests, when and what to do whenever a pettition is made to the repository. Code 3.4 shows an example of a \textit{.travis.yml}.
 
@@ -85,6 +96,20 @@ Travis-CI is configured by adding a file named \textit{.travis.yml} to the root 
 
 To sum up this section Figure \ref{FIG:SumDev} presents graphically the development process of this project showcasing the different tools used and their relations.
 
-\begin{figure}[Summary of the development process]{FIG:SumDev}{Diagram showcasing the different tools used to create this project and their relations.}
+\begin{figure}[Summary of the implementation process]{FIG:SumDev}{Diagram showcasing the different tools used to create this project and their relations.}
        \image{15cm}{12cm}{Integration}
 \end{figure}
+\FloatBarrier
+\section{Software development}
+
+Previous section explains how we've implemented the code, in this section we will focus in the software development aspect of the project. Which life cycle was followed, how was the process flow and all related aspects of this matter.
+
+For this whole project we followed an agile methodology, in which we met every week and discussed the problems which rose douring the week. The main goal of agile methodology is to adapt to change and problems which may rise as the project develops, furthermore it's cyclic nature for a project like this where there are only two involved performs remarkably well. 
+
+We adapted the generall aspects of agile methodology to our project for a perfect fit. For each cylce we always gathered information about the dependence measure, starting with RDC, followed with it's complete understanding with lots of meetings solving each missinterpretation or doubt which may had ocurred and concluding with it's implementation in python.  As the project grew new cycles for each dependence measure began and new problems rose in previous cycles which made us stepping back to a previous phase of the cycle. Finally once the implementation concluded and we dive completely into writing the degree work a new take on the development was chosen, where we worked in small cycles where there were small turn ins with concluded chapters and while a chapter was being double checked, another was being written.
+
+Figure \ref{FIG:Scrum} summarizes how we adapted agile methodology for our project
+\begin{figure}[Summary of the development process]{FIG:Scrum}{Diagram showcasing the software development methodology used.}
+       \image{10cm}{}{Scrum}
+\end{figure}
+

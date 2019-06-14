@@ -1,46 +1,98 @@
+\section{Other experiments\label{Appendix:Sobras}}
+\FloatBarrier
+\paragraph{Simple example of Multiple linear regression}
+We generated a dataset of X1,X2,X3,X4 and Y, Y is a linear combination of X1 and X2, and X3 and X4 are linear combinations of X1 and X2. We created the linear regression with r for two models: $Y\sim X1+X2+X3+X4$ and $Y\sim X3+X4$ and we obtained:
+\begin{textbox}[Multiple linear regression example 1]{Appendix:MLR1}{}
+Call:
+lm(formula = y ~ x1 + x2 + x3 + x4, data = datos)
 
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-59.410  -5.069  -0.593   6.611  36.919 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)   
+(Intercept)  7.08261    3.60358   1.965  0.05228 . 
+x1           0.63566    1.22597   0.518  0.60532   
+x2           0.00807    0.58582   0.014  0.98904   
+x3          -1.05341    0.51460  -2.047  0.04341 * 
+x4          -0.43967    0.15336  -2.867  0.00511 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 13.11 on 95 degrees of freedom
+Multiple R-squared:   0.12,	Adjusted R-squared:  0.0829 
+F-statistic: 3.237 on 4 and 95 DF,  p-value: 0.01549
+
+\end{textbox}
+\begin{textbox}[Multiple linear regression example 2]{Appendix:MLR2}{}
+Call:
+lm(formula = y ~ x3 + x4, data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-60.692  -5.776  -0.497   6.587  37.667 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)   
+(Intercept)   6.9817     2.8068   2.487  0.01457 * 
+x3           -1.0342     0.5013  -2.063  0.04177 * 
+x4           -0.4332     0.1509  -2.870  0.00503 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 12.99 on 97 degrees of freedom
+Multiple R-squared:  0.1174,	Adjusted R-squared:  0.09923 
+F-statistic: 6.453 on 2 and 97 DF,  p-value: 0.002338
+\end{textbox}
+We can see how for the second model with only two variables it's not only easier to work with but it produces a better approximation.
+\FloatBarrier
+\section{Asymptotic distribution\label{Appendix:FigurasAsympt}}
 \begin{figure}[DCOV asymptotic size 50]{FIG:DCOV50}{Power comparison between the asymptotic and the real version of DCOV for sample size 50}
-       \image{12cm}{5cm}{powersCheto/DCOV50}
+       \image{12cm}{}{powersCheto/DCOV50}
 \end{figure}
 \begin{figure}[DCOV asymptotic size 100]{FIG:DCOV100}{Power comparison between the asymptotic and the real version of DCOV for sample size 100}
-       \image{12cm}{5cm}{powersCheto/DCOV100}
+       \image{12cm}{}{powersCheto/DCOV100}
 \end{figure}
 \begin{figure}[DCOV asymptotic size 150]{FIG:DCOV150}{Power comparison between the asymptotic and the real version of DCOV for sample size 150}
-       \image{12cm}{5cm}{powersCheto/DCOV150}
+       \image{12cm}{}{powersCheto/DCOV150}
 \end{figure}
 \begin{figure}[DCOV asymptotic size 200]{FIG:DCOV200}{Power comparison between the asymptotic and the real version of DCOV for sample size 200}
-       \image{12cm}{5cm}{powersCheto/DCOV200}
+       \image{12cm}{}{powersCheto/DCOV200}
 \end{figure}
 \begin{figure}[DCOV asymptotic size 500]{FIG:DCOV500}{Power comparison between the asymptotic and the real version of DCOV for sample size 500}
-       \image{12cm}{5cm}{powersCheto/DCOV500}
+       \image{12cm}{}{powersCheto/DCOV500}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 50]{FIG:HSIC50}{Power comparison between the asymptotic and the real version of HSIC for sample size 50}
-       \image{12cm}{5cm}{powersCheto/HSIC50version}
+       \image{12cm}{}{powersCheto/HSIC50}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 100]{FIG:HSIC100}{Power comparison between the asymptotic and the real version of HSIC for sample size 100}
-       \image{12cm}{5cm}{powersCheto/HSIC100version}
+       \image{12cm}{}{powersCheto/HSIC100}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 150]{FIG:HSIC150}{Power comparison between the asymptotic and the real version of HSIC for sample size 150}
-       \image{12cm}{5cm}{powersCheto/HSIC150version}
+       \image{12cm}{}{powersCheto/HSIC150}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 200]{FIG:HSIC200}{Power comparison between the asymptotic and the real version of HSIC for sample size 200}
-       \image{12cm}{5cm}{powersCheto/HSIC200version}
+       \image{12cm}{}{powersCheto/HSIC200}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 500]{FIG:HSIC500}{Power comparison between the asymptotic and the real version of HSIC for sample size 500}
-       \image{12cm}{5cm}{powersCheto/HSIC500version}
+       \image{12cm}{}{powersCheto/HSIC500}
 \end{figure}
 \begin{figure}[RDC asymptotic size 50]{FIG:RDC50}{Power comparison between the asymptotic and the real version of RDC for sample size 50}
-       \image{15cm}{5cm}{powersCheto/RDC50Version}
+       \image{12cm}{}{powersCheto/RDC50}
 \end{figure}
 \begin{figure}[RDC asymptotic size 100]{FIG:RDC100}{Power comparison between the asymptotic and the real version of RDC for sample size 100}
-       \image{15cm}{5cm}{powersCheto/RDC100Version}
+       \image{12cm}{}{powersCheto/RDC100}
 \end{figure}
 \begin{figure}[RDC asymptotic size 150]{FIG:RDC150}{Power comparison between the asymptotic and the real version of RDC for sample size 150}
-       \image{15cm}{5cm}{powersCheto/RDC150Version}
+       \image{12cm}{}{powersCheto/RDC150}
 \end{figure}
 \begin{figure}[RDC asymptotic size 200]{FIG:RDC200}{Power comparison between the asymptotic and the real version of RDC for sample size 200}
-       \image{15cm}{5cm}{powersCheto/RDC200Version}
+       \image{12cm}{}{powersCheto/RDC200}
 \end{figure}
 \begin{figure}[RDC asymptotic size 500]{FIG:RDC500}{Power comparison between the asymptotic and the real version of RDC for sample size 500}
-       \image{15cm}{5cm}{powersCheto/RDC500Version}
+       \image{12cm}{}{powersCheto/RDC500}
 \end{figure}
+
+
+

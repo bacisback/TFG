@@ -1,0 +1,659 @@
+\section{MMD\label{P:MMD}}
+\textbf{Mean embedding additional content}
+\begin{defn}
+\textsf{\textbf{Riesz representation}}
+\begin{flushleft}
+If T is a bounded linear operator on a Hilbert space $\mathcal{H}$, then there exist some $g \in \mathcal{H}$ such that $\forall f \in \mathcal{H}$:
+\end{flushleft}
+\begin{center}
+$T(f) = <f,g>_{\mathcal{H}}$
+\end{center}
+\end{defn}
+
+\begin{lem}
+Given a k(s,) semi positive definite, measurable and $\mathbb{E}\sqrt{k(X,X)}<\infty$, where X$\sim \mathbb{P}$ then $\mu_{p} \in \mathcal{H}$ exist and fulfills the next condition
+$\mathbb{E}f(X) = <f,\mu_{p}>$ for all f $\in \mathcal{H}$
+\end{lem}
+\textbf{proof}
+
+Lets define the linear operator $T_{\mathbb{P}}f\equiv\mathbb{E}(\sqrt{k(X,X)}) < \infty \forall f\in \mathcal{H}$ 
+\begin{flushleft}
+
+\begin{equation}{}
+\begin{split}
+|T_{\mathbb{P}}f| 
+&= |\mathbb{E}(f(X))| \\
+&\leq \mathbb{E}(|f(X)|)\\
+&\text{Reproducing property of the kernel} \\
+&=\mathbb{E}\abs{<f,k(\cdot,X)>_{\mathcal{H}}}\\
+&\text{Chauchy Schwarz inequality} \\
+&\leq \norm{f} _{\mathcal{H}}\cdot\mathbb{E}(\sqrt{k(X,X)})^{1/2}\\
+&\text{The expectation under $\mathbb{P}$ of the kernel is bounded} \\
+&<\infty 
+\end{split}
+\end{equation}
+
+\end{flushleft}
+
+
+Then using the Riesz representation theorem applied to $T_{p}$, there exist a $\mu_{p}\in \mathcal{H}$ such that $T_{p}f = <f,\mu_{p}>_{\mathcal{H}}$
+\newpage
+
+\textbf{Equivalence for the definitions of Mean embedding }
+If $f\in \mathcal{H}$ and $\mu_{\mathbb{P}} \in \mathbb{R}$
+$\mathbb{E}(f(X)) = \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}f(x_{n})$
+
+Applying the Riesz representation theorem to represent $f(x_{n})$
+
+$\forall x_{n}$ then:
+
+$$f(x_{n}) = <f,k(\cdot,x_{n})>_{\mathcal{H}}$$
+
+
+then
+
+$$\lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}f(x_{n}) = \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N} <f,k(\cdot,x_{n}>_{\mathcal{H}} = <f, \lim\limits_{N \to \infty} \frac{1}{N} \sum\limits_{n=1}^{N}k(\cdot,x_{n})>_{\mathcal{H}}$$
+
+which leads to the final conclusion:
+
+$\mu_{\mathbb{P}} \equiv \mathbb{E}_{X\sim \mathbb{P}}(k(t,X))$  $t \in [0,T]$
+
+\newpage
+
+\textbf{Proof for new interpretation of MMD}
+\begin{equation}{}
+\begin{split}
+MMD 
+& \equiv \sup\limits_{f\in \mathcal{H} \norm{f} \leq 1}\{\mathbb{E}(f(x)) - \mathbb{E}(f(y))\} \\
+& =\sup\limits_{f\in \mathcal{H}  \norm{f} \leq 1}\{<f,\mu_\mathbb{P}> - <f, \mu_\mathbb{Q}> \} \\
+& =\sup\limits_{f\in \mathcal{H} \norm{f} \leq 1} <f,(\mu_{\mathbb{P}} - \mu_{\mathbb{Q}})> \\
+& \leq\footnote{ Cauchy Schwarz inequality} \sup\limits_{f\in \mathcal{H} \norm{f}  \leq 1} \{\norm{f}_{\mathcal{H}},\norm{\mu_\mathbb{P} - \mu_{\mathbb{Q}}}_{\mathcal{H}}\} \\
+& \leq \norm{\mu_{\mathbb{P}} - \mu_{\mathbb{Q}}}_{\mathcal{H}}.
+\end{split}
+\end{equation}
+
+But on the other side, if we choose f as:
+
+$$f=\frac{1}{\norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}} (\mu_{\mathbb{P}}- \mu_{\mathbb{Q}})$$
+
+then we have:
+
+$$\sup\limits_{f\in \mathcal{H} \\\ \norm{f} \leq 1}\{\norm{f}_{\mathcal{H}},\norm{\mu_\mathbb{P} - \mu_{\mathbb{Q}}}_{\mathcal{H}}\} \geq \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}} $$
+
+therefore
+
+$$MMD = \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}}$$
+\newpage
+\textbf{Proof Proposition 2.2.3}
+\begin{equation}{}
+\begin{split}
+	MMD^{2}(\mathcal{F},\mathbb{P},\mathbb{Q}) 
+& = \norm{\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}}_{\mathcal{H}}^{2} \\
+& =<\mu_{\mathbb{P}}- \mu_{\mathbb{Q}},\mu_{\mathbb{P}}- \mu_{\mathbb{Q}}>_{\mathcal{H}}\\
+&=<\mathbb{E}(k(\cdot,X))-k(\cdot,Y)),\mathbb{E}(k(\cdot,X'))-k(\cdot,Y'))>\\
+&=\mathbb{E}(<k(\cdot,X),k(\cdot,X')> + <k(\cdot,Y),k(\cdot,Y')> - 2<k(\cdot,X)k(\cdot,Y)>)\\
+&\text{applying the reproductive property of the kernel.}\\
+&=\mathbb{E}(k(X,X') + k(Y,Y') -2K(X,Y)) \\
+&= \mathbb{E}(k(X,X')) + \mathbb{E}(k(Y,Y')) -2\mathbb{E}(k(X,Y))\\
+&= \int\int k(s,t) \underbrace{d(\mathbb{P}-\mathbb{Q})(s)}_{\text{Signed Measure}} d(\mathbb{P}-\mathbb{Q})(t)
+\end{split}
+\end{equation}
+\newpage
+\subsection{Proving that MMD defines an homogeneity test \label{P:HTMMD}}
+
+Now with the content we've already explained we will prove that MMD defines an homogeneity test, this is that it is a metric between probability distributions. The first definition of being characteristic is notation which may be helpful when reading other books and papers. 
+\begin{defn}
+\textsf{\textbf{Characteristic kernel}}
+
+A reproducing kernel k is a characteristic kernel if the induced $\gamma_{k}$ is a metric.
+\end{defn}
+\begin{thm}
+
+If X is a compact metric space, k is continuous and $\mathcal{H}$ is dense in $\mathbb{C}$(X) with respect to the supremum norm, then $\mathcal{H}$ is characteristic.
+\end{thm}
+\textbf{proof}
+
+
+Being characteristic means that 
+
+$MMD(\mathcal{F},\mathbb{P},\mathbb{Q}) = 0 \leftrightarrow \mathbb{P} = \mathbb{Q}$
+\begin{flushleft}
+$\rightarrow$
+\end{flushleft}
+
+By Lemma 2.2.1 we know that $\mathbb{P}$ and $\mathbb{Q}$  are equal if and only if $\mathbb{E}f(X) = \mathbb{E}f(Y)$  $\forall f \in \mathcal{C(X)}$
+
+Given that $\mathcal{H}$ is dense in $\mathcal{C}$(X) then:
+
+$$\forall \epsilon >0, f\in\mathcal{C}(X), \exists g\in \mathcal{H} : \norm{f-g}_{\infty} < \epsilon$$
+
+\begin{equation}{}
+\begin{split}
+\abs{\mathbb{E}(f(X)) - \mathbb{E}(f(Y))}  
+& = \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X)) + \mathbb{E}(g(X)) - \mathbb{E}(g(Y)) +\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))} \\
+&\leq \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X))} + \abs{\mathbb{E}(g(X)) - \mathbb{E}(g(Y))} +\abs{\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))}\\
+&= \abs{\mathbb{E}(f(X)) - \mathbb{E}(g(X))} + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } +\abs{\mathbb{E}(g(Y)) - \mathbb{E}(f(Y))} \\
+&\leq \mathbb{E}\abs{f(X) - g(X)} + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } +\mathbb{E}\abs{g(Y) - f(Y)} \\ 
+&\leq^{1} \norm{f-g}_{\infty}  + \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } + \norm{f-g}_{\infty}\\
+&\leq \abs{<g,\mu_{\mathbb{P}}-\mu_{\mathbb{Q}}>_{\mathcal{H}} } + 2\epsilon
+\end{split}
+\end{equation}
+By Lemma 2.2.3 we know that if MMD = 0 then $\mu_{\mathbb{P}} = \mu_{\mathbb{Q}}$. Hence:
+
+$$\abs{\mathbb{E}(f(X)) - \mathbb{E}(f(Y))} \leq 2\epsilon$$
+
+Then by Lemma 2.2.1 $\mathbb{P}$ and $\mathbb{Q}$  are equal.
+
+\begin{flushleft}
+$\leftarrow$
+\end{flushleft}
+By definition of MMD.
+
+\newpage
+\subsection{Tensor Products\label{P:TP}}
+\begin{defn}
+\textbf{Tensor product}
+The tensor product of Hilbert spaces$\mathcal{H}_{1}$ and $\mathcal{H}_{2}$  with inner products $<·, ·>_{1}$ and
+$<·, ·>_{2}$ is defined as the completion of the space $\mathcal{H}_{1}\times\mathcal{H}_{2}$  with inner product  $<·, ·>_{1}$ $<·, ·>_{2}$extended
+by linearity. The resulting space is also a Hilbert space.
+\end{defn}
+\begin{lem}
+A kernel $\upsilon$ in the tensor product space  $\mathcal{H}\times\mathcal{G}$ can be defined as:
+
+$$\upsilon((x,y),(x',y')) = k(x,x')l(y,y')$$
+\end{lem}
+
+\section{HSIC\label{P:HSIC}}
+
+\subsection{HSIC in terms of the Cross Covariance\label{P:HSCC}}
+
+\begin{defn}
+\textsf{\textbf{Tensor product operator}}
+
+Let $h \in \mathcal{H},g \in \mathcal{G}$. The tensor product operator $h \otimes g: \mathcal{G}\rightarrow\mathcal{H}$ is defined as:
+\vspace{5mm}
+$$(h \otimes g)(f) = <g,f>_{\mathcal{G}}h, \forall f \in \mathcal{G}$$
+\end{defn}
+\begin{defn}
+\textsf{\textbf{Hilbert-Schmidt norm of a linear operator}}
+
+Let $C:\mathcal{G}\rightarrow\mathcal{H}$ be a linear operator between RKHS $\mathbb{G} $ and $\mathcal{H}$ the Hilbert-Schmidt norm of C is defined as:
+
+\vspace{5mm}
+$$\norm{C} = \sqrt{\sum{<Cv_{j},u_{i}>^{2}_{\mathcal{H}}}}$$
+
+Where {$v_{j}$} and {$u_{j}$} are the orthonormal basis for $\mathbb{G} $ and $\mathcal{H}$ respectively.
+\end{defn}
+\begin{defn}
+\textsf{\textbf{Cross-Covariance operator}}
+
+The cross-covariance operator associated with $\mathbb{P}_{XY}$ is the linear operator $C_{XY}:\mathcal{G}\rightarrow\mathcal{H}$ defined as:
+
+\vspace{5mm}
+$$C_{XY} = \mathbb{E}_{XY}[(\phi(X)-\mu_{\mathbb{P}}) \otimes (\psi(Y) -\mu_{\mathbb{Q}})] = \mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)] - \mu_{\mathbb{P}} \otimes \mu_{\mathbb{Q}} $$
+by applying the distributive property of the tensor product
+
+Which is a generalisation of the cross-covariance matrix between random vectors.
+\end{defn}
+\begin{defn}
+\textsf{\textbf{HSIC}}
+We define the Hilbert-Schmidt Independence Criterion for $\mathbb{P}_{\mathcal{X}\mathcal{Y}}$ as the squared HS norm of the associated cross-covariance operator:
+
+\begin{equation}{HSIC in terms of the cross-covariance operator}
+HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = \norm{C_{XY}}^{2}_{\mathcal{HS}}
+\end{equation}
+
+\end{defn}
+\newpage
+\subsection{demonstrations}
+\textbf{Proof HSIC in terms of expectations} \ref{E:HSICEK}
+First we will simplify the notation of $C_{XY}$
+
+\vspace{5mm}
+$$ C_{XY} = \mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)] - \mu_{\mathbb{P}} \otimes \mu_{\mathbb{Q}} = \bar{C_{XY}} - M_{XY}$$
+
+Using this notation:
+
+\begin{equation}{}
+\begin{split}
+\norm{C_{XY}}^{2}_{\mathcal{HS}}
+& = <\bar{C}_{XY} - M_{XY},\bar{C}_{X'Y'} - M_{X'Y'}>_{\mathcal{HS}} \\
+& = <\bar{C}_{XY},\bar{C}_{X'Y'}>_{\mathcal{HS}}+< M_{XY}, M_{X'Y'}>-2<\bar{C}_{XY}, M_{X'Y'}>_{\mathcal{HS}}
+\end{split}
+\end{equation}
+Now calculating each of this products individually:
+
+\begin{equation}{}
+\begin{split}
+<\bar{C}_{XY},\bar{C}_{X'Y'}>_{\mathcal{HS}} 
+& = <\mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)],\mathbb{E}_{X'Y'}[\phi(X) \otimes \psi(Y)] >\\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'}\norm{\phi(X) \otimes \psi(Y)}^{2} \\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'}\norm{\phi(X)}^{2}\norm{\psi(Y)}^{2}\\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'}<\phi(X),\phi(X')><\psi(Y),\psi(Y)> \\
+& = \mathbb{E}_{XY}\mathbb{E}_{X'Y'} k(X,X')l(Y,Y') \\
+\end{split}
+\end{equation}
+\begin{equation}{}
+\begin{split}
+<M_{XY},M_{X'Y'}>_{\mathcal{HS}}
+& = <\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}},\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}}>_{\mathcal{HS}} \\
+& = \norm{\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}}}^{2}_{\mathcal{HS}} \\
+& = \norm{\mu_{\mathbb{P}}}^{2}_{\mathcal{H}}\norm{\mu_{\mathbb{Q}}}^{2}_{\mathcal{G}} \\
+& = <\mu_{\mathbb{P}},\mu_{\mathbb{P}}>_{\mathcal{H}}<\mu_{\mathbb{Q}},\mu_{\mathbb{Q}}>_{\mathcal{G}} \\
+& = <\mathbb{E}_{X}k(X,\cdot),\mathbb{E}_{X'}k(X',\cdot)>_{\mathcal{H}}<\mathbb{E}_{Y}l(Y,\cdot),\mathbb{E}_{Y'}k(Y',\cdot)>_{\mathcal{G}} \\
+& = \mathbb{E}_{X}\mathbb{E}_{X'}\mathbb{E}_{Y}\mathbb{E}_{Y'}<k(X,\cdot),k(X',\cdot)>_{\mathcal{H}}<l(Y,\cdot),l(Y',\cdot)>_{\mathcal{G}} \\
+& = \mathbb{E}_{X}\mathbb{E}_{X'}\mathbb{E}_{Y}\mathbb{E}_{Y'}k(X,X')l(Y,Y') \\
+\end{split}
+\end{equation}
+
+\begin{equation}{}
+\begin{split}
+<\bar{C}_{XY},M_{XY}>_{\mathcal{HS}} 
+& = <\mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)],\mu_{\mathbb{P}}\otimes\mu_{\mathbb{Q}}>_{\mathcal{HS}} \\
+& = <\mathbb{E}_{XY}[\phi(X) \otimes \psi(Y)],\mathbb{E}_{X'}\phi(X')\otimes\mathbb{E}_{Y'}\psi(Y')>_{\mathcal{HS}} \\
+& = <\mathbb{E}_{XY}<\mathbb{E}_{X'}<\mathbb{E}_{Y'}<\phi(X) \otimes \psi(Y),\phi(X') \otimes \psi(Y')>_{\mathcal{HS}} \\
+& = <\mathbb{E}_{XY}<\mathbb{E}_{X'}<\mathbb{E}_{Y'}<\phi(X),\phi(X')>_{\mathcal{H}}<\psi(Y),\psi(Y')>_{\mathcal{G}} \\
+& = <\mathbb{E}_{XY}<\mathbb{E}_{X'}<\mathbb{E}_{Y'}k(X,X')l(Y,Y').
+\end{split}
+\end{equation}
+\newpage
+\subsection{HSIC empirical convergence \label{P:EXPHSIC}}
+\begin{thm}
+let $\mathbb{E}_{Z}$ denote the expectation taken over m independent copies($x_{i},y_{i}$ drawn from ${P}_{\mathcal{X}\mathcal{Y}}$. Then:
+
+\vspace{5mm}
+$$HSIC(\mathbb{P}_{\mathcal{X}\mathcal{Y}},\mathcal{H},\mathcal{G}) = \mathbb{E}_{Z}[HSIC(Z,\mathcal{H},\mathcal{G})] + O(m^{-1})$$
+\end{thm}
+\textbf{Proof}
+
+By definition of H we can write:
+\vspace{5mm}
+$$
+\textbf{tr}KHLH = \textbf{tr}KL - 2m^{-1}\mathbf{1}^{T}KL\mathbf{1} + m^{-2}\textbf{tr}K\textbf{tr}L
+$$
+
+where $\mathbf{1}$ is the vector of all ones.
+
+Now we will expand each of the terms separately and take expectations with respect to Z.
+
+\begin{itemize}
+
+
+\item $\mathbb{E}_{Z}[\textbf{tr}KL]$:
+\vspace{5mm}
+
+$$
+\mathbb{E}_{Z}[\sum_{i}K_{ii}L_{ii} + \sum_{(i,j)\in i_{2}^{m}}K_{ij}L{ji}] = O(m) +(m)_{2}\mathbb{E}_{XYX'Y'}[k(X,X')l(Y,Y')]
+$$
+
+Normalising terms by $\frac{1}{(m−1)^{2}}$ yields the first term, since $\frac{m(m−1)}{(m−1)^{2}}=1+O(m^{−1})$.
+
+\item $\mathbb{E}_{Z}[\mathbf{1}^{T}KL\mathbf{1}]$:
+\vspace{5mm}
+
+$$
+\mathbb{E}_{Z}[\sum_{i}K_{ii}L_{ii} + \sum_{(i,j)\in i_{2}^{m}}(K_{ii}L{ij} + K_{ij}L{jj})]  + \mathbb{E}_{Z}[\sum_{(i,j,r)\in i_{3}^{m}} K_{ij}L{jr}] $$
+
+$$= O(m^{2}) +(m)_{3}\mathbb{E}_{XY}[\mathbb{E}_{X'}[k(x,x')]\mathbb{E}_{Y'}[l(Y,Y')]]
+$$
+
+Again, normalising terms by $\frac{2}{(m−1)^{2}}$ yields the second term. As before we used that  $\frac{m(m−1)}{(m−1)^{2}}=1+O(m−1)$.
+
+\item $\mathbb{E}_{Z}[\textbf{tr}K\textbf{tr}L]$:
+\vspace{5mm}
+
+$$
+O(m^{3}) + \mathbb{E}_{Z}[\sum_{(i,j,q,r)\in i_{4}^{m}} K_{ij}L{qr}] = O(m^{3}) + 
+(m)_{4}\mathbb{E}_{XX'}[k(x,x')]\mathbb{E}_{YY'}[l(Y,Y')]
+$$
+
+Normalisation by $\frac{1}{(m−1)^{2}}$ takes care of the last term, which completes the proof.
+\end{itemize}
+\newpage
+\section{Energy Distance\label{P:ED}}
+
+\textbf{Proof Proposition 2.4.1}
+We will start analysing the expectations of the right hand side. We will use that for any positive random variable $ Z>0$,
+$\mathbb{E}Z = \int_{0}^{\infty} \mathbb{P}(Z>z)dz$
+\begin{equation}{}
+\begin{split}
+\mathbb{E}\abs{X-Y}
+& = \int_{0}^{\infty} \mathbb{P}(\abs{X-Y} > u) du \\
+&= \int_{0}^{\infty} \mathbb{P}(X - Y > u) du + \int_{0}^{\infty} \mathbb{P}(X - Y < u) du \\
+&= \int_{0}^{\infty}\int_{-\infty}^{\infty} \mathbb{P}(X - Y > u|Y = y)d\mathcal{G}(y)du + \int_{0}^{\infty}\int_{-\infty}^{\infty} \mathbb{P}(X - Y < u|X = x)d\mathcal{F}(x)(y)du \\
+&=\footnote{due to both having finite expectation we can apply fubini}  
+\int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(X - Y > u|Y = y)du\mathcal{G}(y) + \int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(X - Y < u|X = x)du\mathcal{F}(x) \\
+&= \int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(X > u + y)du\mathcal{G}(y) + \int_{-\infty}^{\infty}\int_{0}^{\infty} \mathbb{P}(Y > u + x)du\mathcal{F}(x)\\
+\end{split}
+\end{equation}
+
+Now we use the change of variables z = u + y for the first integral, and w = u + x for the second one. Applying Fubini again:
+
+\begin{equation}{}
+\begin{split}
+\mathbb{E}\abs{X-Y}
+&= \int_{-\infty}^{\infty}\int_{y}^{\infty} \mathbb{P}(X > z)dz\mathcal{G}(y) + \int_{-\infty}^{\infty}\int_{x}^{\infty} \mathbb{P}(Y > w)dw\mathcal{F}(x)\\
+&= \int_{-\infty}^{\infty} \mathbb{P}(X > z)dz\int_{y}^{\infty}\mathcal{G}(y) + \int_{-\infty}^{\infty}\mathbb{P}(Y > w)dw\int_{x}^{\infty} \mathcal{F}(x)\\
+&= \int_{-\infty}^{\infty} \mathbb{P}(X > z)\mathbb{P}(Y < z)dz + \int_{-\infty}^{\infty}\mathbb{P}(Y > w)\mathbb{P}(X < w)dw\\
+&= \int_{-\infty}^{\infty} [(1 - \mathcal{F}(z))\mathcal{G}(z) + (1 - \mathcal{G}(z))\mathcal{F}(z)]dz\\
+&= -2\int_{-\infty}^{\infty}\mathcal{F}(z)\mathcal{G}(z)dz + \mathbb{E}\abs{X} + \mathbb{E}\abs{Y}\\
+\end{split}
+\end{equation}
+Taking $\mathcal{F} = \mathcal{G}$ in the previous development:
+
+$$
+\mathbb{E}\abs{X-X'} =  -2\int_{-\infty}^{\infty}\mathcal{F}^{2}(z)dz + 2\mathbb{E}\abs{X}
+$$
+
+Equivalently for Y. Combining these partial results concludes the proof.
+\newpage
+\textbf{Proof Proposition 2.4.2}
+To prove this proposition we need the following lemma.
+\begin{lem}
+$\forall x \in \mathbb{R}^{d}$ then:
+\vspace{5mm}
+$$\int_{\mathbb{R}^{d}}\frac{1-cos(tx)}{\norm{t}^{d+1}_{d}} dt = c_{d}\norm{x}_{d}$$
+where tx is the inner product of t and x. \label{cd}
+\end{lem}
+\textbf{proof}
+We will begin by applying the following transformation: $z_{1} = \frac{tx}{\norm{x}_{d}}$
+followed by the following change of variables:
+$s = z\norm{x}_{d}$
+\begin{equation}{}
+\begin{split}
+\int_{\mathbb{R}^{d}}\frac{1-cos(tx)}{\norm{t}^{d+1}_{d}} dt 
+&= \int_{\mathbb{R}^{d}}\frac{1-cos(z\norm{x}_{d})}{\norm{z}^{d+1}_{d}} dt \\
+&= \int_{\mathbb{R}^{d}}\frac{1-cos(s)}{\frac{\norm{s}_{d}}{\norm{x}_{d}}^{d+1} \norm{x}^{d}_{d}} dt \\
+&=\norm{x}_{d}\int_{\mathbb{R}^{d}}\frac{1-cos(s)}{\norm{s}^{d+1}_{d}}ds \\
+&=\norm{x}_{d}\frac{\pi^{\frac{d+1}{2}}}{\Gamma(\frac{d+1}{2})}
+\end{split}
+\end{equation}
+
+\textbf{proof}
+\ref{DcovPropRara} Let $\overline{\phi_{\mathbb{P}}(t)}$ denote the complex conjugate of the characteristic function.\label{DcovDemRara}
+\begin{equation}{}
+\begin{split}
+\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2} = 
+& = (\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t))\overline{(\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t))} \\
+& = (\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t))(\overline{\phi_{\mathbb{P}}(t)}-\overline{\phi_{\mathbb{Q}}(t)})\\
+&= \phi_{\mathbb{P}}(t)\overline{\phi_{\mathbb{P}}(t)} - \phi_{\mathbb{P}}(t)\overline{\phi_{\mathbb{Q}}(t)} - \phi_{\mathbb{Q}}(t)\overline{\phi_{\mathbb{P}}(t)} + 
+\phi_{\mathbb{Q}}(t)\overline{\phi_{\mathbb{Q}}(t)} \\
+&=\mathbb{E}[e^{itX}e^{-itX'}]-\mathbb{E}[e^{itX}e^{-itY}]
+-\mathbb{E}[e^{itY}e^{-itX}] + \mathbb{E}[e^{itY}e^{-itY'}]\\
+&=\mathbb{E}[e^{it(X-X')}-e^{it(Y-X)}-e^{it(X-Y)}+e^{it(Y-Y')} \\
+&=\mathbb{E}[cos(t(X-X')) + isin(t(X-X'))-cos(t(Y-X))-isin(t(Y-X)) -cos(t(X-Y)) \\
+&-isin(t(X-Y)) + cos(t(Y-Y'))+isin(t(Y-Y')) \\
+&\text{sin(X) = -sin(-X), cos(X) = cos(-X), sin (x- y)=sin(x)cos(y)- cos(x)sin(y)}\\
+&=\mathbb{E}[cos(t(X-X')) - 2cos(t(Y-X)) + cos(t(Y-Y')) \\
+& + isin(t(X-X')) + isin(t(Y-Y'))\\
+&= \mathbb{E}[2(1-cos(t(Y-X)))-(1-cos(t(X-X')))-(1-cos(t(y-Y')))]
+\end{split}
+\end{equation}
+Applying Fubini and the previous lemma:
+\begin{equation}{}
+\begin{split}
+\int_{\mathbb{R}^{d}}\frac{\abs{\phi_{\mathbb{P}}(t)-\phi_{\mathbb{Q}}(t)}^{2}}{\norm{t}^{d+1}_{d}}
+&=\int_{\mathbb{R}^{d}}\frac{\mathbb{E}[2(1-cos(t(Y-X)))-(1-cos(t(X-X')))]}{\norm{t}^{d+1}_{d}} dt \\
+&=2\mathbb{E}[\int_{\mathbb{R}^{d}}\frac{1-cos(t(Y-X))}{\norm{t}^{d+1}_{d}}] - \mathbb{E}[\int_{\mathbb{R}^{d}}\frac{1-cos(t(X-X'))}{\norm{t}^{d+1}_{d}} - - \mathbb{E}[\int_{\mathbb{R}^{d}}\frac{1-cos(t(Y-Y'))}{\norm{t}^{d+1}_{d}} \\
+&=2\mathbb{E}[c_{d}\norm{Y-X}] - \mathbb{E}[c_{d}\norm{X-X'}] -\mathbb{E}[c_{d}\norm{Y-Y'}] \\
+&= c_{d}(2\mathbb{E}[\norm{Y-X}] - \mathbb{E}[\norm{X-X'}] -\mathbb{E}[\norm{Y-Y'}])\\
+&= c_{d}\varepsilon(X,Y)
+\end{split}
+\end{equation}
+
+\newpage
+\subsection{DCOV Convergence of the statistic \label{P:DCOVCOV}}
+
+Now we will proove that this statistics converge almost surely when the random vectors have finite first moments.
+
+\begin{thm}\label{Objective}
+if $\mathbb{E}\norm{X} + \mathbb{E}\norm{Y} < \infty$ then
+
+$$
+\lim_{n\to\infty} \nu^{2}_{n}(x,y) \xrightarrow{a.s} \nu^{2}(X,Y)
+$$
+\end{thm}
+
+In order to proove this theorem we will give an alternative definition of the empirical DCOV statistic in order to make an elegant demonstration.
+
+\begin{defn}
+Given all the introduction of this section it'd have been natural, but less elementary, to define $\nu_{n}(x,y)$ as $\norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}$ where:
+
+$$
+f_{XY}^{n}(t,s) = \frac{1}{n}\sum_{k=1}^{n}exp[i<t,x_{k}> + i<s,y_{k}>] 
+$$
+
+is the empirical characteristic function of the sample $((x_{1},y_{1}),...,(x_{n},y_{n}))$ and 
+
+$$
+f_{X}^{n}(t) = \frac{1}{n}\sum_{k=1}^{n}exp[i<t,x_{k}>]
+$$
+
+$$
+f_{Y}^{n}(s) = \frac{1}{n}\sum_{k=1}^{n}exp[i<s,y_{k}>]
+$$
+are the marginal empirical characteristic functions of the X sample and Y sample, respectively.
+\end{defn}
+
+The next theorem shows that the two definitions are equivalent.
+
+\begin{thm}
+If (X,Y) is a sample from the joint distribution of (X,Y), then
+
+$$
+\nu_{n}^{2}(X,Y) = \norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}
+$$
+\end{thm}
+
+\textbf{Proof}
+Lemma \ref{cd} implies that there exist constants $c_{p}$ and $c_{q}$ such that for all $X\in \mathbb{R}^{p}, y\in \mathbb{R}^{q}$.
+
+\begin{equation}{}
+\begin{split}
+&\int_{\mathbb{R}^{p}}\frac{1- exp[i<t,X>]}{\norm{t}_{p}^{1+p}}dt = c_p\norm{X}_{p} \\
+&\int_{\mathbb{R}^{q}}\frac{1- exp[i<s,Y>]}{\norm{s}_{p}^{1+p}}dt = c_q\norm{Y}_{q} \\
+&\int_{\mathbb{R}^{p}}\int_{\mathbb{R}^{q}}\frac{1- exp[i<t,X>+i<s,Y>]}{\norm{t}_{p}^{1+p}\norm{s}_{p}^{1+p}}dt = c_{q}c_{p}\norm{X}_{p}\norm{Y}_{q}
+\end{split}
+\end{equation}
+
+where the integrals are understood in the principal value sense. For simplicity, consider the case p=q=1. The distance between the empirical characteristic functions in the weighted norm involves $\norm{f_{XY}^{n}(t,s)}^{2}$ , $\norm{f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}$ and $\overline{f_{XY}^{n}(t,s)}f_{X}^{n}(t)f_{Y}^{n}(s)$.
+Now we will give the result of evaluating this, due to the similarity to previous demostrations.
+
+$\norm{f_{XY}^{n}(t,s)}^{2} = \frac{1}{n^{2}}\sum_{k,l=1}^{n} cos(X_{k}-X_{l})tcos(Y_{k}-Y_{l})s + V_{1}$
+
+where $V_{1}$ represents terms that vanish when the integral $\norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}$ is evaluated.
+
+$\norm{f_{X}^{n}(t)f_{Y}^{n}(s)}^{2} = \frac{1}{n^{2}}\sum_{k,l=1}^{n} cos(X_{k}-X_{l})t+ \frac{1}{n^{2}}\sum_{k,l=1}^{n}cos(Y_{k}-Y_{l})s + V_{2}$
+
+$\overline{f_{XY}^{n}(t,s)}f_{X}^{n}(t)f_{Y}^{n}(s) = \frac{1}{n^{3}}\sum_{k,l,m=1}^{n} cos(X_{k}-X_{l})tcos(Y_{k}-Y_{l})s + V_{3}$
+
+
+where $V_{2}$ and $V_{3}$ represent terms that vanish when the integral is evaluated. To evaluate the integral $\norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}^{2}$, apply Lemma \ref{cd} and use:
+
+$$
+cos(u)cos(v) = 1-(1-cos(u))-(1-cos(v))+(1-cos(u))(1-cos(v))
+$$
+
+After cancellation in the numerator of the integrand it remains to evaluate integrals of the type:
+
+\begin{equation}{}
+\begin{split}
+\int_{\mathbb{R}^{2}}(1-cos(X_{k}-X_{l})t)(1-cos(Y_{k}-Y_{l})s)\frac{dt}{t^{2}}\frac{ds}{s^{2}} &
+= \int_{\mathbb{R}}(1-cos(X_{k}-X_{l})t)\frac{dt}{t^{2}}\int_{\mathbb{R}}(1-cos(Y_{k}-Y_{l})s)\frac{ds}{s^{2}} \\
+&= c_{1}^{2}\norm{X_{i}-X_{j}}\norm{Y_{i}-Y_{j}}
+\end{split}
+\end{equation}
+where the first equality comes from applying Fubini.
+
+For random vectors $X\in\mathbb{R}^{p}$ and $Y\in\mathbb{R}^{q}$, the same steps are applied.Thus
+
+$$
+\norm{f_{XY}^{n}(t,s) - f_{X}^{n}(t)f_{Y}^{n}(s)}^{2} = S_{1} +S_{2}-2S_{3}
+$$
+
+Where:
+
+\begin{equation}{}
+\begin{split}
+& S_{1} =\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{j}}_{q} \\
+& S_{2} =\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\frac{1}{n^{2}} \sum_{i,j=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{j}}_{q} \\
+&S_{1} =\frac{1}{n^{3}} \sum_{i=1}^{n}\sum_{j,k=1}^{n}\norm{x_{i}-x_{j}}_{p}\norm{y_{i}-y_{k}}_{q}
+\end{split}
+\end{equation}
+
+Now that we have proven the equality we will proove the theorem \ref{Objective}
+\textbf{proof}
+Define 
+
+$$
+\zeta_{n}(t,s) = \frac{1}{n}\sum_{k=1}^{n}e^{i<t,X_{k}>+i<s,Y_{k}>}- \frac{1}{n}\sum_{k=1}^{n}e^{i<t,X_{k}>}\frac{1}{n}\sum_{k=1}^{n}e^{i<s,Y_{k}>}
+$$
+
+so that $\nu^{2}_{n} = \norm{\zeta_{n}(t,s)}^{2}$. Then after elementary transformations: $u_{k} = exp(i<t,X_{k}>)-f_{X}(t)$ and $v_{k} = exp(i<s,Y_{k}>)-f_{Y}(s)$.
+
+For each $\theta>0$ define the region:
+
+$$
+D(\theta) = \{(t,s):\theta\leq\norm{t}_{p}\leq\frac{1}{\theta}, \theta\leq\norm{s}_{q}\leq\frac{1}{\theta}\}
+$$ 
+and random variables 
+
+$$
+\nu^{2}_{n,\theta} = \int_{D(\theta)}\norm{\zeta_{n}(t,s)}^{2}dw
+$$
+For any fixed $\theta>0$, the weight function w(t,s) is bounded on $D(\theta)$. Hence $\nu^{2}_{n,\theta}$ is a combination of V-statistics of bounded random variables, therefore by the strong law of large numbers
+it follows almost surely.
+
+$$
+\lim_{n\to\infty}\nu^{2}_{n,\theta} = \nu^{2}_{\cdot,\theta} = \norm{f_{XY}(t,s) - f_{X}(t)f_{Y}(s)}^{2}dw
+$$
+Clearly $\nu^{2}_{\cdot,\theta}$ converges to $\nu^{2}$ as $\theta$ tends to zero. Now it remains to prove that almost surely
+
+$$
+\lim\sup_{\theta \to 0} \lim\sup_{n \to \infty} \norm{\nu^{2}_{n,\theta}-\nu^{2}_{n}} = 0
+$$
+
+For each $\theta>0$
+
+\begin{equation}{}
+\begin{split}
+\norm{\nu^{2}_{n,\theta} - \nu^{2}_{n}} \leq &
+\int_{\norm{t}_{p}\leq\theta}\norm{\zeta(t,s)}^{2}dw + \int_{\norm{t}_{p}>\frac{1}{\theta}}\norm{\zeta(t,s)}^{2}dw \\
+& + \int_{\norm{s}_{q}\leq\theta}\norm{\zeta(t,s)}^{2}dw + \int_{\norm{s}_{q}>\frac{1}{\theta}}\norm{\zeta(t,s)}^{2}dw
+\end{split}
+\end{equation}\label{asymptotic_inequality}
+
+For z = $(z_{1},..,z_{p})$ in $\mathbb{R}^{p}$ define the function
+
+$$
+G(y) = \int_{\norm{z}<y} \frac{1-cos(z_{1})}{\norm{z}^{1+p}}
+$$
+
+Clearly G(y) is bounded by $c_{p}$ and $\lim_{y\to0}G(y) = 0$. Applying the inequality $\norm{x+y}^{2}\leq2\norm{x}^{2}+2\norm{y}^{2}$ and the following inequality.
+\begin{prop}
+The Cauchy–Schwarz inequality states that for all vectors u and v of an inner product space it is true that
+
+$|\langle \mathbf {u} ,\mathbf {v} \rangle |^{2}\leq \langle \mathbf {u} ,\mathbf {u} \rangle \cdot \langle \mathbf {v} ,\mathbf {v} \rangle $
+
+where $ \langle \cdot ,\cdot \rangle $ is the inner product. By taking the square root of both sides, and referring to the norms of the vectors, the inequality is written as \cite{C-S-B_inequality1}, \cite{C-S-B_inequality2}
+
+$ |\langle \mathbf {u} ,\mathbf {v} \rangle |\leq \|\mathbf {u} \|\|\mathbf {v} \|$
+
+If $ u_{1},\ldots ,u_{n}\in \mathbb {C} $ and $ v_{1},\ldots ,v_{n}\in \mathbb {C} $, and the inner product is the standard complex inner product, then the inequality may be restated more explicitly as follows 
+
+$ |u_{1}{\bar {v}}_{1}+\cdots +u_{n}{\bar {v}}_{n}|^{2}\leq (|u_{1}|^{2}+\cdots +|u_{n}|^{2})(|v_{1}|^{2}+\cdots +|v_{n}|^{2})$
+
+\end{prop} 
+
+one can obtain that:
+\begin{equation}{}
+\begin{split}
+\norm{\zeta_{n}(t,s)}^{2}&
+\leq 2 \norm{\frac{1}{n}\sum_{k=1}^{n}u_{k}v_{k}}^{2} + 2\norm{\frac{1}{n}\sum_{k=1}^{n}u_{k}\frac{1}{n}\sum_{k=1}^{n}v_{k}}^{2} \\
+&\leq \frac{4}{n}\sum_{k=1}^{n}\norm{u_{k}}^{2}\frac{1}{n}\sum_{k=1}^{n}\norm{v_{k}}^{2}
+\end{split}
+\end{equation}\label{eq_conaaazo}
+
+Therefore the first summand in \ref{asymptotic_inequality} satisfies
+
+$$
+\int_{\norm{t}_{p}\leq\theta}\norm{\zeta(t,s)}^{2}dw \leq \frac{4}{n}\sum_{k=1}^{n}\int_{\norm{t}_{p}\leq\theta} \frac{\norm{u_{k}}^{2}dt}{c_{p}\norm{t}^{1+p}_{p}}\frac{1}{n}\sum_{k=1}^{n}\int_{\mathbb{R}^{q}}\frac{\norm{v_{k}}^{2}ds}{c_{q}\norm{s}^{1+q}_{q}}
+$$
+
+Here $\norm{v_{k}}^{2} = 1 + \norm{f_{Y}(s)}^{2}- exp(i<s,Y_{k}>)\overline{f_{Y}(s)} - exp(-i<s,Y_{k}>)f_{Y}(s)$, thus
+
+$$
+\int_{\mathbb{R}^{q}}\frac{\norm{v_{k}}^{2}ds}{c_{q}\norm{s}^{1+q}_{q}} = (2E_{Y}\norm{Y_{k}-Y}- E\norm{Y-Y'}) \leq 2(\norm{Y_{k}}+E\norm{Y})
+$$
+
+where the expectation $E_{Y}$ is taken with respect to Y, and Y'$=^{D}Y$ is independent of $Y_{k}$. Further, after a suitable change of variables
+
+\begin{equation}{}
+\begin{split}
+\int_{\norm{t}_{p}\leq\theta} \frac{\norm{u_{k}}^{2}dt}{c_{p}\norm{t}^{1+p}_{p}} &
+= 2E_{X}\norm{X_{k}-X}G(\norm{X_{k}-X}\theta) - E\norm{X-X'}G(\norm{X-X'}\theta) \\
+&\leq  2E_{X}\norm{X_{k}-X}G(\norm{X_{k}-X}\theta)
+\end{split}
+\end{equation}
+
+Therefore from \ref{eq_conaaazo}:
+
+$$
+\norm{\zeta_{n}(t,s)}^{2} \leq 4\frac{2}{n}\sum_{k=1}^{n}(\abs{Y_{k}}+ E\abs{Y})\frac{2}{n}\sum_{k=1}^{n}E_{X}\norm{X_{k}-X}G(\norm{X_{k}-X}\theta)
+$$
+
+By the SLLN:
+$$
+\limsup_{n\rightarrow\infty}\int_{\norm{t}_{p}\leq\theta}\norm{\zeta_{n}(t,s)}^{2} dw = 0
+$$
+almost surely.
+
+Now for the second summand in \ref{asymptotic_inequality}. Inequalities \label{eq_conaaazo} imply that $\norm{u_k}^{2} \leq 4$ and $\frac{1}{n}\sum_{k=1}^{n}\norm{u_k}^{2}\leq 4$. 
+
+Which lead us with further calculation to:
+
+$$
+\limsup_{\theta\rightarrow0}\limsup_{n\rightarrow\infty}\int_{\norm{t}_{p}\leq\theta}\norm{\zeta_{n}(t,s)}^{2} dw = 0
+$$
+
+For the rest of the summands it's pretty similar, which lead us to what we wanted to proof:
+
+$$
+\lim\sup_{\theta \to 0} \lim\sup_{n \to \infty} \norm{\nu^{2}_{n,\theta}-\nu^{2}_{n}} = 0
+$$
+
+
+\begin{prop}
+As a corollary for the theorem \ref{Objective} 
+if $\mathbb{E}\norm{X} + \mathbb{E}\norm{Y} < \infty$ then
+
+$$
+\lim_{n\to\infty} \mathcal{R}^{2}_{n}(x,y) \xrightarrow{a.s} \mathcal{R}^{2}(X,Y)
+$$
+\end{prop}
+\newpage
+\section{RDC\label{P:RDC}}
+
+
+\textbf{Proof for Definition 2.5.2}
+In order to give consistency to the previous definition we need to introduce few mathematicall conceps:
+\begin{thm}
+\textit{Probability Integral Transform}
+Consider a random vector X = ($X_{1} , . . . , X_{d}$ ) with continuous marginal cumulative distri-
+bution functions (cdfs) $F_{i}$, 1$\leq$i$\leq$d. 
+\textbf{U}=($U_{1},...,U_{d}$):=($F_{1}(X_{1}$),...,$F_{d}(X_{d}$)) has uniform marginals.
+\end{thm}
+\textbf{proof}
+Let X with CDF F and Y = F(X), then Y follows a uniform distribution.
+$F_{Y}(y)=P(Y\leq y)=P(F_{X}(x)\leq y) = P(X\leq F^{-1}_{X}(y)) = F_{X}(F^{-1}_{X}(y)) = y$
+
+\textbf{Proof for Theorem 2.5.2}
+
+$F_{n} := \frac{1}{n} \sum_{i=1}^{n} \textit{I}(X_{i} \leq x)$ converges uniformly to P:
+
+Let X = ($x_{0},...,x_{m}$) such that $-\infty = x_{0}<x_{1}< ... <x_{m}=\infty$ and $ F(x_{j}) - F(x_{j-1}) \leq \frac{1}{m}$
+$F_{n}(x)-F(x)\leq F_{n}(x_{j})-F(x_{j-1}) = F_{n}(x_{j})-F(x_{j}) + \frac{1}{m}$
+
+$F_{n}(x) - F(x) \geq F_{n}(x_{j-1}) -F(x_{j}) = F_{n}(x_{j-1}) -F(x_{j-1}) - \frac{1}{m}$
+
+$$\|F_{n} - F\|_{\infty}= \sup_{x \in R}|F_{n}(x) - F(x)| \leq \max_{j \in {1,..,m}}|F_{n}(x_{j})-F(x_{j})| + \frac{1}{m} \rightarrow 0 (a.s)$$

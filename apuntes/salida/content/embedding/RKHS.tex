@@ -1,0 +1,49 @@
+This section will introduce the concept of Hilbert Space, feature maps, kernel functions and RKHS, . This concepts will be the basic knowledge needed in order to understand the following 4 sections of this chapter, where Kernells and feature maps will be needed in order to construct HSIC and RDC which are two of the three dependence measures which this work revolvs around. Most content is taken from \cite{Feature_maps}.
+\subsection{Hilbert Space}
+A Hilbert space, generalizes the notion of Euclidean space, this will allow us to extrapolate propierties of finite dimensional spaces to infinite dimensional spaces, such as functional spaces. Hilbert spaces are important in various fields, for example in partial differential equations.
+\begin{defn}
+Any metric space (Space induced by an inner product) which is complete (Any Cauchy sequence converges with respect of it's norm) is called a Hilbert space.
+\end{defn}
+For more information about Hilbert Spaces head to \cite{RKHS_libro} chapter 2.
+\subsection{Feature maps }
+Classical theory of statistics covers the problem linear dependences, however real world problems often contain nonlinear dependencies. One approach that one can take of the knowledge of linear dependences is to transform the data into a different space where nonlinear dependences are transformed into linear ones.  
+\begin{defn}
+Let $\mathcal{H}$ be a Hilbert space, called the feature space, X an input set and x a sample from the input set. A feature map is a map $\phi:X\rightarrow\mathcal{H}$ from inputs to vectors in the Hilbert space. The vectors $\phi(x)\in\mathcal{H}$ are called feature vectors.
+\end{defn}
+This spaces play an important role in machine learning, since they map any type of input data into a space with a well defined-metric.  
+If the feature map is a nonlinear function it can change the relative position between data points like in \ref{Figure_features} making classification much easier in the feature space.
+\begin{figure}[Example of how a feature map can modify a dataset]{Figure_features}{Figure taken from \cite{Figure_feature} which shows graphically how a feature map can modify a dataset.}
+       \image{}{}{Feature}
+\end{figure}
+
+By definition of the inner product, every feature map has an associated kernel.
+
+\begin{defn}
+Let $\phi:X\rightarrow\mathcal{H}$ be a feature map. The inner product of two inputs mapped to feature space defines a kernel:
+
+$$
+k(x,x') = <\phi(x),\phi(x')>_{\mathcal{H}}
+$$
+where $<\cdot,\cdot>_{\mathcal{H}}$ is the inner product defined on $\mathcal{H}$.
+\end{defn}
+Demonstration can be found in \cite{Feature_maps} Theorem 1.
+
+\subsection{RKHS}
+Reproducing kernel Hilbert spaces (RKHS) were introduced with Moore's work (1916) and Aronszajin (1950). They are a special subset of Hilbert spaces that have a kernel with the reproducing propierty.
+\begin{defn}
+A bivariate function k on a given space S is said to be a reproducing kernel for $\mathcal{H}$ if for every $t\in S k(\cdot,t)\in \mathcal{H}$ and k satisfies the reproducing propierty, that for every $f\in \mathcal{H}$ and $t \in S$ $f(t) = <f,k(\cdot,t)>$. When $\mathcal{H}$ posseses a reproducing kernel, it is said to be a RKHS
+\end{defn}
+
+Now we will give some usefull propositions which will be used douring the work. 
+\begin{prop}
+If k is a reproducing kernel, then $k(x,x') = <k(x,\cdot),k(x',\cdot)>, \forall x,x'\in S$.
+Now in terms of the canonical feature map if the kernel is defined through the feature map, then $\phi(x) = k(x,\cdot)$, therefore we can define the Hilbert spaces through these kernels.
+\end{prop}
+
+Finally in \cite{RKHS_libro} Chapter 2 from section 7, and Chapter 6, contains more indepth information about RKHS.  We will take from a summary of section 2.7 the following brief:
+
+Being a reproducing kernel is equivalent to being a positive definite function, therefore every positive definite function is the kernel of a unique RKHS.
+With this set we will dive into MMD which will serve us as an introduction to HSIC which will be the first dependence measure.
+
+
+

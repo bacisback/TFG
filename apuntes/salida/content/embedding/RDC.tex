@@ -1,6 +1,7 @@
 In this section we will give our final aproach to measuring dependencies, taken from \cite{RDC1} and \cite{RDC2}. This statistic is a scalable and easy to implement estimator of the following:
 
-\begin{Definition}
+\begin{defn}\label{RDC:DEFN}
+
 The \textit{Hirschfeld-Gebelein-Rényi’s Maximum Correlation
 Coefficient} (HGR) was defined by Gebelein in 1941 \cite{HGR_text} as:
 \begin{equation}{HGR}
@@ -9,4 +10,81 @@ hgr(X,Y) = \sup_{f,g}\rho(f(X),g(Y))
 
 Where f and g are any Borel-measurable function with finite variance. Given that this estatistic the search of a supremum in an infinite-dimensional space in practice may be really difficult to compute. 
 
-The \textit{Randomized Dependence Coefficient} (RDC) measures the dependence between the random variables $X\in\mathbb{R}^{p}$ and $Y\in\mathbb{R}^{q}$ as the largest canonical correlation \ref{CANCOR} between the k random non-linear projections of the copula\ref{COPULA} transformation of the variables
+The \textit{Randomized Dependence Coefficient} (RDC) measures the dependence between the random variables $X\in\mathbb{R}^{p}$ and $Y\in\mathbb{R}^{q}$ as the largest canonical correlation  between the k random non-linear projections of the copula transformation of the variables
+\end{defn}
+
+Now we will give the introduction of two concepts which will allow us to understand the measure, being: what is a copula\ref{Copula}, how to calculate the copula, is it consistent and finally what is canonical correlation. With this few new concepts we will give a brief definition of the measure.
+
+\begin{defn}[Copula]
+Given a d-dimensional random vector$X_{1} , . . . , X_{d}$  be iid random variables with cumulative distribution functions $F_{1} , . . . , F_{d}$, the vector U = ($U_{1},...,U_{d}$) = ($F_{1}(X_{1}$),...,$F_{d}(X_{d}$))
+whose marginals are U[0,1], is known as the copula transformation
+\end{defn}
+
+The proof for this definition is found in Appendix \ref{dems} Section \ref{P:RDC}. 
+
+
+In practice, the estimation of univariate cdfs is easily done given a few hundred of observations. In addition, cdfs converge uniformly to the true distribution, which is shown with this next theorem.
+
+\begin{thm}
+\textit{Glivenko-Cantelli}
+
+Let $X_{1},...,X_{n}$ be iid random variables with common cumulative distribution function P. Then, the empirical cumulative distribution function, defined as
+
+$P_{n} := \frac{1}{n} \sum_{i=1}^{n} \textit{I}(X_{i} \leq x)$
+
+converges uniformly to P:
+
+$$\|P_{n} - P\|_{\infty}= \sup_{x \in R}|P_{n}(x) - P(x)| \rightarrow^{a.s} 0 $$
+
+\end{thm}
+
+The proof for this definition is found in Appendix \ref{dems} Section \ref{P:RDC}. 
+
+As we've seen, in order to calculate the RDC statistic, we need to compute the copula transformation using the empirical cumulative distribution function, which we've seen it's pretty consistent and simple. Then we need to augment these empirical transformations with non-linear projections, so that linear methods can be used to measure non-linear dependences in the original data.
+In \cite{RDC1} sin and cosine projections were chosen:
+
+$\Phi(\textbf{X};k,s):=
+\left(\begin{array}{ccc} \phi(w_{1}^{T}x_{1} + b_{1})	&	...	&	\phi(w_{k}^{T}x_{1} + b_{k}) \\
+. & . & . \\
+. & . & . \\
+. & . & .\\
+\phi(w_{1}^{T}x_{n} + b_{1}) & ... & \phi(w_{k}^{T}x_{n} + b_{k}) \end{array}\right)$
+
+Where $\phi(x) = (cos(x),sin(x))$, $W\in\mathbb{R}^{k}$, $W =w_{1},..w_{k}$ iid and $W\sim\mathcal{N}(0,s)$ and B = $b_{1},...,b_{k} \sim U[-\pi,\pi]$. 
+Choosing W to be Gaussian is equivalent to using a Gaussian kernel for the projections, and the parameter s is equivalent to the kernel width.
+
+
+\subsection{Canonical Correlation Analysis(CCA)}
+As we've seen in the definition 1.4.1 we need to maximize the correlation between the variables for any pair of given functions which of $\mathcal{L}_{2}$, here is where we will use CCA, which maximize the correlations for $\Phi$ for any given real valued vectors. For this subsection, most content is taken from \cite{CCA} Chapter 14.
+
+Let us consider the correlation $\rho(a,b)$ between the two prohections in more detail. Suppose that:
+
+$$
+\left(\begin{array}{cc} X \\ Y \end{array}\right) \sim
+\left(\begin{array}{cc} \left(\begin{array}{cc} \mu \\ \nu\end{array}\right) & \left(\begin{array}{cc} \Sigma_{XX} & \Sigma_{XY} \\
+\Sigma_{YX} & \Sigma_{YY}\end{array}\right)\end{array}\right)
+$$
+Then:
+
+$$\rho(a,b) = \frac{a^{T}\Sigma_{XY}b}{(a^{T}\Sigma_{XX}a)^{1/2}(b^{T}\Sigma_{YY}b)^{1/2}}$$
+
+Which is easy to see that:
+$\rho(a,b) = \rho(ca,b)$ for any c. Given the invariance of scale, we may rescale projections a and b, leaving with the equivalent problem of :
+
+$max_{a,b}(a^{T}\Sigma_{XX}b)$ under the constrains: $a^{T}\Sigma_{XX}a = 1$ and $b^{T}\Sigma_{YY}b = 1$.
+
+First we need to define:
+$\mathcal{K} = \Sigma_{XX}^{-1/2}\Sigma_{XY}\Sigma_{YY}^{-1/2}$
+which its eigenvalues will be the canonical correlation coefficients. This eigenvalues can be easily obtained through the singular value decomposition of $\mathcal{K}$. 
+This canonical correlation coefficients are the correlations between the random projections $\alpha^{T}\Phi(\mathbb{P}(X);k,s)$ and $\beta^{T} \Phi(\mathbb{Q}(Y);k,s)$. Therefore the maximum of this coefficient will be the supremum which we were searching.
+
+To sum it all up we will give a final and cohesive definition for RDC:
+
+\begin{defn}
+Given two d-dimensional random variables $X\sim\mathbb{P}$ and $Y\sim\mathbb{Q}$, and parameters $k\in \mathbb{N}$ and $s\in \mathbb{R}$ (n,s > 0), the Randomized Dependence Coefficient between the variables is defined as:
+
+$$
+rdc(X,Y;k,s) = \sup_{\alpha,\beta}\rho(\alpha^{T}\Phi(\mathbb{P}(X);k,s),\beta^{T} \Phi(\mathbb{Q}(Y);k,s)
+$$
+\end{defn}
+Which in practice can be calculated easily in a few lines. 

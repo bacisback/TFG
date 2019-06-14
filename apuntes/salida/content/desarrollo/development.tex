@@ -87,7 +87,7 @@ In order to maintain control of each change throughout the project we needed to 
 
 As a version control system we used git, which provides simplicity and comes with the advantage that hosting services for version control using git like GitHub exist. We chose GitHub because it is free and comes with all functionality for public repositories, one key functionality is that provides a version history of your code, so that previous versions are not lost with every new merge, easing removing mistakes or going back to a previous version if necessary. 
 
-In addition of version control we used \href{https://travis-ci.org/}{Travis-CI} in order to automatically test all changes made. \href{https://github.com/travis-ci/travis-ci/blob/master/README.md}{Travis-CI} is a hosted continuous integration service used to build and test software projects hosted at GitHub, furthermore this tool is free for open projects.
+In addition of version control we used \href{https://travis-ci.org/}{Travis-CI}\footnote{https://travis-ci.org/} in order to automatically test all changes made. \href{https://github.com/travis-ci/travis-ci/blob/master/README.md}{Travis-CI}\footnote{https://github.com/travis-ci/travis-ci/blob/master/README.md} is a hosted continuous integration service used to build and test software projects hosted at GitHub, furthermore this tool is free for open projects.
 
 Travis-CI is configured by adding a file named \textit{.travis.yml} to the root of the repository, specifying programming language used, the desired building and testing environment, the script to run the tests, when and what to do whenever a pettition is made to the repository. Code 3.4 shows an example of a \textit{.travis.yml}.
 

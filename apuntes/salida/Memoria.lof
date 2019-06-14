@@ -1,47 +1,50 @@
 \babel@toc {spanish}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Class diagram}}{24}{figure.caption.14}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Sequence diagram of plotting}}{25}{figure.caption.16}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Sequence diagram of an experiment}}{27}{figure.caption.18}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of how a feature map can modify a dataset}}{4}{figure.caption.9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Time efficience varying the amount of workers}}{31}{figure.caption.19}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Summary of the implementation process}}{36}{figure.caption.20}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Summary of the development process}}{37}{figure.caption.21}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Class diagram}}{18}{figure.caption.13}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sequence diagram of plotting}}{19}{figure.caption.15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Sequence diagram of an experiment}}{20}{figure.caption.17}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Non linear dependance patterns example 1}}{40}{figure.caption.22}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Power of tests uniform marginals same size adding noise}}{41}{figure.caption.23}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Non linear dependance patterns example 2}}{42}{figure.caption.24}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Power of tests increasing sample size}}{43}{figure.caption.25}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Experiment 3 rotation pattern sample}}{44}{figure.caption.26}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Experiment 3 results}}{44}{figure.caption.27}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces RDC Asymptotic distribution}}{45}{figure.caption.28}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces HSIC Asymptotic distribution}}{46}{figure.caption.29}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces DCOV asymptotic size 1000}}{47}{figure.caption.30}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces HSIC asymptotic size 1000}}{48}{figure.caption.31}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces RDC asymptotic size 1000}}{48}{figure.caption.32}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Experiment 1 DCOV asymptotic vs real}}{49}{figure.caption.33}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Experiment 1 HSIC asymptotic vs real}}{50}{figure.caption.34}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Experiment 1 RDC asymptotic vs real}}{50}{figure.caption.35}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Experiment 2 DCOV asymptotic vs real}}{51}{figure.caption.36}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Experiment 2 HSIC asymptotic vs real}}{52}{figure.caption.37}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Experiment 2 RDC asymptotic vs real}}{52}{figure.caption.38}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Experiment 3 asymptotic vs experimental}}{53}{figure.caption.39}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Time comparison}}{54}{figure.caption.41}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Polinomical aproximation for HSIC and RDC time curve}}{55}{figure.caption.42}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Time efficience varying the amount of workers}}{23}{figure.caption.18}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Summary of the implementation process}}{28}{figure.caption.19}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Summary of the development process}}{29}{figure.caption.20}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces DCOV asymptotic size 50}}{57}{figure.caption.43}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces DCOV asymptotic size 100}}{57}{figure.caption.44}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces DCOV asymptotic size 150}}{58}{figure.caption.45}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces DCOV asymptotic size 200}}{58}{figure.caption.46}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces DCOV asymptotic size 500}}{58}{figure.caption.47}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces HSIC asymptotic size 50}}{59}{figure.caption.48}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces HSIC asymptotic size 100}}{59}{figure.caption.49}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces HSIC asymptotic size 150}}{59}{figure.caption.50}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces HSIC asymptotic size 200}}{60}{figure.caption.51}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces HSIC asymptotic size 500}}{60}{figure.caption.52}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces RDC asymptotic size 50}}{60}{figure.caption.53}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces RDC asymptotic size 100}}{61}{figure.caption.54}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces RDC asymptotic size 150}}{61}{figure.caption.55}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces RDC asymptotic size 200}}{61}{figure.caption.56}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces RDC asymptotic size 500}}{62}{figure.caption.57}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Non linear dependance patterns example 1}}{32}{figure.caption.21}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Power of tests uniform marginals same size adding noise}}{33}{figure.caption.22}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Non linear dependance patterns example 2}}{34}{figure.caption.23}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Power of tests increasing sample size}}{35}{figure.caption.24}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Experiment 3 rotation pattern sample}}{36}{figure.caption.25}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Experiment 3 results}}{36}{figure.caption.26}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces RDC Asymptotic distribution}}{37}{figure.caption.27}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces HSIC Asymptotic distribution}}{38}{figure.caption.28}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces DCOV asymptotic size 1000}}{39}{figure.caption.29}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces HSIC asymptotic size 1000}}{39}{figure.caption.30}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces RDC asymptotic size 1000}}{39}{figure.caption.31}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Experiment 1 DCOV asymptotic vs real}}{40}{figure.caption.32}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Experiment 1 HSIC asymptotic vs real}}{41}{figure.caption.33}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Experiment 1 RDC asymptotic vs real}}{41}{figure.caption.34}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Experiment 2 DCOV asymptotic vs real}}{42}{figure.caption.35}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Experiment 2 HSIC asymptotic vs real}}{43}{figure.caption.36}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Experiment 2 RDC asymptotic vs real}}{43}{figure.caption.37}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Experiment 3 asymptotic vs experimental}}{44}{figure.caption.38}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Time comparison}}{45}{figure.caption.40}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Polinomical aproximation for HSIC and RDC time curve}}{46}{figure.caption.41}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces DCOV asymptotic size 50}}{72}{figure.caption.44}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces DCOV asymptotic size 100}}{73}{figure.caption.45}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces DCOV asymptotic size 150}}{73}{figure.caption.46}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces DCOV asymptotic size 200}}{74}{figure.caption.47}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces DCOV asymptotic size 500}}{74}{figure.caption.48}
+\contentsline {figure}{\numberline {B.6}{\ignorespaces HSIC asymptotic size 50}}{75}{figure.caption.49}
+\contentsline {figure}{\numberline {B.7}{\ignorespaces HSIC asymptotic size 100}}{75}{figure.caption.50}
+\contentsline {figure}{\numberline {B.8}{\ignorespaces HSIC asymptotic size 150}}{76}{figure.caption.51}
+\contentsline {figure}{\numberline {B.9}{\ignorespaces HSIC asymptotic size 200}}{76}{figure.caption.52}
+\contentsline {figure}{\numberline {B.10}{\ignorespaces HSIC asymptotic size 500}}{77}{figure.caption.53}
+\contentsline {figure}{\numberline {B.11}{\ignorespaces RDC asymptotic size 50}}{77}{figure.caption.54}
+\contentsline {figure}{\numberline {B.12}{\ignorespaces RDC asymptotic size 100}}{78}{figure.caption.55}
+\contentsline {figure}{\numberline {B.13}{\ignorespaces RDC asymptotic size 150}}{78}{figure.caption.56}
+\contentsline {figure}{\numberline {B.14}{\ignorespaces RDC asymptotic size 200}}{79}{figure.caption.57}
+\contentsline {figure}{\numberline {B.15}{\ignorespaces RDC asymptotic size 500}}{79}{figure.caption.58}

@@ -1,8 +1,10 @@
 In this chapter we will present the results of various experiments in which we will compare the power of the explained tests between them and with other state-of-the-art independence tests, as well as comparing the power of these tests based on their asimptotic distribution and their empirical distribution. and \cite{HSICdistribution}. This experiments will help us analyze in which conditions one dependence measure may be better than other.
 This is of key importance in various fields, such as multiple linear regression, where one of the hypothesis for the model to be functional is for all variables to be independent. Therefore finding if there is a dependant variable and erasing it from the model can drastically affect the performance of the classification. 
+As our main goal is to clarify in which scenarios each dependence measure is optimal we will start measuring the power of each test for different data sets and modifications, then we will analyze it's asymptotic version for times when time may be of critical importance, and we will conclude measuring average times and comparing each test by complexity.
 
 \section{Power}
 
+In this section we will measure the power of each test, we will define power as the percentage of the times the null hypothesisis rejected for a given confidence level.
 In all our experiments, we set the number of random features for RDC to k = 3, and the random sampling width to s = $10^{-2}$. All kernel methods make use of a Gaussian kernel with width hyper-parameter set to the median of the euclidean distances between samples of each of the input random variables.
 
 \subsection{Real}
@@ -130,13 +132,13 @@ $ Y = Y + \mathcal{N}(0,\text{noise}) $.
 Figures \ref{FIG:DCOV1000} , \ref{FIG:RDC1000}, \ref{FIG:HSIC1000}, showcase the power of the real tests vs the asymptotic version for sample sizes of 1000  for DCOV,RDC and HSIC respectively. In the Appendix \ref{Appendix} it's show this experiment for sample sizes 50,100,150,200 and 500.
 \FloatBarrier
 \begin{figure}[DCOV asymptotic size 1000]{FIG:DCOV1000}{Power comparison between the asymptotic and the real version of DCOV for sample size 1000}
-       \image{}{}{powersCheto/DCOV1000}
+       \image{8cm}{}{powersCheto/DCOV1000}
 \end{figure}
 \begin{figure}[HSIC asymptotic size 1000]{FIG:HSIC1000}{Power comparison between the asymptotic and the real version of HSIC for sample size 1000}
-       \image{}{}{powersCheto/HSIC1000version}
+       \image{8cm}{}{powersCheto/HSIC1000}
 \end{figure}
 \begin{figure}[RDC asymptotic size 1000]{FIG:RDC1000}{Power comparison between the asymptotic and the real version of RDC for sample size 1000}
-       \image{}{}{powersCheto/RDC1000Version}
+       \image{8cm}{}{powersCheto/RDC1000}
 \end{figure}
 \FloatBarrier
 For all tests we've seen how our null hypothesis is always conservative, this is always useful for situations where computation time is critical and the asymptotic version may be better because it minimizes type 1 error.
@@ -207,6 +209,18 @@ Finally Figure \ref{FIG:TIMES} showcase how RDC is considerably faster than HSIC
 \FloatBarrier
 \section{Conclusion}
 
-In general RDC performs better than the other statistics, there are few case scenarios where it may be better to use another test, the most relevant one being the relation pattern step, where DCOV outperformed RDC. This may be important to notice because this relation pattern is two variables X,Y, where Y = heaviside(X), this relation pattern is of key importance various scientific fields, such as differential equations, where it represents a signal which switches on at a specified time and stays switched on indefinitely. 
+For this project our goal is to present and compare different dependance measures and analyze when to use each dependence measure. This as mentioned douring the project, is of key importance for various search fields and techniques such as PCA and multiple linear regression Appendix \label{Appendix:Sobras} shows a simple example of how measuring dependance can drastically affect the performance of multiple linear regression.
 
-Therefore for general purposes RDC will be the best answer, because it's more time efficent and generally performs better than the other tests, but if there is previous knowledge of the relation pattern that our data may follow then DCOV or HSIC may be a better solution.
+The project starts pressenting a homogeneity test base on embeddings of probability distributions into RKHS's, MMD, from this homogeneity test we define a independence test called HSIC applying the concepts learned from MMD to the joint distribution and the product of the marginals. We follow the journey talking about Energy distance and how we can define a independence test called DCOV which is a $\mathcal{L}_{2}$ distance between characteristic functions. Finally the last dependence measure we define is RDC which is an aproximation of the HGR correlation coefficient defined in \cite{HGR_text} which due to being the supremum over a infinite-dimensional space makes it unmanageable.
+
+After we presented the design of the software we created making an analyzing the requirements, and presenting the squeme for the software developed. This is followed by explaining the development process, diving into the tools used, and the software development methodology which we followed for this project.
+
+Concluding this work we present the experiments performed to the tests, where we've seen how in most case scenarios RDC outperforms the other statistics, there are few case scenarios where it may be better to use another test, the most relevant one being the relation pattern step, where DCOV outperformed RDC. This may be important to notice because this relation pattern is two variables X,Y, where Y = heaviside(X), this relation pattern is of key importance in various scientific fields, such as differential equations, where it represents a signal which switches on at a specified time and stays switched on indefinitely. 
+
+Therefore for general purposes  we can conclude that RDC will be the best answer, because it's more time efficent and generally performs better than the other tests, but if there is previous knowledge of the relation pattern that our data may follow then DCOV or HSIC may be a better solution.
+
+For future work it'd be interesting to study other dependance patterns and other distributions, such as distributions with a havy tail like the Levy probability distribution and setting the dependance on the tail, this may be interesting for studies such as migration patterns where the tail of it's distribution movement is of key importance. 
+Furthermore it'd be interesting to compare more independence measures such as the ones based on mutual information, correntropy, and non-Gaussianity in order to make this project as complete as possible.
+
+
+

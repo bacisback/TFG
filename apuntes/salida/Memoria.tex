@@ -7,7 +7,7 @@
 % arara: clean: {files: [tfgtfmthesisuam.aux, tfgtfmthesisuam.idx, tfgtfmthesisuam.ilg, tfgtfmthesisuam.ind, tfgtfmthesisuam.bbl, tfgtfmthesisuam.bcf, tfgtfmthesisuam.blg, tfgtfmthesisuam.run.xml, tfgtfmthesisuam.fdb_latexmk, tfgtfmthesisuam.fls, tfgtfmthesisuam.loe, tfgtfmthesisuam.lof, tfgtfmthesisuam.lol, tfgtfmthesisuam.lot, tfgtfmthesisuam.ltb, tfgtfmthesisuam.out, tfgtfmthesisuam.toc, tfgtfmthesisuam.upa, tfgtfmthesisuam.upb, tfgtfmthesisuam.acn, tfgtfmthesisuam.acr, tfgtfmthesisuam.alg, tfgtfmthesisuam.glg, tfgtfmthesisuam.glo, tfgtfmthesisuam.gls, tfgtfmthesisuam.glsdefs, tfgtfmthesisuam.idx,  tfgtfmthesisuam.ilg, tfgtfmthesisuam.xdy, tfgtfmthesisuam.loa, tfgtfmthesisuam.gnuploterrors , tfgtfmthesisuam.mw, tfgtfmthesisuam.fdb_latexmk ]}
 
 
-\documentclass[epsbased,copyright,final,english,printable,covers,extendedindex,firstnumbered,tfg,gnuplot]{tfgtfmthesisuam}
+\documentclass[epsbased,copyright,final,loe,loc,lof,english,printable,covers,extendedindex,firstnumbered,tfg,gnuplot]{tfgtfmthesisuam}
 \usepackage{amsfonts}
 \usepackage[english]{babel}
 \usepackage{amssymb,amsthm}
@@ -50,75 +50,22 @@
 \graphicsdir{img}
 \logosdir{img}
 \codesdir{codes}
+\bibliographyconfig{bibliografia}
 \begin{document}
 
 \chapter{Introduction\label{CAP:INTRODUCCION}}{inicio/Introduction}
-	\section{MMD\label{SEC:MMD}}{content/embedding/MMD}
-	\section{HSIC\label{SEC:HSIC}}{content/embedding/HSIC}
-	\section{Energy\label{SEC:Energy}}{content/embedding/Energy}
+\chapter{State of The Art\label{CAP:DepMeasures}}{content/embedding/DepMeasures}
+	\section{Reproducing Kernel Hilbert Spaces (RKHS) \label{SEC:RKHS}}{content/embedding/RKHS}
+	\section{Maximum Mean Discrepancy (MMD)\label{SEC:MMD}}{content/embedding/MMD}
+	\section{Hilber-Schmidt Independence Criterion(HSIC)\label{SEC:HSIC}}{content/embedding/HSIC}
+	\section{Energy Distance\label{SEC:Energy}}{content/embedding/Energy}
+	\section{Randomized Dependence Coefficient (RDC)\label{SEC:RDC}}{content/embedding/RDC}
 \chapter{Design\label{CAP:DEV}}{content/design/design}
 \chapter{Development\label{CAP:DEVPMT}}{content/desarrollo/development}
 \chapter{Experiments\label{Cap:Experiments}}{content/experiments/experiments}
-\chapter{Appendix\label{Appendix}}{content/Appendix}
+\appendix
+\chapter{Proofs\label{dems}}{content/Dems}
+\chapter{Further content\label{Appendix}}{content/Appendix}
 
-\begin{thebibliography}{9}
-
-\bibitem{HSICdistribution} Gretton A,Fukumizu K, Teo H.C., Song L, Schölkopf B, Smola J.A.
-(2007)
-\textit{A Kernel Statistical Test of Independence}
-\bibitem{HSIC_1} Fukumizu K, Gretton A, Sun X, Schölkopf B. (2007)
-\textit{Kernel measures of conditional dependence}
- 
-\bibitem{HSICDegenerate} Serfling R.
-(Wiley, New York, 1980)
-\textit{Approximation Theorems of Mathematical Statistics}
-
-\bibitem{DCOV_1} Gabor J.Székely, Maria L. Rizzo and Nail K. Bakirov
-(2007)
-\textit{Measuring and testing dependence by correlation of distances}
-
-\bibitem{BrownianCovariance} Gabor J.Székely and Maria L. Rizzo
-(2009)
-\textit{Brownian Distance Covariance}
-
-\bibitem{Size} Rao M., Seth S., Xu J., Chen Y., Tagare H., and Príncipe J.C (2011)
-\textit{A test of independence based on a generalized correlation function}
-
-\bibitem{DCOV_Chisq} S ZÉKELY , G. J. and B AKIROV , N. K. (2008).
-\textit{Extremal probabilities for Gaussian quadratic
-forms. Probab. Theory Related Fields}
- 
-\bibitem{C-S-B_inequality1} Strang, Gilbert 
-\textit{Linear Algebra and its Applications}
-(2005)
-\bibitem{C-S-B_inequality2} Hunter, John K.; Nachtergaele, Bruno 
-\textit{ Applied Analysis}
-(2001)
-
-
-\bibitem{RDC1} David Lopez-Paz and Bernhard Schölkopf.
-(2013)
-\textit{The Randomized Dependence Coefficient}
-
-\bibitem{RDC2} David Lopez-Paz, Philipp Hennig and Bernhard Schölkopf.
-(2013)
-\textit{The Randomized Dependence Coefficient}
-
-\bibitem{HGR_text} H. Gebelein
-\textit{Das statistische problem der korrelation als variations- und eigenwertproblem und sein zusammenhang mit der ausgleichsrechnung.} (1941)
-
-\bibitem{plancherel} Par M.Michel Plancherel
-\textit{Contribution À ĽÉtude de la reprÉsentation D’une fonction arbitraire par des intÉgrales dÉfinies}
-(Genève, 1910)
-
-\bibitem{historia} Lyle D.Broemeling
-\textit{An Account of Early Statistical Inference in Arab Cryptology}
-(2010)
-
-\bibitem{bernoulli}  Jacob Bernoulli
-\textit{Ars Conjectandi}
-(1713)
-
-\end{thebibliography}
 \end{document}
 

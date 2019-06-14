@@ -1,0 +1,107 @@
+\begin{thebibliography}{10}
+
+\bibitem{historia}
+L.~D. Broemeling, ``An account of early statistical inference in arab
+  cryptology,'' {\em The American Statistician}, vol.~65, no.~4, pp.~255--257,
+  2011.
+
+\bibitem{bernoulli}
+I.~Schneider, {\em Jakob Bernoulli, Ars conjectandi (1713)}, pp.~88--104.
+\newblock 12 2005.
+
+\bibitem{Feature_maps}
+M.~Schuld and N.~Killoran, ``Quantum machine learning in feature hilbert
+  spaces,'' {\em Physical Review Letters}, vol.~122, 03 2018.
+
+\bibitem{RKHS_libro}
+T.~Hsing and R.~Eubank, {\em {Theoretical foundations of functional data
+  analysis, with an introduction to linear operators}}.
+\newblock Wiley series in probability and statistics, Hoboken, NJ: Wiley, 2015.
+
+\bibitem{Figure_feature}
+C.~Liberati and F.~Neri, ``e-crm, web semantic propensity models and micro-data
+  mining an application of kernel discriminant analysis to the glam on web
+  case,'' 04 2006.
+
+\bibitem{MMD1}
+A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch\"{o}lkopf, and A.~Smola, ``A
+  kernel two-sample test,'' {\em J. Mach. Learn. Res.}, vol.~13, pp.~723--773,
+  Mar. 2012.
+
+\bibitem{MMD2}
+K.~M. Borgwardt, A.~Gretton, M.~J. Rasch, H.-P. Kriegel, B.~Sch\"{o}lkopf, and
+  A.~J. Smola, ``Integrating structured biological data by kernel maximum mean
+  discrepancy,'' {\em Bioinformatics}, vol.~22, pp.~e49--e57, July 2006.
+
+\bibitem{HSICdistribution}
+A.~Gretton, K.~Fukumizu, C.~H. Teo, L.~Song, B.~Sch\"{o}lkopf, and A.~J. Smola,
+  ``A kernel statistical test of independence,'' pp.~585--592, 2008.
+
+\bibitem{HSIC_1}
+K.~Fukumizu, A.~Gretton, X.~Sun, and B.~Sch\"{o}lkopf, ``Kernel measures of
+  conditional dependence,'' pp.~489--496, 2008.
+
+\bibitem{HSIC2}
+A.~Gretton, O.~Bousquet, A.~Smola, and B.~Sch\"{o}lkopf, ``Measuring
+  statistical dependence with hilbert-schmidt norms,'' in {\em Proceedings of
+  the 16th International Conference on Algorithmic Learning Theory}, ALT'05,
+  (Berlin, Heidelberg), pp.~63--77, Springer-Verlag, 2005.
+
+\bibitem{HSICEquivalenceMMD}
+D.~Sejdinovic, B.~Sriperumbudur, A.~Gretton, and K.~Fukumizu, ``Equivalence of
+  distance-based and rkhs-based statistics in hypothesis testing,'' {\em Ann.
+  Statist.}, vol.~41, pp.~2263--2291, 10 2013.
+
+\bibitem{HSICDegenerate}
+R.~Serfling, {\em Approximation theorems of mathematical statistics}.
+\newblock Wiley series in probability and mathematical statistics : Probability
+  and mathematical statistics, New York, NY [u.a.]: Wiley, [nachdr.]~ed., 1980.
+
+\bibitem{DCOV_1}
+M.~L.~R. Gabor~J.Székely and N.~K. Bakirov, ``Measuring and testing dependence
+  by correlation of distances,'' 2007.
+
+\bibitem{BrownianCovariance}
+G.~J.Székely and M.~L. Rizzo, ``Brownian distance covariance,'' 2009.
+
+\bibitem{DCOV_Chisq}
+G.~J. S~ZÉKELY and N.~K. B~AKIROV, ``Extremal probabilities for gaussian
+  quadratic forms. probab. theory related fields,'' 2008.
+
+\bibitem{RDC1}
+D.~Lopez-Paz, P.~Hennig, and B.~Sch{\"o}lkopf, ``The randomized dependence
+  coefficient,'' 2013.
+
+\bibitem{RDC2}
+D.~Lopez-Paz and B.~Sch{\"o}lkopf, ``The randomized dependence coefficient,''
+  2013.
+
+\bibitem{HGR_text}
+H.~Gebelein, ``Das statistische problem der korrelation als variations- und
+  eigenwertproblem und sein zusammenhang mit der ausgleichsrechnung,'' {\em
+  ZAMM ‐ Journal of Applied Mathematics and Mechanics / Zeitschrift für
+  Angewandte Mathematik und Mechanik}, vol.~21, pp.~364 -- 379, 11 2006.
+
+\bibitem{CCA}
+R.~Johnson and D.~Wichern, {\em Applied multivariate statistical analysis}.
+\newblock Upper Saddle River, NJ: Prentice Hall, 5. ed~ed., 2002.
+
+\bibitem{plancherel}
+P.~M. Plancherel, {\em Contribution À ĽÉtude de la reprÉsentation D’une
+  fonction arbitraire par des intÉgrales dÉfinies}.
+\newblock 1910.
+
+\bibitem{Size}
+M.~Rao, S.~Seth, J.~Xu, Y.~Chen, H.~D. Tagare, and J.~C. Pr{\'{\i}}ncipe, ``A
+  test of independence based on a generalized correlation function,'' {\em
+  Signal Processing}, vol.~91, no.~1, pp.~15--27, 2011.
+
+\bibitem{C-S-B_inequality1}
+G.~Strang, {\em Linear algebra and its applications}.
+\newblock Belmont, CA: Thomson, Brooks/Cole, 2006.
+
+\bibitem{C-S-B_inequality2}
+B.~Hunter, John K.;~Nachtergaele, {\em Applied Analysis}.
+\newblock 2001.
+
+\end{thebibliography}
